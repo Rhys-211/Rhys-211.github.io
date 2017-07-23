@@ -1,5 +1,3 @@
-
-
 window.onload = function () {
     main();
     function judgeSame(x, y, z) {
@@ -63,19 +61,14 @@ window.onload = function () {
     boxes[6] = new Box(document.getElementById('box7'));
     boxes[7] = new Box(document.getElementById('box8'));
     boxes[8] = new Box(document.getElementById('box9'));
-    /*const caption = document.getElementById('caption');*/
     for (let i = 0; i < 9; i++) {
         boxes[i].box.addEventListener('click', function () {
             //轮到玩家
             boxes[i].clicked = 1;
             boxes[i].box.innerText = '❌';
             //判断胜负并输出结果
-            if (judgeOutcome() == 2)
-                /*caption.innerText = '愚蠢的玩家，想要赢我的话，就痛恨我，憎恨我吧！然后丑陋地活下去吧。逃吧，逃吧，尽力地苟且偷生吧 。然后等到和我有一样的能力的时候，再来找我吧！';*/
-                alert("愚蠢的玩家呦，想要赢我的话，就痛恨我，憎恨我吧！然后丑陋地活下去吧。逃吧，逃吧，尽力地苟且偷生吧 。然后等到和我有一样的能力的时候，再来找我吧！")
-            else if (judgeOutcome() == 1)
-                /*caption.innerText = '呃，你的电脑刚才可能卡了一下，这只是失误。。。真的';*/
-                alert("呃，这。。。可能。。是。。因为。。你的电脑。。太。。垃圾了，嗯。。没错。。就是这样。。。")
+            if (judgeOutcome() == 1)
+                alert("呃，这。。。可能。。是。。因为。。你的电脑。。配置太。。差了，发挥不出我的实力。嗯。。没错。。就是这样。。。")
             //轮到AI
             while (true) {
                 let j;
@@ -94,13 +87,7 @@ window.onload = function () {
             }
             //判断胜负并输出结果
             if (judgeOutcome() == 2)
-                /*caption.innerText = '愚蠢的玩家，想要赢我的话，就痛恨我，憎恨我吧！然后丑陋地活下去吧。逃吧，逃吧，尽力地苟且偷生吧 。然后等到和我有一样的能力的时候，再来找我吧！';*/
                 alert("愚蠢的玩家呦，想要赢我的话，就痛恨我，憎恨我吧！然后丑陋地活下去吧。逃吧，逃吧，尽力地苟且偷生吧 。然后等到和我有一样的能力的时候，再来找我吧！")
-            else if (judgeOutcome() == 1)
-                /*caption.innerText = '呃，你的电脑刚才可能卡了一下，这只是失误。。。真的';*/
-                alert("呃，这。。。可能。。是。。因为。。你的电脑。。太。。垃圾了，嗯。。没错。。就是这样。。。")
-            /*else
-                caption.innerText = '轮到你了';*/
         })
     }
 }
