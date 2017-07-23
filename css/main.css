@@ -28,7 +28,7 @@ nav ul li{
 	width:inherit;
 	text-align:center;
 }
-nav ul li:hover,nav div:hover,nav .foucs{
+nav ul li:hover,nav .foucs,nav#topbar div:hover{
 	background:#93999f;
 }
 nav ul li a,nav div a{
@@ -38,7 +38,6 @@ nav ul li a,nav div a{
 	width:inherit;
 	color:rgba(7, 17, 27,0.8);
 }
-
 button#start{
 	border:none;
 	border-radius:20px;
