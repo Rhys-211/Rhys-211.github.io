@@ -1,0 +1,50 @@
+#content .inner{
+	color:#fff;
+	position:relative;
+	text-align:center;
+	font-size: 2em;
+	font-family: Microsoft Yahei Light;
+	padding:160px;
+}
+#content .inner h1{
+	margin:0;
+}
+#content button{
+	margin:0 auto;
+	display: block;
+	position:absolute;
+	top:500px;
+}
+footer{
+	background-color: rgba(255,255,255,0);
+	color:rgba(255,255,255,0.3);
+}
+footer a{
+	color:rgba(255,255,255,0.2);
+}
+footer a:hover{
+	color:rgba(255,255,255,0.8)
+}
+body{
+	background:url("https://images.apple.com/cn/macos/sierra/overview/hero/fallback_bg_medium.jpg");
+	background-size:cover;
+}
+nav{
+	background-color: rgba(0,0,0,0)
+}
+nav div{
+	background-color: rgba(0,0,0,0) !important
+}
+nav ul li:hover{
+	background-color: rgba(0,0,0,0.1) !important
+}
+nav#topbar div:hover{
+	background-color: rgba(0,0,0,0.1) !important
+}
+.foucs{
+	background-color: rgba(0,0,0,0.1) !important
+}
+nav ul li ul{
+	background: url("https://images.apple.com/cn/macos/sierra/overview/hero/fallback_bg_medium.jpg");
+}
+

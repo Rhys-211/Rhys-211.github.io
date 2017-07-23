@@ -1,0 +1,29 @@
+body{
+    background-color:#f3f5f7;
+}
+table#gamebox{
+    background: #fff;
+    margin:0 auto 5rem auto;
+    font-size: 2rem;
+    text-align: center;
+    vertical-align: center;
+    color:rgba(7, 17, 27,0.8);
+    border-radius:100px;
+    border: 10px solid #fff;
+}
+table#gamebox tr{
+    margin:0;
+    width:200px;
+    height:200px;
+}
+table#gamebox td{
+    font-size:5rem;
+    border:solid #93999f 2px;
+    width:200px;
+    border-radius:100px;
+    height:200px;
+    transition:all 0.2s ease
+}
+table#gamebox td:hover{
+    box-shadow: 0 8px 16px 0 rgba(7,17,27,.2)
+}

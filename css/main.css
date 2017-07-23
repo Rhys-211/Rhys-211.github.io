@@ -1,0 +1,128 @@
+﻿body{
+	font-family:Microsoft Yahei;
+}
+h1{
+	color:rgba(7, 17, 27,0.8);
+	text-align:center;
+	font-family: Microsoft Yahei Light;
+	font-size: 3rem;
+	margin:50px;
+}
+nav{
+	background:#fff;
+	color:rgba(7, 17, 27,1);
+	font-size: 1.25rem;
+}
+nav ul{
+	margin:0;
+	list-style: none;
+	width:inherit;
+	padding:0;
+}
+nav#topbar div{
+	display:inline-block;
+	text-align:center;
+	padding:0px 36px;
+}
+nav ul li{
+	width:inherit;
+	text-align:center;
+}
+nav ul li:hover,nav div:hover,nav .foucs{
+	background:#93999f;
+}
+nav ul li a,nav div a{
+	text-decoration:none;
+	display:block;
+	line-height:5rem;
+	width:inherit;
+	color:rgba(7, 17, 27,0.8);
+}
+
+button#start{
+	border:none;
+	border-radius:20px;
+	height:40px;
+	padding:0 25px;
+	color:#fff;
+	background-color:#229ffd;
+	transition:all 0.5s ease 0s;
+}
+button#start:hover{
+	color:#fff;
+	background:#4cb0f9;
+	box-shadow:0px 0px 5px #000;
+}
+button#start:focus{
+	border:none;
+}
+footer{
+	height:50px;
+	color:#666;
+	background-color:#e0e3e5;
+	text-align:center;
+	padding:20px;
+}
+footer a{
+	text-decoration: none;
+	color:#666;
+	transition: all 0.2s ease 0s;
+}
+footer a:hover{
+	color:rgb(7, 17, 27);
+}
+nav#sidebar{
+	width:300px;
+	position:fixed;
+	top:0;
+	right:-300px;
+	bottom:0;
+	transition:right,0.4s;
+	z-index:3;
+	box-shadow:15px 0 50px 5px #111
+}
+nav a{
+	letter-spacing: 4px;
+}
+#top_right{
+	float:right;
+}
+#mask{
+	display:none;
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:2;
+}
+nav ul li ul{
+	position:fixed;
+	right:300px;
+	background-color: #fff;
+	display:none;
+	z-index:5;
+	box-shadow: 0 8px 16px 0 rgba(7,17,27,.2);
+}
+#profile{
+	height:50px;
+	display: flex;
+	width:250px;
+	justify-content: space-between;
+	margin:10px auto
+}
+#profile button{
+	border-width:0; 
+	border-radius: 8px;
+	background-color:#0f88eb;
+	color:#FFF;
+	text-align: center;
+	line-height: 50px;
+	width:100px;
+	font-family: Microsoft YaHei;
+	cursor:pointer;
+	transition: all 0.2s ease 0s;
+}
+#profile button:hover{
+	background-color:#0d79d1
+}
