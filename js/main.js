@@ -32,7 +32,7 @@
     })
     sidebar_game_winmine.addEventListener('click',function(){
         if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: Ryzen Threadripper 1950X\n显卡: Nvidia GTX 1080Ti\n内存: 128GB") == 1)
-            window.open("winmine.html");
+            window.open("sd_winmine.html");
     })
     register.addEventListener('click',function(){
         alert('功能未开启，敬请期待')
