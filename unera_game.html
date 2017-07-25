@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>211 Special Force - The Unnamed Era</title>
 	<link rel="shortcut icon" href="images/favicon.ico">
+	<script src="js/unera_game.js"></script>
 	<style>
 		*{
 			font-family: Microsoft Yahei
@@ -14,8 +15,8 @@
 		}
 		#startGame{
 			display:block;
+			padding:0 50px;
 			border:0;
-			width:240px;
 			height:100px;
 			margin:400px auto 0 auto;
 			font-size:50px;
@@ -31,8 +32,8 @@
 </head>
 <body>
 	<div id="gamebox">
-		<button id="startGame">Play</button>
-		<audio src="audio/startbgm.mp3" autoplay="autoplay"></audio>
+		<button id="startGame" onclick="alert('加载中，请稍后。。。')">Loading...</button>
+		<audio src="audio/startbgm.mp3" id="startbgm"></audio>
 	</div>
 </body>
 </html>
