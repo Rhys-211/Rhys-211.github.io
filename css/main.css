@@ -101,10 +101,12 @@ nav ul li ul{
 	text-align: center;
 	line-height: 50px;
 	width:100px;
-	font-family: Microsoft YaHei;
 	cursor:pointer;
 	transition: all 0.2s ease 0s;
 }
 #profile button:hover{
 	background-color:#0d79d1
+}
+button{
+	font-family: Microsoft YaHei;
 }
