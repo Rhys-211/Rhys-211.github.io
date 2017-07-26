@@ -38,6 +38,6 @@
         window.open('register.html','_self');
     })
     siderbar_signIn.addEventListener('click',function(){
-        alert('功能未开启，敬请期待')
+        window.open('signIn.html','_self');
     })
 }
