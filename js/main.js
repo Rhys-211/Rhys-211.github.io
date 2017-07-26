@@ -7,8 +7,8 @@
     const sidebar_game_winmine = document.getElementById('sidebar_game_winmine');
     const sidebar_back = document.getElementById('sidebar_back');
     const mask = document.getElementById('mask');
-    const register = document.getElementById('register');
-    const signIn = document.getElementById('signIn');
+    const siderbar_register = document.getElementById('siderbar_register');
+    const siderbar_signIn = document.getElementById('siderbar_signIn');
     top_right.addEventListener('click',function(){
         sidebar.style.right = 0;
         mask.style.display = 'block';
@@ -32,12 +32,12 @@
     })
     sidebar_game_winmine.addEventListener('click',function(){
         if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: Ryzen Threadripper 1950X\n显卡: Nvidia GTX 1080Ti\n内存: 128GB") == 1)
-            window.open("sd_winmine.html");
+            window.open('sd_winmine.html');
     })
-    register.addEventListener('click',function(){
-        alert('功能未开启，敬请期待')
+    siderbar_register.addEventListener('click',function(){
+        window.open('register.html','_self');
     })
-    signIn.addEventListener('click',function(){
+    siderbar_signIn.addEventListener('click',function(){
         alert('功能未开启，敬请期待')
     })
 }
