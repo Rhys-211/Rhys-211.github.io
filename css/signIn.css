@@ -22,11 +22,12 @@ button#signIn_btn{
 	color:#FFF;
 	text-align: center;
 	line-height: 60px;
-	width:120px;
+	width:200px;
 	cursor:pointer;
     transition: all 0.2s ease 0s;
     margin:20px auto;
     font-size:20px;
+    white-space: pre;
 }
 button#signIn_btn:hover{
 	background-color:#0d79d1
@@ -56,4 +57,5 @@ p.info{
     font-size:15px;
     word-break:break-all;
     color:orange;
+    width:120px
 }

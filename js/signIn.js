@@ -29,11 +29,40 @@ window.onload = function(){
         }
     });
     document.getElementById('signIn_btn').onclick = function(){
+        signIn_btn.innerText = '登录中。。。';
+        signIn_btn.disabled = 'disabled';
         if(acntNmb.value != '' && pwd.value != ''){
-            alert('233')
-        }
-        else{
-            alert('请检查上述诸项是否均符合要求。')
+            Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
+            var User = Bmob.Object.extend("User");
+            var query = new Bmob.Query(User);
+            query.find({
+                success: function(results) {
+                    for (var i = 0; i < results.length; i++) {
+                        object = results[i];
+                        if (object.get('accountNumber') == acntNmb.value){
+                            alert('登陆成功！！！(然鹅并没有)');
+                            signIn_btn.innerText = '已登录';
+                            break;
+                        } else if(i == results.length - 1){
+                            alert('登陆失败: 用户名不存在。');
+                            acntNmb_info.innerText = '用户名不存在';
+                            acntNmb_info.style.color = 'red';
+                            acntNmb_usable = false;
+                            signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
+                            signIn_btn.disabled = false;
+                        }
+                    }
+                },
+                error: function(error) {
+                    alert("登录失败: " + error.code + " " + error.message);
+                    signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
+                    signIn_btn.disabled = false;
+                }
+            });
+        } else {
+            alert('登录失败: 请检查上述诸项是否均符合要求。')
+            signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
+            signIn_btn.disabled = false;
         }
     };
 }
