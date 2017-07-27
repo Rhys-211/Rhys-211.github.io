@@ -1,14 +1,21 @@
 ﻿function main(){
     const top_right = document.getElementById('tp_right');
+    const mask = document.getElementById('mask');
     const sidebar = document.getElementById('sidebar');
     const sd_game = document.getElementById('sd_game');
     const sd_game_sub = document.getElementById('sd_game_sub');
     const sd_game_ttt = document.getElementById('sd_game_ttt');
     const sd_game_winmine = document.getElementById('sd_game_winmine');
     const sd_back = document.getElementById('sd_back');
-    const mask = document.getElementById('mask');
     const sd_register = document.getElementById('sd_register');
     const sd_signIn = document.getElementById('sd_signIn');
+    const sd_user = document.getElementById('sd_user');
+    const sd_userSignOut = document.getElementById('sd_userSignOut');
+    const sd_user_operation = document.getElementById('sd_user_operation');
+    const sd_user_signOut = document.getElementById('sd_user_signOut');
+    const sd_userAvatar = document.getElementById('sd_userAvatar');
+    const sd_userName = document.getElementById('sd_userName');
+    const sd_userInfo = document.getElementById('sd_userInfo');
     top_right.addEventListener('click',function(){
         sidebar.style.right = 0;
         mask.style.display = 'block';
@@ -47,4 +54,23 @@
     sd_signIn.addEventListener('click',function(){
         window.open('signIn.html','_self');
     })
+    sd_user_operation.addEventListener('click',function(){
+        alert('功能未开启，敬请期待。')
+    })
+    sd_user_signOut.addEventListener('click',function(){
+        document.cookie = 'json=1;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        alert('注销成功');
+        window.location.reload();
+    })
+    sd_userAvatar.addEventListener('click',function(){
+        alert('暂不支持显示头像功能，然后我的又看不出来（和没有一样），所以暂时用石龙的代替下。')
+    })
+    if(document.cookie != ""){
+        let json = JSON.parse(document.cookie.slice(5));
+        console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNum" is ' + json.acntNum + '.')
+        sd_user.style.display = 'block';
+        sd_userSignOut.style.display = 'none';
+        sd_userName.firstChild.innerText = json.username;
+        sd_userInfo.firstChild.innerText = json.info;
+    }
 }

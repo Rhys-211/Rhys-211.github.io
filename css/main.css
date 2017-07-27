@@ -120,7 +120,7 @@ button{
 	box-shadow: 0 8px 16px 0 rgba(7,17,27,.2);
 }
 #sd_user img{
-	border:2px solid #eee;
+	border:2px solid #fff;
 	width:120px;
 	height:120px;
 	border-radius: 120px;
@@ -146,7 +146,7 @@ td#sd_username{
 	padding:20px 0 0 0;
 }
 td#sd_username p{
-	font-size:20px;
+	font-size:24px;
 }
 td#sd_info{
 	padding:0 0 20px 0;

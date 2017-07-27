@@ -38,7 +38,7 @@ nav#topbar div:hover{
 .foucs{
 	background-color: rgba(0,0,0,0.1) !important
 }
-nav ul li ul{
+nav ul li ul,nav div ul{
 	background: url("https://images.apple.com/cn/macos/sierra/overview/hero/fallback_bg_medium.jpg");
 }
 button#start_btn{
@@ -64,5 +64,8 @@ div#start{
 	float: left; /* 自适应内容宽度 */
   	position: relative;
   	left: 50%; 
+}
+#sd_user p{
+	color:#fff!important;
 }
 

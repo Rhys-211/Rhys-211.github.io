@@ -44,13 +44,19 @@ window.onload = function(){
                         if (object.get('accountNumber') == acntNmb.value){
                             var time = new Date();
                             time.setTime((new Date()).getTime() + 365*24*60*60*1000);
-                            document.cookie = 'id=' + object.id + ';' + 'username=' + object.get('username') + ';' + 'info=' + object.get('info') + ';' + 'acntNumb=' + acntNmb.value +';expires=' + time.toGMTString();
-                            alert('登陆成功！！！(然鹅并没有)');
+                            let json = {};
+                            json.id = object.id;
+                            json.info = object.get('info');
+                            json.username = object.get('username');
+                            json.acntNum = object.get('accountNumber');
+                            document.cookie = 'json=' + JSON.stringify(json) + ';expires=' + time.toGMTString();
                             signIn_btn.innerText = '已登录';
+                            alert('登录成功！！！(勉强算是吧。。)');
+                            window.open('index.html','_self')
                             break;
                         //未查询到用户名
                         } else if (i == results.length - 1){
-                            alert('登陆失败: 用户名不存在。');
+                            alert('登录失败: 用户名不存在。');
                             acntNmb_info.innerText = '用户名不存在';
                             acntNmb_info.style.color = 'red';
                             acntNmb_usable = false;
