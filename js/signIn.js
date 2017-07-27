@@ -37,13 +37,19 @@ window.onload = function(){
             var query = new Bmob.Query(User);
             query.find({
                 success: function(results) {
+                    //开始查询用户名
                     for (var i = 0; i < results.length; i++) {
                         object = results[i];
+                        //查询到用户名
                         if (object.get('accountNumber') == acntNmb.value){
+                            var time = new Date();
+                            time.setTime((new Date()).getTime() + 365*24*60*60*1000);
+                            document.cookie = 'id=' + object.id + ';' + 'username=' + object.get('username') + ';' + 'info=' + object.get('info') + ';' + 'acntNumb=' + acntNmb.value +';expires=' + time.toGMTString();
                             alert('登陆成功！！！(然鹅并没有)');
                             signIn_btn.innerText = '已登录';
                             break;
-                        } else if(i == results.length - 1){
+                        //未查询到用户名
+                        } else if (i == results.length - 1){
                             alert('登陆失败: 用户名不存在。');
                             acntNmb_info.innerText = '用户名不存在';
                             acntNmb_info.style.color = 'red';

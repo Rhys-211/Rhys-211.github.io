@@ -66,7 +66,7 @@ nav#sidebar{
 nav a{
 	letter-spacing: 4px;
 }
-#top_right{
+#tp_right{
 	float:right;
 }
 #mask{
@@ -86,14 +86,14 @@ nav ul li ul{
 	z-index:5;
 	box-shadow: 0 8px 16px 0 rgba(7,17,27,.2);
 }
-#profile{
+#sd_userSignOut{
 	height:50px;
 	display: flex;
 	width:250px;
 	justify-content: space-between;
 	margin:10px auto
 }
-#profile button{
+#sd_userSignOut button{
 	border-width:0; 
 	border-radius: 8px;
 	background-color:#0f88eb;
@@ -104,9 +104,57 @@ nav ul li ul{
 	cursor:pointer;
 	transition: all 0.2s ease 0s;
 }
-#profile button:hover{
+#sd_userSignOut button:hover{
 	background-color:#0d79d1
 }
 button{
 	font-family: Microsoft YaHei;
+}
+#sd_user ul{
+	position:fixed;
+	width:300px;
+	right:300px;
+	background-color: #fff;
+	display:none;
+	z-index:5;
+	box-shadow: 0 8px 16px 0 rgba(7,17,27,.2);
+}
+#sd_user img{
+	border:2px solid #eee;
+	width:120px;
+	height:120px;
+	border-radius: 120px;
+	padding:2px;
+}
+#sd_user table{
+	padding:0;
+	height:120px;
+}
+#sd_user table td{
+	padding:10px;
+}
+#sd_user table tr{
+	height:50px;
+}
+#sd_user p{
+	margin:0 auto;
+	color:#93999f;
+	display:table;
+	overflow: hidden;
+}
+td#sd_username{
+	padding:20px 0 0 0;
+}
+td#sd_username p{
+	font-size:20px;
+}
+td#sd_info{
+	padding:0 0 20px 0;
+}
+td#sd_info p{
+	font-size:15px;
+	word-break:break-all;
+}
+#sd_user{
+	display:none;
 }

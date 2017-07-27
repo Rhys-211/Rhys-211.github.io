@@ -16,26 +16,41 @@
 	<div id="mask"></div>
 	<header>
 		<nav id="topbar">
-			<div id="top_left" class="foucs"><a href="index.html"><span>首页</span></a></div>
-			<div id="top_right"><a href="#">导航</a></div>
+			<div id="tp_left"><a href="index.html"><span>首页</span></a></div>
+			<div id="tp_right"><a href="#">导航</a></div>
 		</nav>
 		<nav id="sidebar">
-			<div id="profile">
-				<button id="siderbar_signIn">登录</button>
-				<button id="siderbar_register">注册</button>
+			<div id="sd_userSignOut">
+				<button id="sd_signIn">登录</button>
+				<button id="sd_register">注册</button>
+			</div>
+			<div id="sd_user">
+				<table>
+				<tr>
+					<td id="sd_userAvatar" rowspan="2"><img src="images/developer2.jpg"></td>
+					<td id="sd_username"><p>Edward S</p></td>
+				</tr>
+				<tr>
+					<td id="sd_info"><p>Unanimous Declaration.</p></td>
+				</tr>
+				<ul id="sd_user_sub">
+					<li><a href="#" id="sd_user_operation">修改信息</a></li>
+					<li><a href="#" id="sd_user_signOut">注销</a></li>
+				</ul>	
+				</table>
 			</div>
 			<ul>
 				<li><a href="#">软件</a></li>
-				<li id="sidebar_game">
-					<a href="#">游戏</a>
-					<ul id="sidebar_game_sub">
-						<li><a href="sd_unera.html" id="sidebar_game_unera">未名の戰</a></li>
-						<li><a href="sd_tictactoe.html" id="sidebar_game_ttt">XXOO</a></li>
-						<li><a href="#" id="sidebar_game_winmine">扫雷</a></li>
+				<li id="sd_game">
+					<ul id="sd_game_sub">
+						<li><a href="sd_unera.html" id="sd_game_unera">未名の戰</a></li>
+						<li><a href="sd_tictactoe.html" id="sd_game_ttt">XXOO</a></li>
+						<li><a href="#" id="sd_game_winmine">扫雷</a></li>
 					</ul>
+					<a href="#">游戏</a>
 				</li>
 				<li><a href="#">其他</a></li>
-				<li><a href="#" id="sidebar_back">返回</a></li>
+				<li><a href="#" id="sd_back">返回</a></li>
 			</ul>
 		</nav>
 	</header>
