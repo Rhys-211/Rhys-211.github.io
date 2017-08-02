@@ -49,10 +49,10 @@
             window.open('sd_winmine.html');
     })
     sd_register.addEventListener('click',function(){
-        window.open('register.html','_self');
+        window.open('/user/register.html','_self');
     })
     sd_signIn.addEventListener('click',function(){
-        window.open('signIn.html','_self');
+        window.open('/user/signIn.html','_self');
     })
     sd_user_operation.addEventListener('click',function(){
         alert('功能未开启，敬请期待。')
@@ -63,14 +63,31 @@
         window.location.reload();
     })
     sd_userAvatar.addEventListener('click',function(){
-        alert('暂不支持显示头像功能，然后我的又看不出来（和没有一样），所以暂时用石龙的代替下。')
+        alert('点我干啥？！(￣▽￣)"')
     })
     if(document.cookie != ""){
         let json = JSON.parse(document.cookie.slice(5));
-        console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNum" is ' + json.acntNum + '.')
+        console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNum" is ' + json.acntNum + '.\nYour "avatarUrl" is ' + json.avatarUrl + '.')
         sd_user.style.display = 'block';
         sd_userSignOut.style.display = 'none';
         sd_userName.firstChild.innerText = json.username;
         sd_userInfo.firstChild.innerText = json.info;
+        sd_userAvatar.firstChild.setAttribute('src',json.avatarUrl);
+        
+
+        /*Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
+        var User = Bmob.Object.extend("User");
+        //创建查询对象，入口参数是对象类的实例
+        var query = new Bmob.Query(User);
+        //查询单条数据，第一个参数是这条数据的objectId值
+        query.get(json.id, {
+            success: function(user) {
+                // 查询成功，调用get方法获取对应属性的值
+                console.log(user.get("avator"))
+            },
+            error: function(object, error) {
+                console.error('error')// 查询失败
+            }
+        });*/
     }
 }

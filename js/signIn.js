@@ -49,11 +49,22 @@ window.onload = function(){
                             json.info = object.get('info');
                             json.username = object.get('username');
                             json.acntNum = object.get('accountNumber');
-                            document.cookie = 'json=' + JSON.stringify(json) + ';expires=' + time.toGMTString();
-                            signIn_btn.innerText = '已登录';
-                            alert('登录成功！！！(勉强算是吧。。)');
-                            window.open('index.html','_self')
-                            break;
+                            json.avatarUrl = object.get('avatarUrl');
+                            document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
+                            if(pwd.value == object.get('passwordShow')){
+                                signIn_btn.innerText = '已登录';
+                                alert('登录成功！！！');
+                                window.open('/index.html','_self')
+                                break;
+                            }
+                            else{
+                                pwd_info.innerText = '密码错误';
+                                pwd_info.style.color = 'red';
+                                pwd_usable = false;
+                                signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
+                                signIn_btn.disabled = false;
+                                break;
+                            }  
                         //未查询到用户名
                         } else if (i == results.length - 1){
                             alert('登录失败: 用户名不存在。');
