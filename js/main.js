@@ -11,7 +11,6 @@
     const sd_signIn = document.getElementById('sd_signIn');
     const sd_user = document.getElementById('sd_user');
     const sd_userSignOut = document.getElementById('sd_userSignOut');
-    const sd_user_operation = document.getElementById('sd_user_operation');
     const sd_user_signOut = document.getElementById('sd_user_signOut');
     const sd_userAvatar = document.getElementById('sd_userAvatar');
     const sd_userName = document.getElementById('sd_userName');
@@ -54,11 +53,8 @@
     sd_signIn.addEventListener('click',function(){
         window.open('/user/signIn.html','_self');
     })
-    sd_user_operation.addEventListener('click',function(){
-        alert('功能未开启，敬请期待。')
-    })
     sd_user_signOut.addEventListener('click',function(){
-        document.cookie = 'json=1;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        document.cookie = 'json=1;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT';
         alert('注销成功');
         window.location.reload();
     })

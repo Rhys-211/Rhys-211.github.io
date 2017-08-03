@@ -11,9 +11,6 @@ div#content {
 div#content:hover {
     box-shadow: 0 8px 16px 0 rgba(7,17,27,.2)
 }
-body{
-    background-color: #f3f5f7
-}
 button#signIn_btn{
     display:block;
 	border-width:0; 
