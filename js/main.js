@@ -1,4 +1,5 @@
-﻿function main(){
+﻿let json = {};
+function main() {
     const top_right = document.getElementById('tp_right');
     const mask = document.getElementById('mask');
     const sidebar = document.getElementById('sidebar');
@@ -13,63 +14,63 @@
     const sd_userSignOut = document.getElementById('sd_userSignOut');
     const sd_user_signOut = document.getElementById('sd_user_signOut');
     const sd_userAvatar = document.getElementById('sd_userAvatar');
-    const sd_userName = document.getElementById('sd_userName');
+    const sd_username = document.getElementById('sd_username');
     const sd_userInfo = document.getElementById('sd_userInfo');
-    top_right.addEventListener('click',function(){
+    top_right.addEventListener('click', function () {
         sidebar.style.right = 0;
         mask.style.display = 'block';
         mask.style.right = '300px';
         mask.style.backgroundColor = 'rgba(0,0,0,0.2)';
     })
-    mask.addEventListener('click',function(){
+    mask.addEventListener('click', function () {
         sidebar.style.right = '-300px';
         mask.style.backgroundColor = 'rgba(0,0,0,0)';
         mask.style.display = 'none'
         sd_game_sub.style.display = 'none';
         sd_user_sub.style.display = 'none';
     })
-    sd_back.addEventListener('click',function(){
+    sd_back.addEventListener('click', function () {
         sidebar.style.right = '-300px';
         mask.style.backgroundColor = 'rgba(0,0,0,0)';
         mask.style.display = 'none';
         sd_game_sub.style.display = 'none';
         sd_user_sub.style.display = 'none';
     })
-    sd_game.addEventListener('mouseover',function(){
+    sd_game.addEventListener('mouseover', function () {
         sd_game_sub.style.display = 'block';
         sd_user_sub.style.display = 'none';
     })
-    sd_userAvatar.addEventListener('mouseover',function(){
+    sd_userAvatar.addEventListener('mouseover', function () {
         sd_user_sub.style.display = 'block';
         sd_game_sub.style.display = 'none';
     })
-    sd_game_winmine.addEventListener('click',function(){
+    sd_game_winmine.addEventListener('click', function () {
         if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: Ryzen Threadripper 1950X\n显卡: Nvidia GTX 1080Ti\n内存: 128GB") == 1)
             window.open('sd_winmine.html');
     })
-    sd_register.addEventListener('click',function(){
-        window.open('/user/register.html','_self');
+    sd_register.addEventListener('click', function () {
+        window.open('/user/register.html', '_self');
     })
-    sd_signIn.addEventListener('click',function(){
-        window.open('/user/signIn.html','_self');
+    sd_signIn.addEventListener('click', function () {
+        window.open('/user/signIn.html', '_self');
     })
-    sd_user_signOut.addEventListener('click',function(){
+    sd_user_signOut.addEventListener('click', function () {
         document.cookie = 'json=1;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT';
         alert('注销成功');
         window.location.reload();
     })
-    sd_userAvatar.addEventListener('click',function(){
+    sd_userAvatar.addEventListener('click', function () {
         alert('点我干啥？！(￣▽￣)"')
     })
-    if(document.cookie != ""){
-        let json = JSON.parse(document.cookie.slice(5));
+    if (document.cookie != "") {
+        json = JSON.parse(document.cookie.slice(5));
         console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNum" is ' + json.acntNum + '.\nYour "avatarUrl" is ' + json.avatarUrl + '.')
         sd_user.style.display = 'block';
         sd_userSignOut.style.display = 'none';
-        sd_userName.firstChild.innerText = json.username;
+        sd_username.firstChild.innerText = json.username;
         sd_userInfo.firstChild.innerText = json.info;
-        sd_userAvatar.firstChild.setAttribute('src',json.avatarUrl);
-        
+        sd_userAvatar.firstChild.setAttribute('src', json.avatarUrl);
+
 
         /*Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
         var User = Bmob.Object.extend("User");
@@ -86,4 +87,14 @@
             }
         });*/
     }
+}
+function writeCookies(object) {
+    var time = new Date();
+    time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
+    json.id = object.id;
+    json.info = object.get('info');
+    json.username = object.get('username');
+    json.acntNum = object.get('accountNumber');
+    json.avatarUrl = object.get('avatarUrl');
+    document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
 }

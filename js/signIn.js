@@ -9,8 +9,7 @@ window.onload = function(){
             acntNmb_info.innerText = '请输入账号';
             acntNmb_info.style.color = 'orange';
             acntNmb_usable = false;
-        }
-        else{
+        }else{
             acntNmb_info.innerText = '已输入账号';
             acntNmb_info.style.color = '#32CD32';
             acntNmb_usable = true;
@@ -21,8 +20,7 @@ window.onload = function(){
             pwd_info.innerText = '请输入密码';
             pwd_info.style.color = 'orange';
             pwd_usable = false;
-        }
-        else{
+        }else{
             pwd_info.innerText = '已输入密码';
             pwd_info.style.color = '#32CD32';
             pwd_usable = true;
