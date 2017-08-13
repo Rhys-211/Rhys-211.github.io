@@ -8,7 +8,8 @@
     const title = document.getElementById('title');
     const changeUsername = document.getElementById('changeUsername');
     const changeUserInfo = document.getElementById('changeUserInfo');
-    const sd_Username = document.getElementById('sd_Username');
+    const sd_username = document.getElementById('sd_username');
+    const sd_userInfo = document.getElementById('sd_userInfo');
     if (window.location.search != '') {
         const search = window.location.search.split('?')[1].split('=');
         if (search[0] == 'id') {
@@ -106,10 +107,10 @@
                     query.get(json.id, {
                         success: function (object) {
                             // The object was retrieved successfully.
-                            object.set("userInfo", newUserInfo);
+                            object.set("info", newUserInfo);
                             object.save(null, {
                                 success: function (objectUpdate) {
-                                    alert("修改成功, 新介绍: " + objectUpdate.get("userInfo"));
+                                    alert("修改成功, 新介绍: " + objectUpdate.get("info"));
                                     writeCookies(object);
                                     userInfo.innerText = newUserInfo;
                                     sd_userInfo.firstChild.innerText = newUserInfo;

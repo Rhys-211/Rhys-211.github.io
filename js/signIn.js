@@ -40,22 +40,13 @@ window.onload = function(){
                         object = results[i];
                         //查询到用户名
                         if (object.get('accountNumber') == acntNmb.value){
-                            var time = new Date();
-                            time.setTime((new Date()).getTime() + 365*24*60*60*1000);
-                            let json = {};
-                            json.id = object.id;
-                            json.info = object.get('info');
-                            json.username = object.get('username');
-                            json.acntNum = object.get('accountNumber');
-                            json.avatarUrl = object.get('avatarUrl');
-                            document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
+                            writeCookies(object);
                             if(pwd.value == object.get('passwordShow')){
                                 signIn_btn.innerText = '已登录';
                                 alert('登录成功！！！');
                                 window.open('/index.html','_self')
                                 break;
-                            }
-                            else{
+                            } else {
                                 pwd_info.innerText = '密码错误';
                                 pwd_info.style.color = 'red';
                                 pwd_usable = false;
