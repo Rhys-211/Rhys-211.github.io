@@ -64,7 +64,7 @@ function main() {
     })
     if (document.cookie != "") {
         json = JSON.parse(document.cookie.slice(5));
-        console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNum" is ' + json.acntNum + '.\nYour "avatarUrl" is ' + json.avatarUrl + '.')
+        console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNmb" is ' + json.acntNmb + '.\nYour "avatarUrl" is ' + json.avatarUrl + '.')
         sd_user.style.display = 'block';
         sd_userSignOut.style.display = 'none';
         sd_username.firstChild.innerText = json.username;
@@ -94,7 +94,8 @@ function writeCookies(object) {
     json.id = object.id;
     json.info = object.get('info');
     json.username = object.get('username');
-    json.acntNum = object.get('accountNumber');
+    json.acntNmb = object.get('accountNumber');
     json.avatarUrl = object.get('avatarUrl');
+    json.email = object.get('email');
     document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
 }

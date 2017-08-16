@@ -2,19 +2,21 @@
     main();
     const username = document.getElementById('username');
     const userInfo = document.getElementById('userInfo');
-    const userAcntNum = document.getElementById('userAcntNum');
+    const userAcntNmb = document.getElementById('userAcntNum');
     const userAvatar = document.getElementById('userAvatar');
     const userID = document.getElementById('userID');
+    const userEmail = document.getElementById('userEmail');
     const title = document.getElementById('title');
     const changeUsername = document.getElementById('changeUsername');
     const changeUserInfo = document.getElementById('changeUserInfo');
+    const changeUserEmail = document.getElementById('changeUserEmail');
     const sd_username = document.getElementById('sd_username');
     const sd_userInfo = document.getElementById('sd_userInfo');
     if (window.location.search != '') {
         const search = window.location.search.split('?')[1].split('=');
         if (search[0] == 'id') {
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
-            var User = Bmob.Object.extend("User");
+            var User = Bmob.Object.extend("sfUser");
             //创建查询对象，入口参数是对象类的实例
             var query = new Bmob.Query(User);
             //查询单条数据，第一个参数是这条数据的objectId值
@@ -25,7 +27,8 @@
                     userID.innerText = user.id;
                     userInfo.innerText = user.get('info');
                     username.innerText = user.get('username');
-                    userAcntNum.innerText = user.get('accountNumber');
+                    userEmail.innerText = user.get('email');
+                    userAcntNmb.innerText = user.get('accountNumber');
                     userAvatar.setAttribute('src', user.get('avatarUrl'));
                 },
                 error: function (object, error) {
@@ -43,7 +46,8 @@
             userID.innerText = json.id;
             userInfo.innerText = json.info;
             username.innerText = json.username;
-            userAcntNum.innerText = json.acntNum;
+            userAcntNmb.innerText = json.acntNmb;
+            userEmail.innerText = json.email;
             userAvatar.setAttribute('src', json.avatarUrl);
         }
     }
@@ -55,7 +59,7 @@
                 changeUsername.disabled = 'disabled';
                 if (confirm('你确定要将用户名改为" ' + newUsername + ' "吗？')) {
                     Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
-                    var User = Bmob.Object.extend("User");
+                    var User = Bmob.Object.extend("sfUser");
                     var query = new Bmob.Query(User);
                     query.get(json.id, {
                         success: function (object) {
@@ -94,6 +98,50 @@
             }
         }
     })
+    changeUserEmail.addEventListener('click', function () {
+        var newUserEmail = prompt('请输入新的邮箱：')
+        if (typeof (newUserEmail) == 'string') {
+            if (/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.exec(newUserEmail)) {
+                changeUserEmail.innerText = '修改中';
+                changeUserEmail.disabled = 'disabled';
+                if (confirm('你确定要将邮箱改为" ' + newUserEmail + ' "吗？')) {
+                    Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
+                    var User = Bmob.Object.extend("sfUser");
+                    var query = new Bmob.Query(User);
+                    query.get(json.id, {
+                        success: function (object) {
+                            // The object was retrieved successfully.
+                            object.set("email", newUserEmail);
+                            object.save(null, {
+                                success: function (objectUpdate) {
+                                    alert("修改成功, 新邮箱: " + objectUpdate.get("email"));
+                                    writeCookies(object);
+                                    userEmail.innerText = newUserEmail;
+                                    changeUserEmail.disabled = false;
+                                    changeUserEmail.innerText = '修改';
+                                },
+                                error: function (model, error) {
+                                    alert("修改失败");
+                                    changeUserEmail.disabled = false;
+                                    changeUserEmail.innerText = '修改';
+                                }
+                            });
+                        },
+                        error: function (object, error) {
+                            alert("查询失败");
+                            changeUserEmail.disabled = false;
+                            changeUserEmail.innerText = '修改';
+                        }
+                    });
+                } else {
+                    changeUserEmail.disabled = false;
+                    changeUserEmail.innerText = '修改';
+                }
+            } else {
+                alert('邮箱格式不正确')
+            }
+        }
+    })
     changeUserInfo.addEventListener('click', function () {
         var newUserInfo = prompt('请输入新的介绍(0~100字)：')
         if (typeof (newUserInfo) == 'string') {
@@ -102,7 +150,7 @@
                 changeUserInfo.disabled = 'disabled';
                 if (confirm('你确定要将介绍改为" ' + newUserInfo + ' "吗？')) {
                     Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
-                    var User = Bmob.Object.extend("User");
+                    var User = Bmob.Object.extend("sfUser");
                     var query = new Bmob.Query(User);
                     query.get(json.id, {
                         success: function (object) {

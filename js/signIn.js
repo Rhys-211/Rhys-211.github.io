@@ -31,7 +31,7 @@ window.onload = function(){
         signIn_btn.disabled = 'disabled';
         if(acntNmb.value != '' && pwd.value != ''){
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
-            var User = Bmob.Object.extend("User");
+            var User = Bmob.Object.extend("sfUser");
             var query = new Bmob.Query(User);
             query.find({
                 success: function(results) {
@@ -41,7 +41,7 @@ window.onload = function(){
                         //查询到用户名
                         if (object.get('accountNumber') == acntNmb.value){
                             writeCookies(object);
-                            if(pwd.value == object.get('passwordShow')){
+                            if(pwd.value == object.get('password')){
                                 signIn_btn.innerText = '已登录';
                                 alert('登录成功！！！');
                                 window.open('/index.html','_self')

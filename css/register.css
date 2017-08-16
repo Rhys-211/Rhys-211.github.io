@@ -1,5 +1,5 @@
 div#content {
-    height:420px;
+    height:640px;
     width:800px;
     background-color:#fff;
     margin:20px auto 100px auto;
@@ -19,10 +19,10 @@ button#register_btn{
 	color:#FFF;
 	text-align: center;
 	line-height: 60px;
-	width:120px;
+	width:200px;
 	cursor:pointer;
     transition: all 0.2s ease 0s;
-    margin:20px auto;
+    margin:5px auto;
     font-size:20px;
 }
 button#register_btn:hover{
