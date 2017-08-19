@@ -33,11 +33,12 @@
                 },
                 error: function (object, error) {
                     // 查询失败
-                    alert("查询失败")
+                    alert('查询失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                 }
             });
         } else
-            alert("你网址打错了吧_(:з)∠)_")
+            alert("")
+            alert('查询失败\n返回错误信息：你网址打错了吧_(:з)∠)_');
     } else {
         if (document.cookie == '')
             window.open('/index.html', '_self')
@@ -75,14 +76,14 @@
                                     changeUsername.innerText = '修改';
                                 },
                                 error: function (model, error) {
-                                    alert("修改失败");
+                                    alert('修改失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                                     changeUsername.disabled = false;
                                     changeUsername.innerText = '修改';
                                 }
                             });
                         },
                         error: function (object, error) {
-                            alert("查询失败");
+                            alert('查询失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                             changeUsername.disabled = false;
                             changeUsername.innerText = '修改';
                         }
@@ -92,9 +93,9 @@
                     changeUsername.innerText = '修改';
                 }
             } else if (newUsername == '') {
-                alert('Are you kidding me?')
+                alert('修改失败\n返回错误信息：Are you kidding me?');
             } else if (newUsername.length > 10) {
-                alert('你的新用户名太长，服务器表示无法承受。')
+                alert('发布失败\n返回错误信息：你的新用户名太长，服务器表示无法承受。');
             }
         }
     })
@@ -121,14 +122,14 @@
                                     changeUserEmail.innerText = '修改';
                                 },
                                 error: function (model, error) {
-                                    alert("修改失败");
+                                    alert('修改失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                                     changeUserEmail.disabled = false;
                                     changeUserEmail.innerText = '修改';
                                 }
                             });
                         },
                         error: function (object, error) {
-                            alert("查询失败");
+                            alert('查询失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                             changeUserEmail.disabled = false;
                             changeUserEmail.innerText = '修改';
                         }
@@ -138,7 +139,8 @@
                     changeUserEmail.innerText = '修改';
                 }
             } else {
-                alert('邮箱格式不正确')
+                alert('')
+                alert('修改失败\n返回错误信息：邮箱格式不正确');
             }
         }
     })
@@ -166,14 +168,14 @@
                                     changeUserInfo.innerText = '修改';
                                 },
                                 error: function (model, error) {
-                                    alert("修改失败");
+                                    alert('修改失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                                     changeUserInfo.disabled = false;
                                     changeUserInfo.innerText = '修改';
                                 }
                             });
                         },
                         error: function (object, error) {
-                            alert("查询失败");
+                            alert('查询失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                             changeUserInfo.disabled = false;
                             changeUserInfo.innerText = '修改';
                         }
@@ -183,9 +185,9 @@
                     changeUserInfo.innerText = '修改';
                 }
             } else if (newUserInfo == '') {
-                alert('Are you kidding me?')
+                alert('修改失败\n返回错误信息：Are you kidding me?');
             } else if (newUserInfo.length > 10) {
-                alert('你的新介绍太长，服务器表示无法承受。')
+                alert('修改失败\n返回错误信息：你的新介绍太长，服务器表示无法承受。');
             }
         }
     })

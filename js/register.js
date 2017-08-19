@@ -134,7 +134,8 @@ window.onload = function () {
                         object = results[i];
                         //查询到用户名
                         if (object.get('accountNumber') == acntNmb.value) {
-                            alert('账号与其他用户重复！')
+                            alert('')
+                            alert('注册失败\n返回错误信息：账号与其他用户重复！');
                             //未查询到用户名
                         } else if (i == results.length - 1) {
                             var user = new User();
@@ -151,7 +152,7 @@ window.onload = function () {
                                     window.open('/user/signIn.html','_self')
                                 },
                                 error: function (user, error) {
-                                    alert('注册失败，返回错误信息：' + error.description);
+                                    alert('注册失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                                     register_btn.innerText = '注册';
                                     register_btn.disabled = false;
                                 }
@@ -160,14 +161,15 @@ window.onload = function () {
                     }
                 },
                 error: function (error) {
-                    alert("注册失败: " + error.code + " " + error.message);
+                    alert('注册失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                     register_btn.innerText = '注册';
                     register_btn.disabled = false;
                 }
             });
         }
         else {
-            alert('请检查上述诸项是否均符合要求。')
+            alert('')
+            alert('注册失败\n返回错误信息：请检查上述诸项是否均符合要求。');
             register_btn.innerText = '注册';
             register_btn.disabled = false;
         }
