@@ -10,6 +10,7 @@
     const changeUsername = document.getElementById('changeUsername');
     const changeUserInfo = document.getElementById('changeUserInfo');
     const changeUserEmail = document.getElementById('changeUserEmail');
+    const otherProfile = document.querySelector('#otherProfile');
     const sd_username = document.getElementById('sd_username');
     const sd_userInfo = document.getElementById('sd_userInfo');
     if (window.location.search != '') {
@@ -30,6 +31,10 @@
                     userEmail.innerText = user.get('email');
                     userAcntNmb.innerText = user.get('accountNumber');
                     userAvatar.setAttribute('src', user.get('avatarUrl'));
+                    changeUsername.style.display = 'none'
+                    changeUserInfo.style.display = 'none'
+                    changeUserEmail.style.display = 'none'
+                    otherProfile.style.gridTemplateColumns = '2fr 5fr'
                 },
                 error: function (object, error) {
                     // 查询失败
