@@ -37,7 +37,6 @@
                 }
             });
         } else
-            alert("")
             alert('查询失败\n返回错误信息：你网址打错了吧_(:з)∠)_');
     } else {
         if (document.cookie == '')
