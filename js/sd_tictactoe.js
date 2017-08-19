@@ -78,11 +78,20 @@ window.onload = function () {
                     if (j != 9 && j != -1)
                         break;
                 }
-                //判断是否已画上符号，若无，则涂圈
+                //判断选定区域是否已画上符号，若无，则涂圈
                 if (boxes[j].clicked == 0) {
                     boxes[j].box.innerText = '⭕️';
                     boxes[j].clicked = 2;
                     break;
+                //判断是否已画满符号，若画满，则退出循环
+                } else {
+                    let allHaveClicked = true;
+                    for(let k = 0;k < 9;k++){
+                        if(boxes[k].clicked == 0)
+                            allHaveClicked = false;
+                    }
+                    if(allHaveClicked)
+                        break;
                 }
             }
             //判断胜负并输出结果
@@ -91,8 +100,3 @@ window.onload = function () {
         })
     }
 }
-
-/*
-			<td>❌</td>
-			<td>⭕️</td>
-*/

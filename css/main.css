@@ -23,7 +23,7 @@ nav ul{
 nav#topbar div{
 	display:inline-block;
 	text-align:center;
-	padding:0px 36px;
+	width:120px
 }
 nav ul li{
 	width:inherit;

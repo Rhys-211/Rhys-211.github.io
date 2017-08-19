@@ -82,7 +82,7 @@ window.onload = function () {
         }
     });
     comment_btn.addEventListener('click', function () {
-        if (json != {}) {
+        if (json.id != undefined) {
             if (comment_input.value != '') {
                 comment_btn.disabled = 'disabled';
                 comment_btn.innerText = '发布中。。。'
