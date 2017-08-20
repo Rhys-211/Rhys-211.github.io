@@ -78,9 +78,9 @@ function main() {
         console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNmb" is ' + json.acntNmb + '.\nYour "email" is ' + json.email + '.\nYour "avatarUrl" is ' + json.avatarUrl + '.')
         sd_user.style.display = 'block';
         sd_userSignOut.style.display = 'none';
-        sd_username.firstChild.innerText = json.username;
-        sd_userInfo.firstChild.innerText = json.info;
-        sd_userAvatar.firstChild.setAttribute('src', json.avatarUrl);
+        sd_username.querySelector('p').innerText = json.username;
+        sd_userInfo.querySelector('p').innerText = json.info;
+        sd_userAvatar.querySelector('img').setAttribute('src', json.avatarUrl);
     }
 }
 function writeCookies(object) {

@@ -26,8 +26,11 @@ div#content:hover {
 }
 #otherProfile{
     display:grid;
-    grid-template-columns:2fr 4fr 1fr;
+    grid-template-columns:2fr 5fr;
     font-size:25px;
+}
+#otherProfile button{
+    display:none;
 }
 #otherProfile p{
     margin:20px;

@@ -31,10 +31,9 @@
                     userEmail.innerText = user.get('email');
                     userAcntNmb.innerText = user.get('accountNumber');
                     userAvatar.setAttribute('src', user.get('avatarUrl'));
-                    changeUsername.style.display = 'none'
-                    changeUserInfo.style.display = 'none'
-                    changeUserEmail.style.display = 'none'
-                    otherProfile.style.gridTemplateColumns = '2fr 5fr'
+                    otherProfile.removeChild(changeUsername);
+                    otherProfile.removeChild(changeUserInfo);
+                    otherProfile.removeChild(changeUserEmail);
                 },
                 error: function (object, error) {
                     // 查询失败
@@ -54,6 +53,10 @@
             userAcntNmb.innerText = json.acntNmb;
             userEmail.innerText = json.email;
             userAvatar.setAttribute('src', json.avatarUrl);
+            changeUsername.style.display = 'block'
+            changeUserInfo.style.display = 'block'
+            changeUserEmail.style.display = 'block'
+            otherProfile.style.gridTemplateColumns = '2fr 4fr 1fr'
         }
     }
     changeUsername.addEventListener('click', function () {
