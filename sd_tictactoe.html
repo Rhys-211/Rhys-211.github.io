@@ -25,17 +25,21 @@
 			</div>
 			<div id="sd_user">
 				<table>
-				<tr>
-					<td id="sd_userAvatar" rowspan="2"><img></td>
-					<td id="sd_username"><p></p></td>
-				</tr>
-				<tr>
-					<td id="sd_userInfo"><p></p></td>
-				</tr>
-				<ul id="sd_user_sub">
-					<li><a href="/user/profile.html" id="sd_user_operation">个人信息</a></li>
-					<li><a href="#" id="sd_user_signOut">注销</a></li>
-				</ul>	
+					<tr>
+						<td id="sd_userAvatar" rowspan="2"><img></td>
+						<td id="sd_username">
+							<p></p>
+						</td>
+					</tr>
+					<tr>
+						<td id="sd_userInfo">
+							<p></p>
+						</td>
+					</tr>
+					<ul id="sd_user_sub">
+						<li><a href="/user/profile.html" id="sd_user_operation">个人信息</a></li>
+						<li><a href="#" id="sd_user_signOut">注销</a></li>
+					</ul>
 				</table>
 			</div>
 			<ul>
@@ -59,7 +63,10 @@
 		</nav>
 	</header>
 	<h1>Tic Tac Toe</h1>
-	<button id="start">PLAY 人机对战</button>
+	<div id="loading">
+		<button id="start" disabled="disabled">载入中......</button>
+		<progress id="progress" max="21" value="0">000</progress>
+	</div>
 	<table id="gamebox" style="display:none">
 		<tr>
 			<td id="box1"></td>

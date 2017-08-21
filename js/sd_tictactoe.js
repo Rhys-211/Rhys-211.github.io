@@ -1,13 +1,77 @@
 window.onload = function () {
-    new Audio("audio/ttt/loading.wav").play();
-    main();
-    const start = document.querySelector('#start')
-    const gamebox = document.querySelector('#gamebox')
-    start.addEventListener('click',function(){
-        start.style.display = 'none';
-        gamebox.style.display = '';
-        new Audio("audio/ttt/start.wav").play();
-    })
+    function loadGame() {
+        new Audio("audio/ttt/loading.wav").play();
+        new Audio("audio/ttt/1AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/2AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/3AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/4AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/5AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/6AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/7AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/8AI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/1Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/2Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/3Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/4Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/5Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/6Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/7Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/8Player.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/occupiedAI.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/occupiedPlayer.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/start.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/victory.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        new Audio("audio/ttt/defeat.wav").addEventListener('canplaythrough', function () {
+            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+        checkHasLoaded = setInterval(function () {
+            if (progress.getAttribute('value') == 21) {
+                clearInterval(checkHasLoaded);
+                start.innerText = 'PLAY 人机对战'
+                start.disabled = false;
+            }
+        }, 500)
+    }
     function judgeSame(x, y, z) {
         if (boxes[x].clicked == boxes[y].clicked && boxes[y].clicked == boxes[z].clicked) {
             if (boxes[x].clicked == 1)
@@ -114,7 +178,7 @@ window.onload = function () {
         }
     }
     function judgeAI() {
-        if (isOver) 
+        if (isOver)
             ;
         else if (turns[1] == 1)
             new Audio("audio/ttt/1AI.wav").play();
@@ -141,6 +205,11 @@ window.onload = function () {
             this.clicked = 0;
         }
     }
+    main();
+    const start = document.querySelector('#start')
+    const gamebox = document.querySelector('#gamebox')
+    const loading = document.querySelector('#loading')
+    const progress = document.querySelector('progress')
     const boxes = new Array(9);
     let turns = [1, 1];
     let occupiedPlayer = false;
@@ -155,11 +224,12 @@ window.onload = function () {
     boxes[6] = new Box(document.getElementById('box7'));
     boxes[7] = new Box(document.getElementById('box8'));
     boxes[8] = new Box(document.getElementById('box9'));
+    loadGame()
     for (let i = 0; i < 9; i++) {
         boxes[i].box.addEventListener('click', function () {
             doPlayer(i);
             judgePlayer()
-            if(!occupiedPlayer && !occupiedAI)
+            if (!occupiedPlayer && !occupiedAI)
                 turns[0]++;
             setTimeout(function () {
                 doAI()
@@ -170,4 +240,9 @@ window.onload = function () {
             }, 2000);
         })
     }
+    start.addEventListener('click', function () {
+        loading.style.display = 'none';
+        gamebox.style.display = '';
+        new Audio("audio/ttt/start.wav").play();
+    })
 }

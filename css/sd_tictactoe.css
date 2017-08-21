@@ -25,10 +25,10 @@ table#gamebox td:hover{
 }
 button{
     display:block;
-    margin:60px auto 582px auto;
+    margin:60px auto;
 	border-width:0; 
 	border-radius: 8px;
-	background-color:#0f88eb;
+	background-color:#0F87EB;
 	color:#FFF;
 	cursor:pointer;
     transition: all 0.2s ease 0s;
@@ -38,4 +38,13 @@ button{
 }
 button:hover{
 	background-color:#0d79d1
+}
+div#loading{
+    margin:60px auto 473px auto;
+}
+div#loading progress{
+    display: block;
+    margin:0 auto;
+    width:500px;
+    height:50px;
 }

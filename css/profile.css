@@ -34,8 +34,7 @@ div#content:hover {
 }
 #otherProfile p{
     margin:20px;
-}
-#content button{
+}#content button{
 	border-width:0; 
 	border-radius: 8px;
 	background-color:#0f88eb;
@@ -44,7 +43,8 @@ div#content:hover {
     transition: all 0.2s ease 0s;
     height:60px;
     font-size:15px;
+    padding:10px
 }
-#content button:hover{
+button:hover{
 	background-color:#0d79d1
 }
