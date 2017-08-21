@@ -85,7 +85,7 @@ window.onload = function () {
         if (json.id != undefined) {
             if (comment_input.value != '') {
                 comment_btn.disabled = 'disabled';
-                comment_btn.innerText = '发布中。。。'
+                comment_btn.innerText = '发布中......'
                 commentQuery.find({
                     success: function (results) {
                         var comment = new Comment();

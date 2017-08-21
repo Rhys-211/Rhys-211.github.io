@@ -121,7 +121,7 @@ window.onload = function () {
         }
     });
     document.getElementById('register_btn').onclick = function () {
-        register_btn.innerText = '注册中。。。';
+        register_btn.innerText = '注册中......';
         register_btn.disabled = 'disabled';
         if (acntNmb_usable == pwd_usable && pwd_usable == pwd2_usable && pwd2_usable == username_usable && username_usable == userEmail_usable && userEmail_usable == true) {
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");

@@ -27,7 +27,7 @@ window.onload = function(){
         }
     });
     document.getElementById('signIn_btn').onclick = function(){
-        signIn_btn.innerText = '登录中。。。';
+        signIn_btn.innerText = '登录中......';
         signIn_btn.disabled = 'disabled';
         if(acntNmb.value != '' && pwd.value != ''){
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");

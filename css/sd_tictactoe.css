@@ -1,9 +1,8 @@
 table#gamebox{
     background: #fff;
-    margin:0 auto 5rem auto;
+    margin:0 auto 50px auto;
     font-size: 2rem;
     text-align: center;
-    vertical-align: center;
     color:rgba(7, 17, 27,0.8);
     border-radius:100px;
     border: 10px solid #fff;
@@ -23,4 +22,20 @@ table#gamebox td{
 }
 table#gamebox td:hover{
     box-shadow: 0 8px 16px 0 rgba(7,17,27,.2)
+}
+button{
+    display:block;
+    margin:60px auto 582px auto;
+	border-width:0; 
+	border-radius: 8px;
+	background-color:#0f88eb;
+	color:#FFF;
+	cursor:pointer;
+    transition: all 0.2s ease 0s;
+    height:100px;
+    font-size:24px;
+    width:240px;
+}
+button:hover{
+	background-color:#0d79d1
 }
