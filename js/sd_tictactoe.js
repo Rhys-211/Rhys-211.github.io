@@ -3,66 +3,87 @@ window.onload = function () {
         new Audio("audio/ttt/loading.wav").play();
         new Audio("audio/ttt/1AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('1AI.wav')
         })
         new Audio("audio/ttt/2AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('2AI.wav')
         })
         new Audio("audio/ttt/3AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('3AI.wav')
         })
         new Audio("audio/ttt/4AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('4AI.wav')
         })
         new Audio("audio/ttt/5AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('5AI.wav')
         })
         new Audio("audio/ttt/6AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('6AI.wav')
         })
         new Audio("audio/ttt/7AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('7AI.wav')
         })
         new Audio("audio/ttt/8AI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('8AI.wav')
         })
         new Audio("audio/ttt/1Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('1Player.wav')
         })
         new Audio("audio/ttt/2Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('2Player.wav')
         })
         new Audio("audio/ttt/3Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('3Player.wav')
         })
         new Audio("audio/ttt/4Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('4Player.wav')
         })
         new Audio("audio/ttt/5Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('5Player.wav')
         })
         new Audio("audio/ttt/6Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('6Player.wav')
         })
         new Audio("audio/ttt/7Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('7Player.wav')
         })
         new Audio("audio/ttt/8Player.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('8Player.wav')
         })
         new Audio("audio/ttt/occupiedAI.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('occupiedAI.wav')
         })
         new Audio("audio/ttt/occupiedPlayer.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('occupiedPlayer.wav')
         })
         new Audio("audio/ttt/start.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('start.wav')
         })
         new Audio("audio/ttt/victory.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('victory.wav')
         })
         new Audio("audio/ttt/defeat.wav").addEventListener('canplaythrough', function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+            console.log('defeat.wav')
         })
         checkHasLoaded = setInterval(function () {
             if (progress.getAttribute('value') == 21) {
