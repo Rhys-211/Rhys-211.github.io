@@ -1,97 +1,56 @@
 window.onload = function () {
-    function loadGame() {
-        new Audio("audio/ttt/loading.wav").play();
-        new Audio("audio/ttt/1AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('1AI.wav')
+    function canPlay(){
+        load_start.innerText = 'PLAY'
+        load_start.addEventListener('click', function () {
+            const canvas = document.querySelector('canvas')
+            loadArea.style.display = 'none';
+            gamebox.style.display = '';
+            new Audio("audio/ttt/start.wav").play();
         })
-        new Audio("audio/ttt/2AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('2AI.wav')
-        })
-        new Audio("audio/ttt/3AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('3AI.wav')
-        })
-        new Audio("audio/ttt/4AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('4AI.wav')
-        })
-        new Audio("audio/ttt/5AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('5AI.wav')
-        })
-        new Audio("audio/ttt/6AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('6AI.wav')
-        })
-        new Audio("audio/ttt/7AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('7AI.wav')
-        })
-        new Audio("audio/ttt/8AI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('8AI.wav')
-        })
-        new Audio("audio/ttt/1Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('1Player.wav')
-        })
-        new Audio("audio/ttt/2Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('2Player.wav')
-        })
-        new Audio("audio/ttt/3Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('3Player.wav')
-        })
-        new Audio("audio/ttt/4Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('4Player.wav')
-        })
-        new Audio("audio/ttt/5Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('5Player.wav')
-        })
-        new Audio("audio/ttt/6Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('6Player.wav')
-        })
-        new Audio("audio/ttt/7Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('7Player.wav')
-        })
-        new Audio("audio/ttt/8Player.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('8Player.wav')
-        })
-        new Audio("audio/ttt/occupiedAI.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('occupiedAI.wav')
-        })
-        new Audio("audio/ttt/occupiedPlayer.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('occupiedPlayer.wav')
-        })
-        new Audio("audio/ttt/start.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('start.wav')
-        })
-        new Audio("audio/ttt/victory.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('victory.wav')
-        })
-        new Audio("audio/ttt/defeat.wav").addEventListener('canplaythrough', function () {
-            progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
-            console.log('defeat.wav')
-        })
-        checkHasLoaded = setInterval(function () {
-            if (progress.getAttribute('value') == 21) {
+    }
+    function checkLoaded(){
+        let checkHasLoaded = setInterval(function () {
+            if (load_progress.getAttribute('value') == 21) {
                 clearInterval(checkHasLoaded);
-                start.innerText = 'PLAY 人机对战'
-                start.disabled = false;
+                canPlay()
             }
         }, 500)
+        setTimeout(function () {
+            if (load_progress.getAttribute('value') != 21) {
+                alert('加载超时，您可以选择开始游戏，但是当您进行游戏时可能会有较大延迟。\nP.S. 由于网站数据存放在国外，所以完全加载成功的概率并不是很高。如果您是强迫症患者，请刷新网页，若不是可以选择开始游戏。')
+                canPlay()
+            }
+        }, 60000)
+    }
+    function loadAudio(src){
+        new Audio(src).addEventListener('canplaythrough', function () {
+            load_progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
+        })
+    }
+    function loadGame() {
+        new Audio("audio/ttt/loading.wav").play();
+        loadAudio("audio/ttt/1AI.wav")
+        loadAudio("audio/ttt/2AI.wav")
+        loadAudio("audio/ttt/3AI.wav")
+        loadAudio("audio/ttt/4AI.wav")
+        loadAudio("audio/ttt/5AI.wav")
+        loadAudio("audio/ttt/6AI.wav")
+        loadAudio("audio/ttt/7AI.wav")
+        loadAudio("audio/ttt/8AI.wav")
+        loadAudio("audio/ttt/1Player.wav")
+        loadAudio("audio/ttt/2Player.wav")
+        loadAudio("audio/ttt/3Player.wav")
+        loadAudio("audio/ttt/4Player.wav")
+        loadAudio("audio/ttt/5Player.wav")
+        loadAudio("audio/ttt/6Player.wav")
+        loadAudio("audio/ttt/7Player.wav")
+        loadAudio("audio/ttt/8Player.wav")
+        loadAudio("audio/ttt/occupiedAI.wav")
+        loadAudio("audio/ttt/occupiedPlayer.wav")
+        loadAudio("audio/ttt/start.wav")
+        loadAudio("audio/ttt/victory.wav")
+        loadAudio("audio/ttt/defeat.wav")
+        checkLoaded()
     }
     function judgeSame(x, y, z) {
         if (boxes[x].clicked == boxes[y].clicked && boxes[y].clicked == boxes[z].clicked) {
@@ -227,10 +186,10 @@ window.onload = function () {
         }
     }
     main();
-    const start = document.querySelector('#start')
     const gamebox = document.querySelector('#gamebox')
-    const loading = document.querySelector('#loading')
-    const progress = document.querySelector('progress')
+    const loadArea = document.querySelector('#loadArea')
+    const load_start = document.querySelector('#start')
+    const load_progress = document.querySelector('progress')
     const boxes = new Array(9);
     let turns = [1, 1];
     let occupiedPlayer = false;
@@ -261,9 +220,4 @@ window.onload = function () {
             }, 2000);
         })
     }
-    start.addEventListener('click', function () {
-        loading.style.display = 'none';
-        gamebox.style.display = '';
-        new Audio("audio/ttt/start.wav").play();
-    })
 }

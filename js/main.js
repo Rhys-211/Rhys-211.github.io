@@ -1,5 +1,33 @@
 ﻿let json = {};
 function main() {
+    function menu2nd_mouseover(menu2nd, menu2nd_sub) {
+        menu2nd.addEventListener('mouseover', function () {
+            sd_game_sub.style.display = 'none';
+            sd_user_sub.style.display = 'none';
+            sd_other_sub.style.display = 'none';
+            menu2nd_sub.style.display = 'block';
+        })
+    }
+    function menu3rd_mouseover(menu3rd, menu3rd_sub) {
+        menu3rd.addEventListener('mouseover', function () {
+            menu3rd_sub.style.display = 'block';
+        })
+    }
+    function hideSidebar() {
+        sidebar.style.right = '-300px';
+        mask.style.backgroundColor = 'rgba(0,0,0,0)';
+        mask.style.display = 'none'
+        sd_game_sub.style.display = 'none';
+        sd_user_sub.style.display = 'none';
+        sd_other_sub.style.display = 'none';
+        sd_game_philosophy_sub.style.display = 'none';
+    }
+    function showSidebar() {
+        sidebar.style.right = 0;
+        mask.style.display = 'block';
+        mask.style.right = '300px';
+        mask.style.backgroundColor = 'rgba(0,0,0,0.2)';
+    }
     const top_right = document.getElementById('tp_right');
     const mask = document.getElementById('mask');
     const sidebar = document.getElementById('sidebar');
@@ -15,46 +43,20 @@ function main() {
     const sd_game_sub = document.getElementById('sd_game_sub');
     const sd_game_ttt = document.getElementById('sd_game_ttt');
     const sd_game_winmine = document.getElementById('sd_game_winmine');
+    const sd_game_philosophy = document.getElementById('sd_game_philosophy');
+    const sd_game_philosophy_sub = document.getElementById('sd_game_philosophy_sub');
     const sd_other = document.getElementById('sd_other');
     const sd_other_test = document.getElementById('sd_other_test');
     const sd_back = document.getElementById('sd_back');
-    top_right.addEventListener('click', function () {
-        sidebar.style.right = 0;
-        mask.style.display = 'block';
-        mask.style.right = '300px';
-        mask.style.backgroundColor = 'rgba(0,0,0,0.2)';
-    })
-    mask.addEventListener('click', function () {
-        sidebar.style.right = '-300px';
-        mask.style.backgroundColor = 'rgba(0,0,0,0)';
-        mask.style.display = 'none'
-        sd_game_sub.style.display = 'none';
-        sd_user_sub.style.display = 'none';
-        sd_other_sub.style.display = 'none';
-    })
-    sd_back.addEventListener('click', function () {
-        sidebar.style.right = '-300px';
-        mask.style.backgroundColor = 'rgba(0,0,0,0)';
-        mask.style.display = 'none';
-        sd_game_sub.style.display = 'none';
-        sd_user_sub.style.display = 'none';
-        sd_other_sub.style.display = 'none';
-    })
-    sd_game.addEventListener('mouseover', function () {
-        sd_game_sub.style.display = 'block';
-        sd_user_sub.style.display = 'none';
-        sd_other_sub.style.display = 'none';
-    })
-    sd_other.addEventListener('mouseover', function () {
-        sd_other_sub.style.display = 'block';
-        sd_user_sub.style.display = 'none';
-        sd_game_sub.style.display = 'none';
-    })
-    sd_userAvatar.addEventListener('mouseover', function () {
-        sd_user_sub.style.display = 'block';
-        sd_game_sub.style.display = 'none';
-        sd_other_sub.style.display = 'none';
-    })
+
+    top_right.addEventListener('click', showSidebar)
+    mask.addEventListener('click', hideSidebar)
+    sd_back.addEventListener('click', hideSidebar)
+    menu2nd_mouseover(sd_game, sd_game_sub)
+    menu2nd_mouseover(sd_other, sd_other_sub)
+    menu2nd_mouseover(sd_userAvatar, sd_user_sub)
+    menu3rd_mouseover(sd_game_philosophy, sd_game_philosophy_sub)
+
     sd_game_winmine.addEventListener('click', function () {
         if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: Ryzen Threadripper 1950X\n显卡: Nvidia GTX 1080Ti\n内存: 128GB") == 1)
             window.open('sd_winmine.html');
