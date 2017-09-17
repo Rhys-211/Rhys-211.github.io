@@ -1,7 +1,7 @@
 window.onload = function () {
     main()
     const loadArea = document.querySelector('#loadArea')
-    const load_progress = document.querySelector('progress')
+    const load_progress = document.querySelector('#progress')
     const load_start = document.querySelector('#start')
     function drawSkills(context){
         context.beginPath();
@@ -46,11 +46,14 @@ window.onload = function () {
             context.arc(i, 610, 3, 0, 2 * Math.PI)
             context.stroke();
         }
-        for(let i = 255;i < 295;i+= 8){
+        for(let i = 256;i < 275;i+= 8){
             context.beginPath();
             context.arc(i, 610, 3, 0, 2 * Math.PI)
             context.stroke();
         }
+    }
+    function drawPlayerInfo(context){
+        console.log('')
     }
     function canPlay(){
         load_start.innerText = 'PLAY'
@@ -65,17 +68,15 @@ window.onload = function () {
         let value = load_progress.getAttribute('value');
         let max = load_progress.getAttribute('max');
         let checkHasLoaded = setInterval(function () {
-            if (value != max) {
+            if (load_progress.getAttribute('value') == load_progress.getAttribute('max')) {
                 clearInterval(checkHasLoaded);
                 canPlay()
             }
         }, 500)
         setTimeout(function () {
-            if (value != max) {
+            if (load_progress.getAttribute('value') != load_progress.getAttribute('max')) {
                 alert('加载超时，您可以选择开始游戏，但是当您进行游戏时可能会有较大延迟。\nP.S. 由于网站数据存放在国外，所以完全加载成功的概率并不是很高。如果您是强迫症患者，请刷新网页，若不是可以选择开始游戏。')
                 canPlay()
-                alert('value:' + value)
-                alert('max:' + max)
             }
         }, 60000)
     }
@@ -174,7 +175,7 @@ window.onload = function () {
             }
             //绘制
             drawSkills(context)
-            context.beginPath();
+            drawPlayerInfo(context)
             for (let i = 0; i < bullets.length; i++) {
                 let bullet = bullets[i]
                 context.drawImage(bullet.img, bullet.x, bullet.y)
