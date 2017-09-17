@@ -10,6 +10,17 @@ function checkBrowserVersion() {
     } else if (!+[1,] || /rv:11.0/.exec(navigator.userAgent))
         alert("请勿使用IE浏览器，建议使用Chrome,Firefox或各种国产浏览器的极速模式。");
 }
+function writeCookies(object) {
+    var time = new Date();
+    time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
+    json.id = object.id;
+    json.info = object.get('info');
+    json.username = object.get('username');
+    json.acntNmb = object.get('accountNumber');
+    json.avatarUrl = object.get('avatarUrl');
+    json.email = object.get('email');
+    document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
+}
 let json = {};
 checkBrowserVersion()
 function main() {
@@ -102,16 +113,5 @@ function main() {
         sd_username.querySelector('p').innerText = json.username;
         sd_userInfo.querySelector('p').innerText = json.info;
         sd_userAvatar.querySelector('img').setAttribute('src', json.avatarUrl);
-    }
-    function writeCookies(object) {
-        var time = new Date();
-        time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
-        json.id = object.id;
-        json.info = object.get('info');
-        json.username = object.get('username');
-        json.acntNmb = object.get('accountNumber');
-        json.avatarUrl = object.get('avatarUrl');
-        json.email = object.get('email');
-        document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
     }
 }
