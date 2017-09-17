@@ -1,4 +1,17 @@
-﻿let json = {};
+﻿'use strict'
+
+function checkBrowserVersion() {
+    if (navigator.userAgent.indexOf("Chrome") != -1) {
+        var version = /Chrome\/[0123456789.]*/.exec(navigator.userAgent)[0]
+        version = version.replace(/Chrome\//, '')
+        version = version.replace(/\.[0123456789.]*/, '')
+        if (version < 57)
+            alert('请将浏览器内核升至57或及其以上。')
+    } else if (!+[1,] || /rv:11.0/.exec(navigator.userAgent))
+        alert("请勿使用IE浏览器，建议使用Chrome,Firefox或各种国产浏览器的极速模式。");
+}
+let json = {};
+checkBrowserVersion()
 function main() {
     function menu2nd_mouseover(menu2nd, menu2nd_sub) {
         menu2nd.addEventListener('mouseover', function () {
@@ -10,6 +23,8 @@ function main() {
     }
     function menu3rd_mouseover(menu3rd, menu3rd_sub) {
         menu3rd.addEventListener('mouseover', function () {
+            sd_game_normal_sub.style.display = 'none';
+            sd_game_abnormal_sub.style.display = 'none';
             menu3rd_sub.style.display = 'block';
         })
     }
@@ -20,7 +35,8 @@ function main() {
         sd_game_sub.style.display = 'none';
         sd_user_sub.style.display = 'none';
         sd_other_sub.style.display = 'none';
-        sd_game_philosophy_sub.style.display = 'none';
+        sd_game_normal_sub.style.display = 'none';
+        sd_game_abnormal_sub.style.display = 'none';
     }
     function showSidebar() {
         sidebar.style.right = 0;
@@ -28,6 +44,7 @@ function main() {
         mask.style.right = '300px';
         mask.style.backgroundColor = 'rgba(0,0,0,0.2)';
     }
+
     const top_right = document.getElementById('tp_right');
     const mask = document.getElementById('mask');
     const sidebar = document.getElementById('sidebar');
@@ -41,10 +58,11 @@ function main() {
     const sd_userInfo = document.getElementById('sd_userInfo');
     const sd_game = document.getElementById('sd_game');
     const sd_game_sub = document.getElementById('sd_game_sub');
-    const sd_game_ttt = document.getElementById('sd_game_ttt');
-    const sd_game_winmine = document.getElementById('sd_game_winmine');
-    const sd_game_philosophy = document.getElementById('sd_game_philosophy');
-    const sd_game_philosophy_sub = document.getElementById('sd_game_philosophy_sub');
+    const sd_game_abnormal_winmine = document.getElementById('sd_game_abnormal_winmine');
+    const sd_game_normal = document.getElementById('sd_game_normal');
+    const sd_game_abnormal = document.getElementById('sd_game_abnormal');
+    const sd_game_normal_sub = document.getElementById('sd_game_normal_sub');
+    const sd_game_abnormal_sub = document.getElementById('sd_game_abnormal_sub');
     const sd_other = document.getElementById('sd_other');
     const sd_other_test = document.getElementById('sd_other_test');
     const sd_back = document.getElementById('sd_back');
@@ -55,11 +73,12 @@ function main() {
     menu2nd_mouseover(sd_game, sd_game_sub)
     menu2nd_mouseover(sd_other, sd_other_sub)
     menu2nd_mouseover(sd_userAvatar, sd_user_sub)
-    menu3rd_mouseover(sd_game_philosophy, sd_game_philosophy_sub)
+    menu3rd_mouseover(sd_game_normal, sd_game_normal_sub)
+    menu3rd_mouseover(sd_game_abnormal, sd_game_abnormal_sub)
 
-    sd_game_winmine.addEventListener('click', function () {
-        if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: Ryzen Threadripper 1950X\n显卡: Nvidia GTX 1080Ti\n内存: 128GB") == 1)
-            window.open('sd_winmine.html');
+    sd_game_abnormal_winmine.addEventListener('click', function () {
+        if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: Ryzen Threadripper 1950X\n显卡: Nvidia GTX 1080Ti\n内存: 128GB\n\n推荐配置:\nCPU：神威·太湖之光\n显卡：六十四路 NVIDIA TITAN Xp\n内存：6144GB") == 1)
+            window.open('sd_abnormal_winmine.html');
     })
     sd_register.addEventListener('click', function () {
         window.open('/user/register.html', '_self');
@@ -84,15 +103,15 @@ function main() {
         sd_userInfo.querySelector('p').innerText = json.info;
         sd_userAvatar.querySelector('img').setAttribute('src', json.avatarUrl);
     }
-}
-function writeCookies(object) {
-    var time = new Date();
-    time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
-    json.id = object.id;
-    json.info = object.get('info');
-    json.username = object.get('username');
-    json.acntNmb = object.get('accountNumber');
-    json.avatarUrl = object.get('avatarUrl');
-    json.email = object.get('email');
-    document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
+    function writeCookies(object) {
+        var time = new Date();
+        time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
+        json.id = object.id;
+        json.info = object.get('info');
+        json.username = object.get('username');
+        json.acntNmb = object.get('accountNumber');
+        json.avatarUrl = object.get('avatarUrl');
+        json.email = object.get('email');
+        document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
+    }
 }

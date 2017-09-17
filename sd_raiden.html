@@ -45,19 +45,24 @@
 			<ul>
 				<li><a href="#">软件</a></li>
 				<li id="sd_game">
-						<ul id="sd_game_sub">
-								<li id="sd_game_philosophy">
-										<ul id="sd_game_philosophy_sub">
-												<li><a href="sd_tictactoe.html" id="sd_game_philosophy_ttt">XXOO</a></li>
-												<li><a href="sd_raiden.html" id="sd_game_philosophy_raiden">打飞机</a></li>
-										</ul>
-										<a href="#">哲♂学</a>
-									</li>
-							<li><a href="sd_unera.html" id="sd_game_unera">未名の戰</a></li>
-							<li><a href="#" id="sd_game_winmine">扫雷</a></li>
-						</ul>
-						<a href="#">游戏</a>
-					</li>
+					<ul id="sd_game_sub">
+						<li id="sd_game_normal">
+							<ul id="sd_game_normal_sub">
+								<li><a href="sd_tictactoe.html" id="sd_game_normal_ttt">XXOO</a></li>
+								<li><a href="sd_raiden.html" id="sd_game_normal_raiden">打飞机</a></li>
+							</ul>
+							<a href="#">正常的游戏</a>
+						</li>
+						<li id="sd_game_abnormal">
+							<ul id="sd_game_abnormal_sub">
+								<li><a href="sd_unera.html" id="sd_game_abnormal_unera">未名の戰</a></li>
+								<li><a href="#" id="sd_game_abnormal_winmine">扫雷</a></li>
+							</ul>
+							<a href="#">不正常的游戏</a>
+						</li>
+					</ul>
+					<a href="#">游戏</a>
+				</li>
 				<li id="sd_other">
 					<ul id="sd_other_sub">
 						<li><a href="sd_comment.html" id="sd_other_test">评论区</a></li>
@@ -71,9 +76,9 @@
 	<h1>Raiden</h1>
 	<div id="loadArea">
 		<button id="start">载入中......</button>
-		<progress id="progress" max="2" value="0"></progress>
-    </div>
-    <canvas width="1024px" height="640px" style="display:none"></canvas>
+		<progress id="progress" max="3" value="0"></progress>
+	</div>
+	<canvas width="1024px" height="640px" style="display:none"></canvas>
 	<footer>
 		<a href="index.html">网站首页</a>
 		<a href="bt_about.html">关于我们</a>
