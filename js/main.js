@@ -1,17 +1,24 @@
-﻿'use strict'
+﻿if (navigator.userAgent.indexOf("Chrome") != -1) {
+    var version = /Chrome\/[0123456789.]*/.exec(navigator.userAgent)[0].replace(/Chrome\//, '')
+    var version_int = version.replace(/\.[0123456789.]*/, '')
+    if (version < 57)
+        alert('请将浏览器内核升至57或及其以上。您目前使用的的浏览器的版本号为' + version + '。')
+} else if (!+[1,] || /rv:11.0/.exec(navigator.userAgent))
+    alert("请勿使用IE浏览器，建议使用Chrome,Firefox或各种国产浏览器的极速模式。");
 
-function checkBrowserVersion() {
-    if (navigator.userAgent.indexOf("Chrome") != -1) {
-        var version = /Chrome\/[0123456789.]*/.exec(navigator.userAgent)[0]
-        version = version.replace(/Chrome\//, '')
-        version = version.replace(/\.[0123456789.]*/, '')
-        if (version < 57)
-            alert('请将浏览器内核升至57或及其以上。')
-    } else if (!+[1,] || /rv:11.0/.exec(navigator.userAgent))
-        alert("请勿使用IE浏览器，建议使用Chrome,Firefox或各种国产浏览器的极速模式。");
+'use strict'
+function writeCookies(object) {
+    var time = new Date();
+    time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
+    json.id = object.id;
+    json.info = object.get('info');
+    json.username = object.get('username');
+    json.acntNmb = object.get('accountNumber');
+    json.avatarUrl = object.get('avatarUrl');
+    json.email = object.get('email');
+    document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
 }
 let json = {};
-checkBrowserVersion()
 function main() {
     function menu2nd_mouseover(menu2nd, menu2nd_sub) {
         menu2nd.addEventListener('mouseover', function () {
@@ -77,8 +84,8 @@ function main() {
     menu3rd_mouseover(sd_game_abnormal, sd_game_abnormal_sub)
 
     sd_game_abnormal_winmine.addEventListener('click', function () {
-        if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: Ryzen Threadripper 1950X\n显卡: Nvidia GTX 1080Ti\n内存: 128GB\n\n推荐配置:\nCPU：神威·太湖之光\n显卡：六十四路 NVIDIA TITAN Xp\n内存：6144GB") == 1)
-            window.open('sd_abnormal_winmine.html');
+        if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: AMD Ryzen Threadripper 1950X\n显卡: GeForce GTX 1080 Ti\n内存: 128GB\n\n推荐配置:\nCPU：神威·太湖之光\n显卡：六十四路 NVIDIA TITAN Xp\n内存：6144GB") == 1)
+            window.open('sd_winmine.html');
     })
     sd_register.addEventListener('click', function () {
         window.open('/user/register.html', '_self');
@@ -102,16 +109,5 @@ function main() {
         sd_username.querySelector('p').innerText = json.username;
         sd_userInfo.querySelector('p').innerText = json.info;
         sd_userAvatar.querySelector('img').setAttribute('src', json.avatarUrl);
-    }
-    function writeCookies(object) {
-        var time = new Date();
-        time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
-        json.id = object.id;
-        json.info = object.get('info');
-        json.username = object.get('username');
-        json.acntNmb = object.get('accountNumber');
-        json.avatarUrl = object.get('avatarUrl');
-        json.email = object.get('email');
-        document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
     }
 }
