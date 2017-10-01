@@ -18,17 +18,6 @@ function writeCookies(object) {
     json.email = object.get('email');
     document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
 }
-function writeCookies(object) {
-    var time = new Date();
-    time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
-    json.id = object.id;
-    json.info = object.get('info');
-    json.username = object.get('username');
-    json.acntNmb = object.get('accountNumber');
-    json.avatarUrl = object.get('avatarUrl');
-    json.email = object.get('email');
-    document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
-}
 let json = {};
 function main() {
     function menu2nd_mouseover(menu2nd, menu2nd_sub) {
