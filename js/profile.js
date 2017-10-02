@@ -78,7 +78,7 @@
                                     alert("修改成功, 新用户名: " + objectUpdate.get("username"));
                                     writeCookies(object);
                                     username.innerText = newUsername;
-                                    sd_username.firstChild.innerText = newUsername;
+                                    sd_username.firstElementChild.innerText = newUsername;
                                     changeUsername.disabled = false;
                                     changeUsername.innerText = '修改';
                                 },
@@ -146,7 +146,6 @@
                     changeUserEmail.innerText = '修改';
                 }
             } else {
-                alert('')
                 alert('修改失败\n返回错误信息：邮箱格式不正确');
             }
         }
@@ -170,7 +169,7 @@
                                     alert("修改成功, 新介绍: " + objectUpdate.get("info"));
                                     writeCookies(object);
                                     userInfo.innerText = newUserInfo;
-                                    sd_userInfo.firstChild.innerText = newUserInfo;
+                                    sd_userInfo.firstElementChild.innerText = newUserInfo;
                                     changeUserInfo.disabled = false;
                                     changeUserInfo.innerText = '修改';
                                 },

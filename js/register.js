@@ -134,8 +134,13 @@ window.onload = function () {
                         object = results[i];
                         //查询到用户名
                         if (object.get('accountNumber') == acntNmb.value) {
-                            alert('')
                             alert('注册失败\n返回错误信息：账号与其他用户重复！');
+                            acntNmb_info.innerText = '账号重复';
+                            acntNmb_info.style.color = '#FF0000';
+                            acntNmb_usable = false;
+                            register_btn.innerText = '注册';
+                            register_btn.disabled = false;
+                            break;
                             //未查询到用户名
                         } else if (i == results.length - 1) {
                             var user = new User();
@@ -168,7 +173,6 @@ window.onload = function () {
             });
         }
         else {
-            alert('')
             alert('注册失败\n返回错误信息：请检查上述诸项是否均符合要求。');
             register_btn.innerText = '注册';
             register_btn.disabled = false;
