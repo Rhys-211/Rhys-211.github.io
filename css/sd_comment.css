@@ -77,4 +77,5 @@ div#commentItems:hover {
 }
 #commentItems .commentItem_content{
     margin:0;
+    line-height: 1.3;
 }
