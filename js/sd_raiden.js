@@ -4,56 +4,87 @@ window.onload = function () {
     const load_progress = document.querySelector('#progress')
     const load_start = document.querySelector('#start')
     function drawSkills(context){
+        context.rect(40,550,256,64)
+        context.fillStyle = '#fff'
+        context.fill()
+
         context.beginPath();
-        context.moveTo(40,540);
-        context.lineTo(296,540);
-        context.moveTo(40,604);
-        context.lineTo(296,604);
-        context.moveTo(40,540);
-        context.lineTo(40,604);
-        context.moveTo(296,540);
-        context.lineTo(296,604);
-        context.moveTo(104,540);
-        context.lineTo(104,604);
-        context.moveTo(168,540);
-        context.lineTo(168,604);
-        context.moveTo(232,540);
-        context.lineTo(232,604);
+        context.moveTo(40,550);
+        context.lineTo(296,550);
+        context.moveTo(40,614);
+        context.lineTo(296,614);
+        context.moveTo(40,550);
+        context.lineTo(40,614);
+        context.moveTo(296,550);
+        context.lineTo(296,614);
+        context.moveTo(104,550);
+        context.lineTo(104,614);
+        context.moveTo(168,550);
+        context.lineTo(168,614);
+        context.moveTo(232,550);
+        context.lineTo(232,614);
         context.lineWidth = 1;
         context.strokeStyle = "#666666";
-
-        context.font = "18px Microsoft Yahei";
-        context.fillText("Q", 40, 604);
-        context.fillText("W", 104, 604);
-        context.fillText("E", 168, 604);
-        context.fillText("R", 232, 604);
-
         context.stroke();
 
-
+        context.font = "18px Microsoft Yahei";
+        context.fillStyle = '#000'
+        context.fillText("Q", 40, 614);
+        context.fillText("W", 104, 614);
+        context.fillText("E", 168, 614);
+        context.fillText("R", 232, 614);
+        
+        context.fillStyle = '#fff'
         for(let i = 55;i < 95;i+= 8){
             context.beginPath();
-            context.arc(i, 610, 3, 0, 2 * Math.PI)
+            context.arc(i, 620, 3, 0, 2 * Math.PI)
+            context.fill()
             context.stroke();
         }
         for(let i = 119;i < 159;i+= 8){
             context.beginPath();
-            context.arc(i, 610, 3, 0, 2 * Math.PI)
+            context.arc(i, 620, 3, 0, 2 * Math.PI)
+            context.fill()
             context.stroke();
         }
         for(let i = 183;i < 223;i+= 8){
             context.beginPath();
-            context.arc(i, 610, 3, 0, 2 * Math.PI)
+            context.arc(i, 620, 3, 0, 2 * Math.PI)
+            context.fill()
             context.stroke();
         }
         for(let i = 256;i < 275;i+= 8){
             context.beginPath();
-            context.arc(i, 610, 3, 0, 2 * Math.PI)
+            context.arc(i, 620, 3, 0, 2 * Math.PI)
+            context.fill()
             context.stroke();
         }
     }
-    function drawPlayerInfo(context){
-        console.log('')
+    function drawLevel(context){
+        context.fillStyle = '#fff'
+        //画圆圈与半圆
+        context.beginPath();
+        context.arc(940, 580, 52, -0.28 * Math.PI, 0.28 * Math.PI)
+        context.fill()
+        context.stroke();
+        context.beginPath();
+        context.arc(940, 580, 40, 0, 2 * Math.PI)
+        context.fill()
+        context.stroke();
+        //连接圆圈与半圆
+        context.beginPath();
+        context.moveTo(940,540);
+        context.lineTo(973,540);
+        context.stroke();
+        context.beginPath();
+        context.moveTo(940,620);
+        context.lineTo(973,620);
+        context.stroke();
+        //画等级
+        context.beginPath();
+        context.arc(905, 605, 15, 0, 2 * Math.PI)
+        context.fill()
+        context.stroke();
     }
     function canPlay(){
         load_start.innerText = 'PLAY'
@@ -126,6 +157,7 @@ window.onload = function () {
             x: 488,
             y: 540,
             speed: 2,
+            firingInterval:500,
             keyDowns: {},
             keyActions: {
                 a: function () {
@@ -175,7 +207,7 @@ window.onload = function () {
             }
             //绘制
             drawSkills(context)
-            drawPlayerInfo(context)
+            drawLevel(context)
             for (let i = 0; i < bullets.length; i++) {
                 let bullet = bullets[i]
                 context.drawImage(bullet.img, bullet.x, bullet.y)
@@ -191,7 +223,7 @@ window.onload = function () {
             bullets[bullets.length] = new Bullet();
             var bullet = bullets[bullets.length - 1]
             context.drawImage(bullet.img, bullet.x, bullet.y)
-        }, 500)
+        }, fighter.firingInterval)
         //出现敌人
         setInterval(function () {
             enemies[enemies.length] = new Enemy();
