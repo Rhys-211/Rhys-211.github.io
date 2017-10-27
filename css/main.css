@@ -168,3 +168,6 @@ td#sd_info p{
 #sd_user{
 	display:none;
 }
+footer p{
+	display: block
+}

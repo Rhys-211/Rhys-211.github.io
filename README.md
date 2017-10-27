@@ -13,8 +13,6 @@
 * 增加 - 为肖海洋增加`secret base ~君がくれたもの~ (10 years after Ver.)`与`A Thousand Miles`作为其BGM
 * 增加 - 为路明瑞增加某BGM
 * 增加 - 在用户信息页中增加`目标`
-* 修改 - 修改底部版权信息
-* 修改 - 修改主页正、副标题
 # 部分引用
 ## 图片
 * 主页壁纸 Macos Sierra - Apple
