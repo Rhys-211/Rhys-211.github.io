@@ -25,6 +25,7 @@
 * https://fonts.googleapis.com/icon?family=Material+Icons - [Material icons](https://material.io/icons/)
 # 瞎扯区
 ## 关于团队
+一个由游戏宅，动漫宅，IT宅的所组成的集合体。其中有n个看B站，n个刷知乎，n个听网易云，n个玩联盟，n个关注数码产品（n∈Z∩[2,max]，max=studio.length）.
  ~~Copyright 211 Special Forces Studio~~
 ## 更新频率
 大致与学校放假次数和时间成正比。
