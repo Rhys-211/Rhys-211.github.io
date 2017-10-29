@@ -15,67 +15,55 @@ window.onload = function () {
 
     commentQuery.find({
         success: function (results) {
+            //获取commentItem所需的主要信息（内容，用户ID，发送时间）
             for (let i = 0; i < results.length; i++) {
                 comments[i] = {};
                 comments[i].content = results[i].attributes.content;
                 comments[i].userId = results[i].attributes.userId;
                 comments[i].createdAt = results[i].createdAt;
             }
-            for (let j = 0; j < comments.length; j++) {
-                userQuery.get(comments[j].userId, {
+            //构建commentItem内容
+            for (let i = 0; i < comments.length; i++) {
+                //创建commentItem中的各种元素
+                let commentItem = document.createElement('div')
+                let commentItem_link = document.createElement('a')
+                let commentItem_userAvatar = document.createElement('img')
+                let commentItem_username = document.createElement('p')
+                let commentItem_postingTime = document.createElement('p')
+                let commentItem_content = document.createElement('p')
+                //对commentItem中的元素的的属性进行常规赋值操作（主要是一些CSS样式）
+                commentItem_link.setAttribute('target', '_blank')
+                commentItem_username.setAttribute('class', 'commentItem_username')
+                commentItem_postingTime.setAttribute('class', 'commentItem_postingTime')
+                commentItem_content.setAttribute('class', 'commentItem_content')
+                //对commentItem中的元素的主要内容进行赋值操作（个人主页地址，发送时间，内容）
+                commentItem_link.setAttribute('href', '/user/profile.html?id=' + comments[i].userId)
+                commentItem_postingTime.innerText = comments[i].createdAt
+                commentItem_content.innerText = comments[i].content
+                //对commentItem中的元素的剩余用户内容进行赋值操作（用户名，头像）
+                userQuery.get(comments[i].userId, {
                     success: function (user) {
-                        //构建commentItem内容
-                        comments[j].username = user.get('username');
-                        comments[j].avatarUrl = user.get('avatarUrl');
+                        //获取commentItem所需的用户信息
+                        comments[i].username = user.get('username');
+                        comments[i].avatarUrl = user.get('avatarUrl');
+                        //向commentItem中的元素写入用户信息
+                        commentItem_userAvatar.setAttribute('src', comments[i].avatarUrl)
+                        commentItem_username.innerText = comments[i].username
                     },
                     error: function (error) {
                         alert("查询失败: " + error.code + " " + error.message);
                     }
                 })
+                //实现以上元素，将其添加为commmentItem的子类
+                commentItem_link.appendChild(commentItem_userAvatar);
+                commentItem.appendChild(commentItem_link);
+                commentItem.appendChild(commentItem_username);
+                commentItem.appendChild(commentItem_postingTime);
+                commentItem.appendChild(commentItem_content);
+                commentItems.appendChild(commentItem);
             }
-            commentQuery.find({
-                success: function () {
-                    commentQuery.find({
-                        success: function () {
-                            //构建commentItem内容
-                            for (let i = 0; i < comments.length; i++) {
-                                let commentItem = document.createElement('div')
-                                let commentItem_link = document.createElement('a')
-                                let commentItem_userAvatar = document.createElement('img')
-                                let commentItem_username = document.createElement('p')
-                                let commentItem_postingTime = document.createElement('p')
-                                let commentItem_content = document.createElement('p')
-
-                                commentItem_userAvatar.setAttribute('src', comments[i].avatarUrl)
-                                commentItem_link.setAttribute('href', '/user/profile.html?id=' + comments[i].userId)
-                                commentItem_link.setAttribute('target', '_blank')
-                                commentItem_username.setAttribute('class', 'commentItem_username')
-                                commentItem_postingTime.setAttribute('class', 'commentItem_postingTime')
-                                commentItem_content.setAttribute('class', 'commentItem_content')
-
-                                commentItem_username.innerText = comments[i].username
-                                commentItem_postingTime.innerText = comments[i].createdAt
-                                commentItem_content.innerText = comments[i].content
-
-                                commentItem_link.appendChild(commentItem_userAvatar);
-                                commentItem.appendChild(commentItem_link);
-                                commentItem.appendChild(commentItem_username);
-                                commentItem.appendChild(commentItem_postingTime);
-                                commentItem.appendChild(commentItem_content);
-                                commentItems.appendChild(commentItem);
-                            }
-                            commentItems_loading.style.display = 'none';
-                        },
-                        error: function (error) {
-                            alert("查询失败: " + error.code + " " + error.message);
-                        }
-                    });
-                },
-                error: function (error) {
-                    alert("查询失败: " + error.code + " " + error.message);
-                }
-            });
-
+            //隐藏“Loading...”
+            commentItems_loading.style.display = 'none';
         },
         error: function (error) {
             alert("查询失败: " + error.code + " " + error.message);
