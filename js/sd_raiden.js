@@ -256,7 +256,7 @@ window.onload = function () {
         let firstBullet = new Bullet()
         let lastBullet = new Bullet()
         firstBullet = lastBullet;
-        
+
         let firstEnemy = new Enemy()
         let lastEnemy = new Enemy()
         firstEnemy = lastEnemy;
@@ -341,14 +341,12 @@ window.onload = function () {
             let oldLastBullet = lastBullet;
             lastBullet.next = new Bullet();
             lastBullet = lastBullet.next;
-            context.drawImage(lastBullet.img, lastBullet.x, lastBullet.y)
         }, fighter.firingInterval)
         //出现敌人
         setInterval(function () {
             let oldLastEnemy = Enemy;
             lastEnemy.next = new Enemy;
             lastEnemy = lastEnemy.next;
-            context.drawImage(lastEnemy.img, lastEnemy.x, lastEnemy.y)
         }, 4000)
         //子弹边界判断
         /*setInterval(function () {
