@@ -253,11 +253,13 @@ window.onload = function () {
                 this.skillPoints++
             },
         }
-        let bullets = new Array;
         let firstBullet = new Bullet()
         let lastBullet = new Bullet()
         firstBullet = lastBullet;
-        let enemies = new Array;
+        
+        let firstEnemy = new Enemy()
+        let lastEnemy = new Enemy()
+        firstEnemy = lastEnemy;
         fighter.img.onload = function () {
             context.drawImage(fighter.img, fighter.x, fighter.y)
             fighter.levelUp()
@@ -320,9 +322,8 @@ window.onload = function () {
             for (let bullet = firstBullet; bullet != null; bullet = bullet.next) {
                 bullet.y -= bullet.speed
             }
-            for (let i = 0; i < enemies.length; i++) {
-                let enemy = enemies[i]
-                enemies[i].y += enemy.speed
+            for (let enemy = firstEnemy; enemy != null; enemy = enemy.next) {
+                enemy.y += enemy.speed
             }
             //绘制
             drawSkills(context, fighter)
@@ -330,8 +331,7 @@ window.onload = function () {
             for (let bullet = firstBullet; bullet != null; bullet = bullet.next) {
                 context.drawImage(bullet.img, bullet.x, bullet.y)
             }
-            for (let i = 0; i < enemies.length; i++) {
-                let enemy = enemies[i]
+            for (let enemy = firstEnemy; enemy != null; enemy = enemy.next) {
                 context.drawImage(enemy.img, enemy.x, enemy.y)
             }
             context.drawImage(fighter.img, fighter.x, fighter.y)
@@ -345,9 +345,10 @@ window.onload = function () {
         }, fighter.firingInterval)
         //出现敌人
         setInterval(function () {
-            enemies[enemies.length] = new Enemy();
-            var enemy = enemies[enemies.length - 1]
-            context.drawImage(enemy.img, enemy.x, enemy.y)
+            let oldLastEnemy = Enemy;
+            lastEnemy.next = new Enemy;
+            lastEnemy = lastEnemy.next;
+            context.drawImage(lastEnemy.img, lastEnemy.x, lastEnemy.y)
         }, 4000)
         //子弹边界判断
         /*setInterval(function () {
