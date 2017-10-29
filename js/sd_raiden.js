@@ -273,26 +273,34 @@ window.onload = function () {
             }
         })
         canvas.addEventListener('click', function (event) {
-            if(event.offsetX > 48 && event.offsetX < 96 && event.offsetY > 500 && event.offsetY < 548){
-                fighter.skill.q++
-                fighter.skillPoints--
-                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
-                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
-            } else if(event.offsetX > 112 && event.offsetX < 160 && event.offsetY > 500 && event.offsetY < 548){
-                fighter.skill.w++
-                fighter.skillPoints--
-                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
-                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
-            } else if(event.offsetX > 175 && event.offsetX < 223 && event.offsetY > 500 && event.offsetY < 548){
-                fighter.skill.e++
-                fighter.skillPoints--
-                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
-                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
-            } else if(event.offsetX > 240 && event.offsetX < 288 && event.offsetY > 500 && event.offsetY < 548){
-                fighter.skill.r++
-                fighter.skillPoints--
-                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
-                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+            if (event.offsetX > 48 && event.offsetX < 96 && event.offsetY > 500 && event.offsetY < 548) {
+                if (fighter.skillPoints > 0 && fighter.skill.q < 5) {
+                    fighter.skill.q++
+                    fighter.skillPoints--
+                    console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                    console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+                }
+            } else if (event.offsetX > 112 && event.offsetX < 160 && event.offsetY > 500 && event.offsetY < 548) {
+                if (fighter.skillPoints > 0 && fighter.skill.w < 5) {
+                    fighter.skill.w++
+                    fighter.skillPoints--
+                    console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                    console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+                }
+            } else if (event.offsetX > 175 && event.offsetX < 223 && event.offsetY > 500 && event.offsetY < 548) {
+                if (fighter.skillPoints > 0 && fighter.skill.e < 5) {
+                    fighter.skill.e++
+                    fighter.skillPoints--
+                    console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                    console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+                }
+            } else if (event.offsetX > 240 && event.offsetX < 288 && event.offsetY > 500 && event.offsetY < 548) {
+                if (fighter.level - fighter.skill.r * 5 > 5) {
+                    fighter.skill.r++
+                    fighter.skillPoints--
+                    console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                    console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+                }
             }
         })
         //更新画面
