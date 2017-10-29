@@ -6,7 +6,7 @@
 ## 重构
 感觉目前的css，js文件以及文件目录太乱了，以后有时间的话会整理一下。大约在寒假。
 ## 小目标
-* 增加 - 用户可增加自定义主题
+~~* 增加 - 用户可增加自定义主题~~
 * 增加 - 评论区信息附带浏览器及系统版本
 * 增加 - 移动端打开时弹出信息框，建议用PC端打开
 * 增加 - 为路明瑞增加某BGM
@@ -25,7 +25,7 @@
 * https://fonts.googleapis.com/icon?family=Material+Icons - [Material icons](https://material.io/icons/)
 # 瞎扯区
 ## 关于团队
-一个由游戏宅，动漫宅，IT宅的所组成的集合体。其中有n个看B站，n个刷知乎，n个听网易云，n个玩联盟，n个关注数码产品（n∈Z∩[2,max]，max=studio.length）.
+一个由游戏宅，动漫宅，IT宅的所组成的集合体。其中有n个看B站，n个刷知乎，n个听网易云，n个玩联盟，n个关注数码产品（n∈Z∩[2,max]，max=studio.length）.<br>
  ~~Copyright 211 Special Forces Studio~~
 ## 更新频率
 大致与学校放假次数和时间成正比。

@@ -3,26 +3,31 @@ window.onload = function () {
     const loadArea = document.querySelector('#loadArea')
     const load_progress = document.querySelector('#progress')
     const load_start = document.querySelector('#start')
-    function drawSkills(context){
-        context.rect(40,550,256,64)
+    function drawSkills(context, fighter) {
+        const skillUp = new Image()
+        skillUp.src = '/images/raiden/skillUp.png'
+        const skillUpDisabled = new Image()
+        skillUpDisabled.src = '/images/raiden/skillUpDisabled.png'
+
+        context.rect(40, 550, 256, 64)
         context.fillStyle = '#fff'
         context.fill()
 
         context.beginPath();
-        context.moveTo(40,550);
-        context.lineTo(296,550);
-        context.moveTo(40,614);
-        context.lineTo(296,614);
-        context.moveTo(40,550);
-        context.lineTo(40,614);
-        context.moveTo(296,550);
-        context.lineTo(296,614);
-        context.moveTo(104,550);
-        context.lineTo(104,614);
-        context.moveTo(168,550);
-        context.lineTo(168,614);
-        context.moveTo(232,550);
-        context.lineTo(232,614);
+        context.moveTo(40, 550);
+        context.lineTo(296, 550);
+        context.moveTo(40, 614);
+        context.lineTo(296, 614);
+        context.moveTo(40, 550);
+        context.lineTo(40, 614);
+        context.moveTo(296, 550);
+        context.lineTo(296, 614);
+        context.moveTo(104, 550);
+        context.lineTo(104, 614);
+        context.moveTo(168, 550);
+        context.lineTo(168, 614);
+        context.moveTo(232, 550);
+        context.lineTo(232, 614);
         context.lineWidth = 1;
         context.strokeStyle = "#666666";
         context.stroke();
@@ -33,34 +38,86 @@ window.onload = function () {
         context.fillText("W", 104, 614);
         context.fillText("E", 168, 614);
         context.fillText("R", 232, 614);
-        
+
         context.fillStyle = '#fff'
-        for(let i = 55;i < 95;i+= 8){
-            context.beginPath();
-            context.arc(i, 620, 3, 0, 2 * Math.PI)
-            context.fill()
-            context.stroke();
+        var skill = {}
+        for (let i in fighter.skill) {
+            skill[i] = fighter.skill[i]
         }
-        for(let i = 119;i < 159;i+= 8){
+        for (let i = 55; i < 95; i += 8) {
             context.beginPath();
             context.arc(i, 620, 3, 0, 2 * Math.PI)
-            context.fill()
-            context.stroke();
+            if (skill.q != 0) {
+                context.fillStyle = '#000'
+                context.fill()
+                skill.q--
+            }
+            else {
+                context.fillStyle = '#fff'
+                context.stroke();
+            }
         }
-        for(let i = 183;i < 223;i+= 8){
+        for (let i = 119; i < 159; i += 8) {
             context.beginPath();
             context.arc(i, 620, 3, 0, 2 * Math.PI)
-            context.fill()
-            context.stroke();
+            context.beginPath();
+            context.arc(i, 620, 3, 0, 2 * Math.PI)
+            if (skill.w != 0) {
+                context.fillStyle = '#000'
+                context.fill()
+                skill.w--
+            }
+            else {
+                context.fillStyle = '#fff'
+                context.stroke();
+            }
         }
-        for(let i = 256;i < 275;i+= 8){
+        for (let i = 183; i < 223; i += 8) {
             context.beginPath();
             context.arc(i, 620, 3, 0, 2 * Math.PI)
-            context.fill()
-            context.stroke();
+            if (skill.e != 0) {
+                context.fillStyle = '#000'
+                context.fill()
+                skill.e--
+            }
+            else {
+                context.fillStyle = '#fff'
+                context.stroke();
+            }
+        }
+        for (let i = 256; i < 275; i += 8) {
+            context.beginPath();
+            context.arc(i, 620, 3, 0, 2 * Math.PI)
+            if (skill.r != 0) {
+                context.fillStyle = '#000'
+                context.fill()
+                skill.r--
+            }
+            else {
+                context.fillStyle = '#fff'
+                context.stroke();
+            }
+        }
+        if (fighter.skillPoints > 0) {
+            if (fighter.skill.q < 5)
+                context.drawImage(skillUp, 48, 500)
+            else
+                context.drawImage(skillUpDisabled, 48, 500)
+            if (fighter.skill.w < 5)
+                context.drawImage(skillUp, 112, 500)
+            else
+                context.drawImage(skillUpDisabled, 112, 500)
+            if (fighter.skill.e < 5)
+                context.drawImage(skillUp, 175, 500)
+            else
+                context.drawImage(skillUpDisabled, 175, 500)
+            if (fighter.level > 5 && fighter.skill.r == 0 || fighter.level > 10 && fighter.skill.r == 1 || fighter.level > 15 && fighter.skill.r == 2)
+                context.drawImage(skillUp, 240, 500)
+            else
+                context.drawImage(skillUpDisabled, 240, 500)
         }
     }
-    function drawLevel(context){
+    function drawLevel(context, level) {
         context.fillStyle = '#fff'
         //画圆圈与半圆
         context.beginPath();
@@ -73,20 +130,26 @@ window.onload = function () {
         context.stroke();
         //连接圆圈与半圆
         context.beginPath();
-        context.moveTo(940,540);
-        context.lineTo(973,540);
+        context.moveTo(940, 540);
+        context.lineTo(973, 540);
         context.stroke();
         context.beginPath();
-        context.moveTo(940,620);
-        context.lineTo(973,620);
+        context.moveTo(940, 620);
+        context.lineTo(973, 620);
         context.stroke();
         //画等级
         context.beginPath();
         context.arc(905, 605, 15, 0, 2 * Math.PI)
         context.fill()
-        context.stroke();
+        context.stroke()
+        context.font = "18px Microsoft Yahei";
+        context.fillStyle = '#000'
+        if (level.length == 1)
+            context.fillText(level, 899, 612);
+        else
+            context.fillText(level, 894, 612);
     }
-    function canPlay(){
+    function canPlay() {
         load_start.innerText = 'PLAY'
         load_start.addEventListener('click', function () {
             const canvas = document.querySelector('canvas')
@@ -95,7 +158,7 @@ window.onload = function () {
             initGame()
         })
     }
-    function checkLoaded(){
+    function checkLoaded() {
         let value = load_progress.getAttribute('value');
         let max = load_progress.getAttribute('max');
         let checkHasLoaded = setInterval(function () {
@@ -111,18 +174,20 @@ window.onload = function () {
             }
         }, 60000)
     }
-    function loadImage(src){
+    function loadImage(src) {
         let img = new Image()
-        img.onload = function(){
+        img.onload = function () {
             progress.setAttribute('value', parseInt(progress.getAttribute('value')) + 1)
         }
         img.src = src
     }
-    function loadImages(){
+    function loadImages() {
         loadImage('images/raiden/bullet.png')
         loadImage('images/raiden/fighter.png')
         loadImage('images/raiden/fighterE.png')
-    } 
+        loadImage('images/raiden/SkillUp.png')
+        loadImage('images/raiden/SkillUpDisabled.png')
+    }
     function loadGame() {
         const loadArea = document.querySelector('#loadArea')
         const load_progress = document.querySelector('progress')
@@ -131,7 +196,7 @@ window.onload = function () {
         checkLoaded()
     }
     function initGame() {
-        alert('游戏开发中，目前仅有移动与 fa♂射 子弹功能。无法攻击到敌人为正常现象。')
+        //alert('游戏开发中，目前仅有移动与 fa♂射 子弹功能。无法攻击到敌人为正常现象。')
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
         class Bullet {
@@ -157,7 +222,7 @@ window.onload = function () {
             x: 488,
             y: 540,
             speed: 2,
-            firingInterval:500,
+            firingInterval: 500,
             keyDowns: {},
             keyActions: {
                 a: function () {
@@ -172,12 +237,27 @@ window.onload = function () {
                 s: function () {
                     fighter.y += fighter.speed
                 }
-            }
+            },
+            level: 0,
+            skillPoints: 0,
+            skill: {
+                q: 0,
+                w: 0,
+                e: 0,
+                r: 0
+            },
+            levelUp: function () {
+                if (this.level == 18)
+                    return false
+                this.level++
+                this.skillPoints++
+            },
         }
         let bullets = new Array;
         let enemies = new Array;
         fighter.img.onload = function () {
             context.drawImage(fighter.img, fighter.x, fighter.y)
+            fighter.levelUp()
         };
         fighter.img.src = '/images/raiden/fighter.png';
         window.addEventListener('keydown', function (event) {
@@ -185,6 +265,35 @@ window.onload = function () {
         })
         window.addEventListener('keyup', function (event) {
             fighter.keyDowns[event.key] = false
+        })
+        window.addEventListener('keydown', function (event) {
+            if (event.key == 'Enter') {
+                fighter.levelUp()
+                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+            }
+        })
+        canvas.addEventListener('click', function (event) {
+            if(event.offsetX > 48 && event.offsetX < 96 && event.offsetY > 500 && event.offsetY < 548){
+                fighter.skill.q++
+                fighter.skillPoints--
+                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+            } else if(event.offsetX > 112 && event.offsetX < 160 && event.offsetY > 500 && event.offsetY < 548){
+                fighter.skill.w++
+                fighter.skillPoints--
+                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+            } else if(event.offsetX > 175 && event.offsetX < 223 && event.offsetY > 500 && event.offsetY < 548){
+                fighter.skill.e++
+                fighter.skillPoints--
+                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+            } else if(event.offsetX > 240 && event.offsetX < 288 && event.offsetY > 500 && event.offsetY < 548){
+                fighter.skill.r++
+                fighter.skillPoints--
+                console.log('level:' + fighter.level + '\nskill points:' + fighter.skillPoints)
+                console.log('q:' + fighter.skill.q + '\nw:' + fighter.skill.w + '\ne:' + fighter.skill.e + '\nr:' + fighter.skill.r)
+            }
         })
         //更新画面
         setInterval(function () {
@@ -206,8 +315,8 @@ window.onload = function () {
                 enemies[i].y += enemy.speed
             }
             //绘制
-            drawSkills(context)
-            drawLevel(context)
+            drawSkills(context, fighter)
+            drawLevel(context, fighter.level.toString())
             for (let i = 0; i < bullets.length; i++) {
                 let bullet = bullets[i]
                 context.drawImage(bullet.img, bullet.x, bullet.y)
