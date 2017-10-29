@@ -185,8 +185,8 @@ window.onload = function () {
         loadImage('images/raiden/bullet.png')
         loadImage('images/raiden/fighter.png')
         loadImage('images/raiden/fighterE.png')
-        loadImage('images/raiden/SkillUp.png')
-        loadImage('images/raiden/SkillUpDisabled.png')
+        loadImage('images/raiden/skillUp.png')
+        loadImage('images/raiden/skillUpDisabled.png')
     }
     function loadGame() {
         const loadArea = document.querySelector('#loadArea')
