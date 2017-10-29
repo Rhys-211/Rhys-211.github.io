@@ -196,7 +196,7 @@ window.onload = function () {
         checkLoaded()
     }
     function initGame() {
-        //alert('游戏开发中，目前仅有移动与 fa♂射 子弹功能。无法攻击到敌人为正常现象。')
+        alert('游戏开发中，目前仅有移动与 fa♂射 子弹功能。无法攻击到敌人为正常现象。')
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
         class Bullet {
@@ -254,6 +254,9 @@ window.onload = function () {
             },
         }
         let bullets = new Array;
+        let firstBullet = new Bullet()
+        let lastBullet = new Bullet()
+        firstBullet = lastBullet;
         let enemies = new Array;
         fighter.img.onload = function () {
             context.drawImage(fighter.img, fighter.x, fighter.y)
@@ -314,9 +317,8 @@ window.onload = function () {
                 if (fighter.keyDowns[key])
                     fighter.keyActions[key]()
             }
-            for (let i = 0; i < bullets.length; i++) {
-                let bullet = bullets[i]
-                bullets[i].y -= bullet.speed
+            for (let bullet = firstBullet; bullet != null; bullet = bullet.next) {
+                bullet.y -= bullet.speed
             }
             for (let i = 0; i < enemies.length; i++) {
                 let enemy = enemies[i]
@@ -325,8 +327,7 @@ window.onload = function () {
             //绘制
             drawSkills(context, fighter)
             drawLevel(context, fighter.level.toString())
-            for (let i = 0; i < bullets.length; i++) {
-                let bullet = bullets[i]
+            for (let bullet = firstBullet; bullet != null; bullet = bullet.next) {
                 context.drawImage(bullet.img, bullet.x, bullet.y)
             }
             for (let i = 0; i < enemies.length; i++) {
@@ -337,9 +338,10 @@ window.onload = function () {
         }, 1000 / 60)
         //发射子弹
         setInterval(function () {
-            bullets[bullets.length] = new Bullet();
-            var bullet = bullets[bullets.length - 1]
-            context.drawImage(bullet.img, bullet.x, bullet.y)
+            let oldLastBullet = lastBullet;
+            lastBullet.next = new Bullet();
+            lastBullet = lastBullet.next;
+            context.drawImage(lastBullet.img, lastBullet.x, lastBullet.y)
         }, fighter.firingInterval)
         //出现敌人
         setInterval(function () {
@@ -347,6 +349,10 @@ window.onload = function () {
             var enemy = enemies[enemies.length - 1]
             context.drawImage(enemy.img, enemy.x, enemy.y)
         }, 4000)
+        //子弹边界判断
+        /*setInterval(function () {
+            
+        }, 100)*/
     }
     loadGame()
 }
