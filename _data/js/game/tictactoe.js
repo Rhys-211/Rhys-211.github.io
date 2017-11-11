@@ -5,7 +5,7 @@ window.onload = function () {
             const canvas = document.querySelector('canvas')
             loadArea.style.display = 'none';
             gamebox.style.display = '';
-            new Audio("audio/ttt/start.mp3").play();
+            new Audio('/_data/audio/ttt/start.mp3').play();
         })
     }
     function checkLoaded(){
@@ -28,28 +28,28 @@ window.onload = function () {
         })
     }
     function loadGame() {
-        new Audio("audio/ttt/loading.mp3").play();
-        loadAudio("audio/ttt/1AI.mp3")
-        loadAudio("audio/ttt/2AI.mp3")
-        loadAudio("audio/ttt/3AI.mp3")
-        loadAudio("audio/ttt/4AI.mp3")
-        loadAudio("audio/ttt/5AI.mp3")
-        loadAudio("audio/ttt/6AI.mp3")
-        loadAudio("audio/ttt/7AI.mp3")
-        loadAudio("audio/ttt/8AI.mp3")
-        loadAudio("audio/ttt/1Player.mp3")
-        loadAudio("audio/ttt/2Player.mp3")
-        loadAudio("audio/ttt/3Player.mp3")
-        loadAudio("audio/ttt/4Player.mp3")
-        loadAudio("audio/ttt/5Player.mp3")
-        loadAudio("audio/ttt/6Player.mp3")
-        loadAudio("audio/ttt/7Player.mp3")
-        loadAudio("audio/ttt/8Player.mp3")
-        loadAudio("audio/ttt/occupiedAI.mp3")
-        loadAudio("audio/ttt/occupiedPlayer.mp3")
-        loadAudio("audio/ttt/start.mp3")
-        loadAudio("audio/ttt/victory.mp3")
-        loadAudio("audio/ttt/defeat.mp3")
+        new Audio('/_data/audio/ttt/loading.mp3').play();
+        loadAudio('/_data/audio/ttt/1AI.mp3')
+        loadAudio('/_data/audio/ttt/2AI.mp3')
+        loadAudio('/_data/audio/ttt/3AI.mp3')
+        loadAudio('/_data/audio/ttt/4AI.mp3')
+        loadAudio('/_data/audio/ttt/5AI.mp3')
+        loadAudio('/_data/audio/ttt/6AI.mp3')
+        loadAudio('/_data/audio/ttt/7AI.mp3')
+        loadAudio('/_data/audio/ttt/8AI.mp3')
+        loadAudio('/_data/audio/ttt/1Player.mp3')
+        loadAudio('/_data/audio/ttt/2Player.mp3')
+        loadAudio('/_data/audio/ttt/3Player.mp3')
+        loadAudio('/_data/audio/ttt/4Player.mp3')
+        loadAudio('/_data/audio/ttt/5Player.mp3')
+        loadAudio('/_data/audio/ttt/6Player.mp3')
+        loadAudio('/_data/audio/ttt/7Player.mp3')
+        loadAudio('/_data/audio/ttt/8Player.mp3')
+        loadAudio('/_data/audio/ttt/occupiedAI.mp3')
+        loadAudio('/_data/audio/ttt/occupiedPlayer.mp3')
+        loadAudio('/_data/audio/ttt/start.mp3')
+        loadAudio('/_data/audio/ttt/victory.mp3')
+        loadAudio('/_data/audio/ttt/defeat.mp3')
         checkLoaded()
     }
     function judgeSame(x, y, z) {
@@ -107,27 +107,27 @@ window.onload = function () {
     }
     function judgePlayer() {
         if (judgeOutcome() == 1)
-            new Audio("audio/ttt/victory.mp3").play();
+            new Audio('/_data/audio/ttt/victory.mp3').play();
         else if (occupiedAI)
-            new Audio("audio/ttt/occupiedAI.mp3").play();
+            new Audio('/_data/audio/ttt/occupiedAI.mp3').play();
         else if (occupiedPlayer)
-            new Audio("audio/ttt/occupiedPlayer.mp3").play();
+            new Audio('/_data/audio/ttt/occupiedPlayer.mp3').play();
         else if (turns[0] == 1)
-            new Audio("audio/ttt/1Player.mp3").play();
+            new Audio('/_data/audio/ttt/1Player.mp3').play();
         else if (turns[0] == 2)
-            new Audio("audio/ttt/2Player.mp3").play();
+            new Audio('/_data/audio/ttt/2Player.mp3').play();
         else if (turns[0] == 3)
-            new Audio("audio/ttt/3Player.mp3").play();
+            new Audio('/_data/audio/ttt/3Player.mp3').play();
         else if (turns[0] == 4)
-            new Audio("audio/ttt/4Player.mp3").play();
+            new Audio('/_data/audio/ttt/4Player.mp3').play();
         else if (turns[0] == 5)
-            new Audio("audio/ttt/5Player.mp3").play();
+            new Audio('/_data/audio/ttt/5Player.mp3').play();
         else if (turns[0] == 6)
-            new Audio("audio/ttt/6Player.mp3").play();
+            new Audio('/_data/audio/ttt/6Player.mp3').play();
         else if (turns[0] == 7)
-            new Audio("audio/ttt/7Player.mp3").play();
+            new Audio('/_data/audio/ttt/7Player.mp3').play();
         else if (turns[0] == 8)
-            new Audio("audio/ttt/8Player.mp3").play();
+            new Audio('/_data/audio/ttt/8Player.mp3').play();
     }
     function doAI() {
         while (true) {
@@ -161,23 +161,23 @@ window.onload = function () {
         if (isOver)
             ;
         else if (turns[1] == 1)
-            new Audio("audio/ttt/1AI.mp3").play();
+            new Audio('/_data/audio/ttt/1AI.mp3').play();
         else if (turns[1] == 2)
-            new Audio("audio/ttt/2AI.mp3").play();
+            new Audio('/_data/audio/ttt/2AI.mp3').play();
         else if (judgeOutcome() == 2)
-            new Audio("audio/ttt/defeat.mp3").play();
+            new Audio('/_data/audio/ttt/defeat.mp3').play();
         else if (turns[1] == 3)
-            new Audio("audio/ttt/3AI.mp3").play();
+            new Audio('/_data/audio/ttt/3AI.mp3').play();
         else if (turns[1] == 4)
-            new Audio("audio/ttt/4AI.mp3").play();
+            new Audio('/_data/audio/ttt/4AI.mp3').play();
         else if (turns[1] == 5)
-            new Audio("audio/ttt/5AI.mp3").play();
+            new Audio('/_data/audio/ttt/5AI.mp3').play();
         else if (turns[1] == 6)
-            new Audio("audio/ttt/6AI.mp3").play();
+            new Audio('/_data/audio/ttt/6AI.mp3').play();
         else if (turns[1] == 7)
-            new Audio("audio/ttt/7AI.mp3").play();
+            new Audio('/_data/audio/ttt/7AI.mp3').play();
         else if (turns[1] == 8)
-            new Audio("audio/ttt/8AI.mp3").play();
+            new Audio('/_data/audio/ttt/8AI.mp3').play();
     }
     class Box {
         constructor(getBox) {

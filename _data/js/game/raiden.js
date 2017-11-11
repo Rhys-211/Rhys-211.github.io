@@ -5,9 +5,9 @@ window.onload = function () {
     const load_start = document.querySelector('#start')
     function drawSkills(context, fighter) {
         const skillUp = new Image()
-        skillUp.src = '/images/raiden/skillUp.png'
+        skillUp.src = '/_data/images/raiden/skillUp.png'
         const skillUpDisabled = new Image()
-        skillUpDisabled.src = '/images/raiden/skillUpDisabled.png'
+        skillUpDisabled.src = '/_data/images/raiden/skillUpDisabled.png'
 
         context.rect(40, 550, 256, 64)
         context.fillStyle = '#fff'
@@ -29,15 +29,15 @@ window.onload = function () {
         context.moveTo(232, 550);
         context.lineTo(232, 614);
         context.lineWidth = 1;
-        context.strokeStyle = "#666666";
+        context.strokeStyle = '#666666';
         context.stroke();
 
-        context.font = "18px Microsoft Yahei";
+        context.font = '18px Microsoft Yahei';
         context.fillStyle = '#000'
-        context.fillText("Q", 40, 614);
-        context.fillText("W", 104, 614);
-        context.fillText("E", 168, 614);
-        context.fillText("R", 232, 614);
+        context.fillText('Q', 40, 614);
+        context.fillText('W', 104, 614);
+        context.fillText('E', 168, 614);
+        context.fillText('R', 232, 614);
 
         context.fillStyle = '#fff'
         var skill = {}
@@ -142,7 +142,7 @@ window.onload = function () {
         context.arc(905, 605, 15, 0, 2 * Math.PI)
         context.fill()
         context.stroke()
-        context.font = "18px Microsoft Yahei";
+        context.font = '18px Microsoft Yahei';
         context.fillStyle = '#000'
         if (level.length == 1)
             context.fillText(level, 899, 612);
@@ -182,11 +182,11 @@ window.onload = function () {
         img.src = src
     }
     function loadImages() {
-        loadImage('images/raiden/bullet.png')
-        loadImage('images/raiden/fighter.png')
-        loadImage('images/raiden/fighterE.png')
-        loadImage('images/raiden/skillUp.png')
-        loadImage('images/raiden/skillUpDisabled.png')
+        loadImage('/_data/images/raiden/bullet.png')
+        loadImage('/_data/images/raiden/fighter.png')
+        loadImage('/_data/images/raiden/fighterE.png')
+        loadImage('/_data/images/raiden/skillUp.png')
+        loadImage('/_data/images/raiden/skillUpDisabled.png')
     }
     function loadGame() {
         const loadArea = document.querySelector('#loadArea')
@@ -202,7 +202,7 @@ window.onload = function () {
         class Bullet {
             constructor() {
                 this.img = new Image()
-                this.img.src = '/images/raiden/bullet.png'
+                this.img.src = '/_data/images/raiden/bullet.png'
                 this.x = fighter.x + fighter.img.width / 2 - this.img.width / 2;
                 this.y = fighter.y - this.img.height;
                 this.speed = 2;
@@ -211,7 +211,7 @@ window.onload = function () {
         class Enemy {
             constructor() {
                 this.img = new Image()
-                this.img.src = '/images/raiden/fighterE.png'
+                this.img.src = '/_data/images/raiden/fighterE.png'
                 this.x = Math.random() * canvas.width;
                 this.y = 0;
                 this.speed = 0.5;
@@ -264,7 +264,7 @@ window.onload = function () {
             context.drawImage(fighter.img, fighter.x, fighter.y)
             fighter.levelUp()
         };
-        fighter.img.src = '/images/raiden/fighter.png';
+        fighter.img.src = '/_data/images/raiden/fighter.png';
         window.addEventListener('keydown', function (event) {
             fighter.keyDowns[event.key] = true
         })

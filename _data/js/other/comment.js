@@ -74,10 +74,44 @@ window.onload = function () {
             if (comment_input.value != '') {
                 comment_btn.disabled = 'disabled';
                 comment_btn.innerText = '发布中......'
+                //获取系统版本
+                /*
+                var ua = navigator.userAgent
+                var system
+                if (ua.indexOf('Windows NT 5.0') > -1 || ua.indexOf("Windows 2000") > -1)
+                    system = 'Windows 2000'
+                else if (ua.indexOf('Windows NT 5.1') > -1 || ua.indexOf("Windows XP") > -1)
+                    system = 'Windows XP';
+                else if (ua.indexOf('Windows NT 5.2') > -1 || ua.indexOf("Windows 2003") > -1)
+                    system = 'Windows 2003'
+                else if (ua.indexOf('Windows NT 6.0') > -1 || ua.indexOf("Windows Vista") > -1)
+                    system = 'Windows Vista'
+                else if (ua.indexOf('Windows NT 6.1') > -1 || ua.indexOf("Windows 7") > -1)
+                    system = 'Windows 7'
+                else if (ua.indexOf('Windows NT 6.2') > -1 || ua.indexOf("Windows 8") > -1)
+                    system = 'Window 8'
+                else if (ua.indexOf('Windows NT 6.3') > -1 || ua.indexOf("Windows 8.1") > -1)
+                    system = 'Windows 8.1'
+                else if (ua.indexOf('Windows NT 10.0') > -1 || ua.indexOf("Windows 10") > -1)
+                    system = 'Windows 10'
+                else if (ua.indexOf('Android') > -1)
+                    system = ua.split(';')[1]
+                else if (ua.indexOf('iPhone') > -1)
+                    system = 'IOS ' + navigator.userAgent.match(/CPU iPhone OS (.*?) like Mac OS X/)[1].replace(/_/g,'.')
+                else if (ua.indexOf('Linux') > -1)
+                    system = 'Linux'
+                else
+                    system = "未知系统"
+                if (ua.indexOf("x64") > -1)
+                    system += ' 64位'
+                else if (ua.indexOf("x32") > -1)
+                    system += ' 32位'
+                */
                 commentQuery.find({
                     success: function (results) {
                         var comment = new Comment();
                         comment.set("userId", json.id);
+                        /*comment.set("systemVersion", system);*/
                         comment.set("content", comment_input.value);
                         comment.save(null, {
                             success: function (comment) {

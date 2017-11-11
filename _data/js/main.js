@@ -77,7 +77,7 @@ function main() {
 
     sd_game_abnormal_winmine.addEventListener('click', function () {
         if (confirm("您确认要打开 扫雷 吗？\n\n最低配置：\nCPU: AMD Ryzen Threadripper 1950X\n显卡: GeForce GTX 1080 Ti\n内存: 128GB\n\n推荐配置:\nCPU：神威·太湖之光\n显卡：六十四路 NVIDIA TITAN Xp\n内存：6144GB") == 1)
-            window.open('sd_winmine.html');
+            window.open('/game/winmine.html');
     })
     sd_register.addEventListener('click', function () {
         window.open('/user/register.html', '_self');
