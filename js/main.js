@@ -1,12 +1,4 @@
-﻿if (navigator.userAgent.indexOf("Chrome") != -1) {
-    var version = /Chrome\/[0123456789.]*/.exec(navigator.userAgent)[0].replace(/Chrome\//, '')
-    var version_int = version.replace(/\.[0123456789.]*/, '')
-    if (version < 57)
-        alert('请将浏览器内核升至57或及其以上。您目前使用的的浏览器的版本号为' + version + '。')
-} else if (!+[1,] || /rv:11.0/.exec(navigator.userAgent))
-    alert("请勿使用IE浏览器，建议使用Chrome,Firefox或各种国产浏览器的极速模式。");
-
-'use strict'
+﻿'use strict'
 function writeCookies(object) {
     var time = new Date();
     time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
