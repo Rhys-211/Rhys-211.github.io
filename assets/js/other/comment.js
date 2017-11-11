@@ -45,13 +45,13 @@ window.onload = function () {
                 commentItem_postingTime.innerText = comments[i].createdAt
                 commentItem_content.innerText = comments[i].content
                 if(comments[i].system[0] == 'Win8-10')
-                    commentItem_system.setAttribute('src','/_data/images/comment/Win8-10.jpg')
+                    commentItem_system.setAttribute('src','/assets/images/comment/Win8-10.jpg')
                 if(comments[i].system[0] == 'Windows')
-                    commentItem_system.setAttribute('src','/_data/images/comment/Windows.jpg')
+                    commentItem_system.setAttribute('src','/assets/images/comment/Windows.jpg')
                 else if(comments[i].system[0] == 'Apple')
-                    commentItem_system.setAttribute('src','/_data/images/comment/Apple.jpg')
+                    commentItem_system.setAttribute('src','/assets/images/comment/Apple.jpg')
                 else if(comments[i].system[0] == 'Android')
-                    commentItem_system.setAttribute('src','/_data/images/comment/Android.jpg')
+                    commentItem_system.setAttribute('src','/assets/images/comment/Android.jpg')
                 commentItem_system.setAttribute('title',comments[i].system[1])
                 //对commentItem中的元素的剩余用户内容进行赋值操作（用户名，头像）
                 userQuery.get(comments[i].userId, {

@@ -5,9 +5,9 @@ window.onload = function () {
     const load_start = document.querySelector('#start')
     function drawSkills(context, fighter) {
         const skillUp = new Image()
-        skillUp.src = '/_data/images/raiden/skillUp.png'
+        skillUp.src = '/assets/images/raiden/skillUp.png'
         const skillUpDisabled = new Image()
-        skillUpDisabled.src = '/_data/images/raiden/skillUpDisabled.png'
+        skillUpDisabled.src = '/assets/images/raiden/skillUpDisabled.png'
 
         context.rect(40, 550, 256, 64)
         context.fillStyle = '#fff'
@@ -182,11 +182,11 @@ window.onload = function () {
         img.src = src
     }
     function loadImages() {
-        loadImage('/_data/images/raiden/bullet.png')
-        loadImage('/_data/images/raiden/fighter.png')
-        loadImage('/_data/images/raiden/fighterE.png')
-        loadImage('/_data/images/raiden/skillUp.png')
-        loadImage('/_data/images/raiden/skillUpDisabled.png')
+        loadImage('/assets/images/raiden/bullet.png')
+        loadImage('/assets/images/raiden/fighter.png')
+        loadImage('/assets/images/raiden/fighterE.png')
+        loadImage('/assets/images/raiden/skillUp.png')
+        loadImage('/assets/images/raiden/skillUpDisabled.png')
     }
     function loadGame() {
         const loadArea = document.querySelector('#loadArea')
@@ -202,7 +202,7 @@ window.onload = function () {
         class Bullet {
             constructor() {
                 this.img = new Image()
-                this.img.src = '/_data/images/raiden/bullet.png'
+                this.img.src = '/assets/images/raiden/bullet.png'
                 this.x = fighter.x + fighter.img.width / 2 - this.img.width / 2;
                 this.y = fighter.y - this.img.height;
                 this.speed = 2;
@@ -211,7 +211,7 @@ window.onload = function () {
         class Enemy {
             constructor() {
                 this.img = new Image()
-                this.img.src = '/_data/images/raiden/fighterE.png'
+                this.img.src = '/assets/images/raiden/fighterE.png'
                 this.x = Math.random() * canvas.width;
                 this.y = 0;
                 this.speed = 0.5;
@@ -264,7 +264,7 @@ window.onload = function () {
             context.drawImage(fighter.img, fighter.x, fighter.y)
             fighter.levelUp()
         };
-        fighter.img.src = '/_data/images/raiden/fighter.png';
+        fighter.img.src = '/assets/images/raiden/fighter.png';
         window.addEventListener('keydown', function (event) {
             fighter.keyDowns[event.key] = true
         })

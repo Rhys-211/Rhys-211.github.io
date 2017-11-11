@@ -24,7 +24,7 @@ window.onload = function () {
         return img;
     }
     function startGame() {
-        let startbgm = new Audio('/_data/audio/startbgm.mp3');
+        let startbgm = new Audio('/assets/audio/startbgm.mp3');
         startbgm.play();
         startbgm.setAttribute('loop', 'loop');
         canvas.addEventListener('mousemove', function (event) {
@@ -65,10 +65,10 @@ window.onload = function () {
                 else
                     alert('暂未开启')
         })
-        let startScene = new Scene('/_data/images/unera/background.png');
+        let startScene = new Scene('/assets/images/unera/background.png');
         startScene.drawBackground();
-        startScene.newArchive = getImg('/_data/images/unera/newArchive.png', 880, 100, 360, 120)
-        startScene.loadArchive = getImg('/_data/images/unera/loadArchive.png', 880, 300, 360, 120)
+        startScene.newArchive = getImg('/assets/images/unera/newArchive.png', 880, 100, 360, 120)
+        startScene.loadArchive = getImg('/assets/images/unera/loadArchive.png', 880, 300, 360, 120)
     }
     startGame();
 }
