@@ -72,6 +72,8 @@ window.onload = function () {
                     commentItem_browser.setAttribute('src', '/assets/images/comment/Opera.png')
                 else if (comments[i].browser[0] == 'Edge')
                     commentItem_browser.setAttribute('src', '/assets/images/comment/Edge.png')
+                else if (comments[i].browser[0] == 'Silk')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/Silk.png')
                 else
                     commentItem_browser.setAttribute('src', '/assets/images/comment/unknown.png')
                 commentItem_browser.setAttribute('title', comments[i].browser[1])
@@ -180,6 +182,9 @@ window.onload = function () {
                 } else if (ua.indexOf('Chrome') > -1) {
                     browser[0] = 'Chrome'
                     browser[1] = 'Chrome'
+                } else if (ua.indexOf('Silk') > -1) {
+                    browser[0] = 'Silk'
+                    browser[1] = 'Silk'
                 } else if (ua.indexOf('Safari') > -1) {
                     browser[0] = 'Safari'
                     browser[1] = 'Safari'
