@@ -9,7 +9,7 @@
 * 增加被敌机攻击的功能
 * 可以使用`Q`、`W`、`E`、`R`技能
 ## 小目标
-* 增加 - 评论区信息附带浏览器版本，设备型号及IP地理位置
+* 增加 - 评论区信息附带浏览器版本，设备型号~~及IP地理位置（由于缺少后端服务器或可用接口，该功能已被暂时地长期弃置）~~
 * 增加 - 为Ryzeway增加某未定BGM
 * 增加 - 账号增加修改密码的功能
 * 增加 - 账号增加上传头像的功能
@@ -30,7 +30,7 @@
 ## 框架
 * `bmob-min.js` - [Bmob后端云](https://bmob.cn/)
 * `normalize.css` - [Normalize.css](http://necolas.github.io/normalize.css/)
-* https://fonts.googleapis.com/icon?family=Material+Icons - [Material icons](https://material.io/icons/)
+* `https://fonts.googleapis.com/icon?family=Material+Icons` - [Material icons](https://material.io/icons/)
 # 瞎扯区
 ## 关于团队
 一个由游戏宅，动漫宅，IT宅的所组成的集合体。其中有n个看B站，n个刷知乎，n个听网易云，n个玩联盟，n个关注数码产品（n∈Z∩[2,max]，max=studio.length）.<br>
