@@ -162,7 +162,7 @@ window.onload = function () {
                     system[0] = 'unknown'
                     system[1] = "未知系统"
                 }
-                if (ua.indexOf("x64") > -1)
+                if (ua.indexOf("x64") > -1 || ua.indexOf("WOW64") > -1)
                     system[1] += ' 64位'
                 else if (ua.indexOf("x32") > -1)
                     system[1] += ' 32位'
