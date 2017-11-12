@@ -20,6 +20,7 @@ window.onload = function () {
                 comments[i] = {};
                 comments[i].content = results[i].attributes.content;
                 comments[i].system = results[i].attributes.system;
+                comments[i].browser = results[i].attributes.browser;
                 comments[i].userId = results[i].attributes.userId;
                 comments[i].createdAt = results[i].createdAt;
             }
@@ -33,30 +34,47 @@ window.onload = function () {
                 let commentItem_postingTime = document.createElement('p')
                 let commentItem_content = document.createElement('p')
                 let commentItem_system = document.createElement('img')
+                let commentItem_browser = document.createElement('img')
                 //对commentItem中的元素的的属性进行常规赋值操作（主要是一些CSS样式）
                 commentItem_link.setAttribute('target', '_blank')
                 commentItem_userAvatar.setAttribute('class', 'avatar')
                 commentItem_username.setAttribute('class', 'commentItem_username')
                 commentItem_postingTime.setAttribute('class', 'commentItem_postingTime')
-                commentItem_system.setAttribute('class', 'commentItem_system')
+                commentItem_system.setAttribute('class', 'commentItem_incidental')
+                commentItem_browser.setAttribute('class', 'commentItem_incidental')
                 commentItem_content.setAttribute('class', 'commentItem_content')
-                //对commentItem中的元素的主要内容进行赋值操作（个人主页地址，发送时间，内容,系统）
+                //对commentItem中的元素的主要内容进行赋值操作（个人主页地址，发送时间，内容,系统，浏览器）
                 commentItem_link.setAttribute('href', '/user/profile.html?id=' + comments[i].userId)
                 commentItem_postingTime.innerText = comments[i].createdAt
                 commentItem_content.innerText = comments[i].content
-                if(comments[i].system[0] == 'Win8-10')
-                    commentItem_system.setAttribute('src','/assets/images/comment/Win8-10.png')
-                if(comments[i].system[0] == 'Windows')
-                    commentItem_system.setAttribute('src','/assets/images/comment/Windows.jpg')
-                else if(comments[i].system[0] == 'Apple')
-                    commentItem_system.setAttribute('src','/assets/images/comment/Apple.jpg')
-                else if(comments[i].system[0] == 'Android')
-                    commentItem_system.setAttribute('src','/assets/images/comment/Android.jpg')
-                else if(comments[i].system[0] == 'Linux')
-                    commentItem_system.setAttribute('src','/assets/images/comment/Linux.png')
-                else if(comments[i].system[0] == 'unknown')
-                    commentItem_system.setAttribute('src','/assets/images/comment/unknown.png')
-                commentItem_system.setAttribute('title',comments[i].system[1])
+                //对commentItem中的附带信息（系统）进行赋值操作
+                if (comments[i].system[0] == 'Win8-10')
+                    commentItem_system.setAttribute('src', '/assets/images/comment/Win8-10.png')
+                if (comments[i].system[0] == 'Windows')
+                    commentItem_system.setAttribute('src', '/assets/images/comment/Windows.jpg')
+                else if (comments[i].system[0] == 'Apple')
+                    commentItem_system.setAttribute('src', '/assets/images/comment/Apple.jpg')
+                else if (comments[i].system[0] == 'Android')
+                    commentItem_system.setAttribute('src', '/assets/images/comment/Android.jpg')
+                else if (comments[i].system[0] == 'Linux')
+                    commentItem_system.setAttribute('src', '/assets/images/comment/Linux.png')
+                else if (comments[i].system[0] == 'unknown')
+                    commentItem_system.setAttribute('src', '/assets/images/comment/unknown.png')
+                commentItem_system.setAttribute('title', comments[i].system[1])
+                //对commentItem中的附带信息（浏览器）进行赋值操作
+                if (comments[i].browser[0] == 'Chrome')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/Chrome.png')
+                else if (comments[i].browser[0] == 'Firefox')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/Firefox.jpg')
+                else if (comments[i].browser[0] == 'Safari')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/Safari.png')
+                else if (comments[i].browser[0] == 'Opera')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/Opera.png')
+                else if (comments[i].browser[0] == 'Edge')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/Edge.png')
+                else
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/unknown.png')
+                commentItem_browser.setAttribute('title', comments[i].browser[1])
                 //对commentItem中的元素的剩余用户内容进行赋值操作（用户名，头像）
                 userQuery.get(comments[i].userId, {
                     success: function (user) {
@@ -77,6 +95,7 @@ window.onload = function () {
                 commentItem.appendChild(commentItem_username);
                 commentItem.appendChild(commentItem_postingTime);
                 commentItem.appendChild(commentItem_system);
+                commentItem.appendChild(commentItem_browser);
                 commentItem.appendChild(commentItem_content);
                 commentItems.appendChild(commentItem);
             }
@@ -147,13 +166,35 @@ window.onload = function () {
                     system[1] += ' 64位'
                 else if (ua.indexOf("x32") > -1)
                     system[1] += ' 32位'
-
+                //获取浏览器
+                var browser = new Array(2)
+                if (ua.indexOf('Firefox') > -1) {
+                    browser[0] = 'Firefox'
+                    browser[1] = 'Firefox'
+                } else if (ua.indexOf('Opera') > -1) {
+                    browser[0] = 'Opera'
+                    browser[1] = 'Opera'
+                } else if (ua.indexOf('Edge') > -1) {
+                    browser[0] = 'Edge'
+                    browser[1] = 'Edge'
+                } else if (ua.indexOf('Chrome') > -1) {
+                    browser[0] = 'Chrome'
+                    browser[1] = 'Chrome'
+                } else if (ua.indexOf('Safari') > -1) {
+                    browser[0] = 'Safari'
+                    browser[1] = 'Safari'
+                } else {
+                    browser[0] = 'unknown'
+                    browser[1] = "未知浏览器"
+                }
                 commentQuery.find({
                     success: function (results) {
                         var comment = new Comment();
-                        comment.set("userId", json.id);
-                        comment.set("system", system);
-                        comment.set("content", comment_input.value);
+                        comment.set('userId', json.id);
+                        comment.set('system', system);
+                        comment.set('browser', browser);
+                        comment.set('ua', ua);
+                        comment.set('content', comment_input.value);
                         comment.save(null, {
                             success: function (comment) {
                                 alert('发布成功！');

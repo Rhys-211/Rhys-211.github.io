@@ -75,9 +75,10 @@ div#commentItems:hover {
     display:inline-block;
     color:#93999f;
 }
-#commentItems .commentItem_system{
+#commentItems .commentItem_incidental{
     position: relative;
     top:-15px;
+    margin:0 5px 0 5px
 }
 #commentItems .commentItem_content{
     margin:0;
