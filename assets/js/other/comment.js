@@ -52,6 +52,10 @@ window.onload = function () {
                     commentItem_system.setAttribute('src','/assets/images/comment/Apple.jpg')
                 else if(comments[i].system[0] == 'Android')
                     commentItem_system.setAttribute('src','/assets/images/comment/Android.jpg')
+                else if(comments[i].system[0] == 'Linux')
+                    commentItem_system.setAttribute('src','/assets/images/comment/Linux.png')
+                else if(comments[i].system[0] == 'unknown')
+                    commentItem_system.setAttribute('src','/assets/images/comment/unknown.png')
                 commentItem_system.setAttribute('title',comments[i].system[1])
                 //对commentItem中的元素的剩余用户内容进行赋值操作（用户名，头像）
                 userQuery.get(comments[i].userId, {
@@ -136,7 +140,7 @@ window.onload = function () {
                     system[1] = 'Linux'
                 }
                 else {
-                    system[0] = 'other'
+                    system[0] = 'unknown'
                     system[1] = "未知系统"
                 }
                 if (ua.indexOf("x64") > -1)
