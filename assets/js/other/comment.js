@@ -72,6 +72,8 @@ window.onload = function () {
                     commentItem_browser.setAttribute('src', '/assets/images/comment/Opera.png')
                 else if (comments[i].browser[0] == 'Edge')
                     commentItem_browser.setAttribute('src', '/assets/images/comment/Edge.png')
+                else if (comments[i].browser[0] == 'QQBrowser')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/QQbrowser.png')
                 else if (comments[i].browser[0] == 'Silk')
                     commentItem_browser.setAttribute('src', '/assets/images/comment/Silk.png')
                 else
@@ -179,6 +181,9 @@ window.onload = function () {
                 } else if (ua.indexOf('Edge') > -1) {
                     browser[0] = 'Edge'
                     browser[1] = 'Microsoft Edge'
+                } else if (ua.indexOf('QQBrowser') > -1) {
+                    browser[0] = 'QQBrowser'
+                    browser[1] = 'QQ浏览器'
                 } else if (ua.indexOf('Chrome') > -1) {
                     browser[0] = 'Chrome'
                     browser[1] = 'Google Chrome'
