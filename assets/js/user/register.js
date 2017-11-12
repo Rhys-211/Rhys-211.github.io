@@ -44,7 +44,7 @@ window.onload = function () {
                             user.set("username", username.value);
                             user.set("email", userEmail.value);
                             user.set("info", '');
-                            user.set("avatarUrl", '/images/userAvatar.png');
+                            user.set("avatarUrl", '/assets/images/userAvatar.png');
                             user.save(null, {
                                 success: function (user) {
                                     alert('注册成功！');
