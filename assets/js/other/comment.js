@@ -45,7 +45,7 @@ window.onload = function () {
                 commentItem_postingTime.innerText = comments[i].createdAt
                 commentItem_content.innerText = comments[i].content
                 if(comments[i].system[0] == 'Win8-10')
-                    commentItem_system.setAttribute('src','/assets/images/comment/Win8-10.jpg')
+                    commentItem_system.setAttribute('src','/assets/images/comment/Win8-10.png')
                 if(comments[i].system[0] == 'Windows')
                     commentItem_system.setAttribute('src','/assets/images/comment/Windows.jpg')
                 else if(comments[i].system[0] == 'Apple')
