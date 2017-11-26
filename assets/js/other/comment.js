@@ -175,7 +175,7 @@ window.onload = function () {
                 if (ua.indexOf('Firefox') > -1) {
                     browser[0] = 'Firefox'
                     browser[1] = 'Mozilla Firefox'
-                } else if (ua.indexOf('Opera') > -1) {
+                } else if (ua.indexOf('Opera' || 'OPR') > -1) {
                     browser[0] = 'Opera'
                     browser[1] = 'Opera'
                 } else if (ua.indexOf('Edge') > -1) {
