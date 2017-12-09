@@ -253,6 +253,18 @@ function initGame() {
     }
     let firstBullet = new Bullet()
     let lastBullet = new Bullet()
+    function getNumberOfBullets() {
+        var count = 0
+        for (let bullet = firstBullet; bullet != null; bullet = bullet.next)
+            count++
+        return count
+    }
+    function getNumberOfEnemies() {
+        var count = 0
+        for (let enemy = firstEnemy; enemy != null; enemy = enemy.next)
+            count++
+        return count
+    }
     firstBullet = lastBullet;
 
     let firstEnemy = new Enemy()
@@ -334,17 +346,25 @@ function initGame() {
         }
         context.drawImage(fighter.img, fighter.x, fighter.y)
     }, 1000 / 60)
-    //发射子弹
+    //刷新子弹
     setInterval(function () {
+        //发射子弹
         let oldLastBullet = lastBullet;
         lastBullet.next = new Bullet();
         lastBullet = lastBullet.next;
+        //销毁越出边界的子弹
+        if (firstBullet.y < 0) 
+            firstBullet = firstBullet.next
     }, fighter.firingInterval)
-    //出现敌人
+    //刷新敌人
     setInterval(function () {
+        //出现敌人
         let oldLastEnemy = Enemy;
         lastEnemy.next = new Enemy;
         lastEnemy = lastEnemy.next;
+        //销毁越出边界的敌人
+        if (firstEnemy.y > 640) 
+            firstEnemy = firstEnemy.next
     }, 4000)
     //子弹边界判断
     /*setInterval(function () {
