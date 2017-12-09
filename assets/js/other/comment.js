@@ -174,13 +174,8 @@ window.onload = function () {
                 var browser = new Array(2)
                 if (ua.indexOf('Firefox') > -1) {
                     browser[0] = 'Firefox'
-<<<<<<< HEAD
-                    browser[1] = 'Firefox'
-                } else if (ua.indexOf('OPR') > -1) {
-=======
                     browser[1] = 'Mozilla Firefox'
                 } else if (ua.indexOf('Opera' || 'OPR') > -1) {
->>>>>>> 0a6e36d2b79e57804e8dfa90919f1412a2289a1b
                     browser[0] = 'Opera'
                     browser[1] = 'Opera'
                 } else if (ua.indexOf('Edge') > -1) {
