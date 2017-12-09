@@ -4,7 +4,6 @@ let pwd2_usable = false;
 let username_usable = false;
 let userEmail_usable = false;
 window.onload = function () {
-    main();
     const acntNmb = document.getElementById('acntNmb_input');
     const pwd = document.getElementById('pwd_input');
     const pwd2 = document.getElementById('pwd2_input');

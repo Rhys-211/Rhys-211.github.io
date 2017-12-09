@@ -1,5 +1,4 @@
 ﻿window.onload = function () {
-    main();
     const username = document.getElementById('username');
     const userInfo = document.getElementById('userInfo');
     const userAcntNmb = document.getElementById('userAcntNum');

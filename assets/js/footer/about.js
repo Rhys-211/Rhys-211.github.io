@@ -1,5 +1,4 @@
 window.onload = function(){
-    main()
     var musicOfHaiyang = document.querySelector('#musicOfHaiyang')
     var srcOfHaiyang = '//music.163.com/outchain/player?type=2&id='
     if(Math.random() < 0.5)

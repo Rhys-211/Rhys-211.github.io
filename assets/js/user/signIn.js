@@ -1,5 +1,4 @@
 window.onload = function () {
-    main();
     const acntNmb = document.getElementById('acntNmb_input');
     const pwd = document.getElementById('pwd_input');
     const acntNmb_info = document.getElementById('acntNmb_info');

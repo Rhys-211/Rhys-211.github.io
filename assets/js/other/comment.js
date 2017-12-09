@@ -1,6 +1,5 @@
 let comments = new Array();
 window.onload = function () {
-    main();
     const commentItems = document.querySelector('#commentItems');
     const comment_input = document.querySelector('#comment_input');
     const comment_btn = document.querySelector('#comment_btn');
