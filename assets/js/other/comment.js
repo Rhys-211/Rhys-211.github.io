@@ -164,14 +164,14 @@ window.onload = function () {
                 }
                 if (ua.indexOf("x64") > -1)
                     system[1] += ' 64位'
-                else if (ua.indexOf("x32") > -1)
+                else if (system[0] == 'Windows' || 'Win8-10')
                     system[1] += ' 32位'
                 //获取浏览器
                 var browser = new Array(2)
                 if (ua.indexOf('Firefox') > -1) {
                     browser[0] = 'Firefox'
                     browser[1] = 'Firefox'
-                } else if (ua.indexOf('Opera') > -1) {
+                } else if (ua.indexOf('OPR') > -1) {
                     browser[0] = 'Opera'
                     browser[1] = 'Opera'
                 } else if (ua.indexOf('Edge') > -1) {
