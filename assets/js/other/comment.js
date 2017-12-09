@@ -72,6 +72,10 @@ window.onload = function () {
                     commentItem_browser.setAttribute('src', '/assets/images/comment/Opera.png')
                 else if (comments[i].browser[0] == 'Edge')
                     commentItem_browser.setAttribute('src', '/assets/images/comment/Edge.png')
+                else if (comments[i].browser[0] == 'QQBrowser')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/QQbrowser.png')
+                else if (comments[i].browser[0] == 'Silk')
+                    commentItem_browser.setAttribute('src', '/assets/images/comment/Silk.png')
                 else
                     commentItem_browser.setAttribute('src', '/assets/images/comment/unknown.png')
                 commentItem_browser.setAttribute('title', comments[i].browser[1])
@@ -116,35 +120,35 @@ window.onload = function () {
                 var system = new Array(2)
                 if (ua.indexOf('Windows NT 5.0') > -1 || ua.indexOf("Windows 2000") > -1) {
                     system[0] = 'Windows'
-                    system[1] = 'Windows 2000'
+                    system[1] = 'Microsoft Windows 2000'
                 }
                 else if (ua.indexOf('Windows NT 5.1') > -1 || ua.indexOf("Windows XP") > -1) {
                     system[0] = 'Windows'
-                    system[1] = 'Windows XP';
+                    system[1] = 'Microsoft Windows XP';
                 }
                 else if (ua.indexOf('Windows NT 5.2') > -1 || ua.indexOf("Windows 2003") > -1) {
                     system[0] = 'Windows'
-                    system[1] = 'Windows 2003'
+                    system[1] = 'Microsoft Windows 2003'
                 }
                 else if (ua.indexOf('Windows NT 6.0') > -1 || ua.indexOf("Windows Vista") > -1) {
                     system[0] = 'Windows'
-                    system[1] = 'Windows Vista'
+                    system[1] = 'Microsoft Windows Vista'
                 }
                 else if (ua.indexOf('Windows NT 6.1') > -1 || ua.indexOf("Windows 7") > -1) {
                     system[0] = 'Windows'
-                    system[1] = 'Windows 7'
+                    system[1] = 'Microsoft Windows 7'
                 }
                 else if (ua.indexOf('Windows NT 6.2') > -1 || ua.indexOf("Windows 8") > -1) {
                     system[0] = 'Win8-10'
-                    system[1] = 'Window 8'
+                    system[1] = 'Microsoft Window 8'
                 }
                 else if (ua.indexOf('Windows NT 6.3') > -1 || ua.indexOf("Windows 8.1") > -1) {
                     system[0] = 'Win8-10'
-                    system[1] = 'Windows 8.1'
+                    system[1] = 'Microsoft Windows 8.1'
                 }
                 else if (ua.indexOf('Windows NT 10.0') > -1 || ua.indexOf("Windows 10") > -1) {
                     system[0] = 'Win8-10'
-                    system[1] = 'Windows 10'
+                    system[1] = 'Microsoft Windows 10'
                 }
                 else if (ua.indexOf('Android') > -1) {
                     system[0] = 'Android'
@@ -162,7 +166,7 @@ window.onload = function () {
                     system[0] = 'unknown'
                     system[1] = "未知系统"
                 }
-                if (ua.indexOf("x64") > -1)
+                if (ua.indexOf("x64") > -1 || ua.indexOf("WOW64") > -1)
                     system[1] += ' 64位'
                 else if (system[0] == 'Windows' || 'Win8-10')
                     system[1] += ' 32位'
@@ -170,19 +174,30 @@ window.onload = function () {
                 var browser = new Array(2)
                 if (ua.indexOf('Firefox') > -1) {
                     browser[0] = 'Firefox'
+<<<<<<< HEAD
                     browser[1] = 'Firefox'
                 } else if (ua.indexOf('OPR') > -1) {
+=======
+                    browser[1] = 'Mozilla Firefox'
+                } else if (ua.indexOf('Opera' || 'OPR') > -1) {
+>>>>>>> 0a6e36d2b79e57804e8dfa90919f1412a2289a1b
                     browser[0] = 'Opera'
                     browser[1] = 'Opera'
                 } else if (ua.indexOf('Edge') > -1) {
                     browser[0] = 'Edge'
-                    browser[1] = 'Edge'
+                    browser[1] = 'Microsoft Edge'
+                } else if (ua.indexOf('QQBrowser') > -1) {
+                    browser[0] = 'QQBrowser'
+                    browser[1] = 'QQ浏览器'
                 } else if (ua.indexOf('Chrome') > -1) {
                     browser[0] = 'Chrome'
-                    browser[1] = 'Chrome'
+                    browser[1] = 'Google Chrome'
+                } else if (ua.indexOf('Silk') > -1) {
+                    browser[0] = 'Silk'
+                    browser[1] = 'Amazon Silk'
                 } else if (ua.indexOf('Safari') > -1) {
                     browser[0] = 'Safari'
-                    browser[1] = 'Safari'
+                    browser[1] = 'Apple Safari'
                 } else {
                     browser[0] = 'unknown'
                     browser[1] = "未知浏览器"
