@@ -183,6 +183,7 @@ function loadImages() {
     loadImage('/assets/images/raiden/bullet.png')
     loadImage('/assets/images/raiden/fighter.png')
     loadImage('/assets/images/raiden/fighterE.png')
+    loadImage('/assets/images/raiden/explosion.png')
     loadImage('/assets/images/raiden/skillUp.png')
     loadImage('/assets/images/raiden/skillUpDisabled.png')
 }
@@ -194,7 +195,7 @@ function loadGame() {
     checkLoaded()
 }
 function initGame() {
-    alert('游戏开发中，目前仅有移动与 fa♂射 子弹功能。无法攻击到敌人为正常现象。')
+    alert('游戏开发中，目前仅有移动与 fa♂射 子弹等功能。攻击到敌人时，敌机不死，只有打击特效（其实是死亡特效）并且还会残留等均视为正常现象。')
     const canvas = document.querySelector('canvas')
     const context = canvas.getContext('2d')
     class Bullet {
@@ -213,6 +214,23 @@ function initGame() {
             this.x = Math.random() * canvas.width;
             this.y = 0;
             this.speed = 0.5;
+        }
+    }
+    class Explosion {
+        constructor(x, y) {
+            this.img = new Image()
+            this.img.src = '/assets/images/raiden/explosion.png'
+            this.x = x
+            this.y = y
+        }
+        get duration() {
+            return 1000
+        }
+        get width() {
+            return 32
+        }
+        get height() {
+            return 32
         }
     }
     let fighter = {
@@ -251,25 +269,44 @@ function initGame() {
             this.skillPoints++
         },
     }
+    let bullets = {
+        width: 32,
+        height: 32,
+        getLength: function () {
+            var count = 0
+            for (let bullet = firstBullet; bullet != null; bullet = bullet.next)
+                count++
+            return count
+        },
+    }
+    let enemies = {
+        width: 32,
+        height: 32,
+        getLength: function () {
+            var count = 0
+            for (let enemy = firstEnemy; enemy != null; enemy = enemy.next)
+                count++
+            return count
+        }
+    }
+    let explosions = {
+        getLength: function () {
+            var count = 0
+            for (let explosion = firstExplosion; explosion != null; explosion = explosion.next)
+                count++
+            return count
+        }
+    }
     let firstBullet = new Bullet()
     let lastBullet = new Bullet()
-    function getNumberOfBullets() {
-        var count = 0
-        for (let bullet = firstBullet; bullet != null; bullet = bullet.next)
-            count++
-        return count
-    }
-    function getNumberOfEnemies() {
-        var count = 0
-        for (let enemy = firstEnemy; enemy != null; enemy = enemy.next)
-            count++
-        return count
-    }
     firstBullet = lastBullet;
-
     let firstEnemy = new Enemy()
     let lastEnemy = new Enemy()
     firstEnemy = lastEnemy;
+    let firstExplosion = new Explosion()
+    let lastExplosion = new Explosion()
+    firstExplosion = lastExplosion;
+
     fighter.img.onload = function () {
         context.drawImage(fighter.img, fighter.x, fighter.y)
         fighter.levelUp()
@@ -344,31 +381,47 @@ function initGame() {
         for (let enemy = firstEnemy; enemy != null; enemy = enemy.next) {
             context.drawImage(enemy.img, enemy.x, enemy.y)
         }
+        for (let explosion = firstExplosion; explosion != null; explosion = explosion.next) {
+            context.drawImage(explosion.img, explosion.x, explosion.y)
+        }
         context.drawImage(fighter.img, fighter.x, fighter.y)
     }, 1000 / 60)
     //刷新子弹
     setInterval(function () {
         //发射子弹
-        let oldLastBullet = lastBullet;
         lastBullet.next = new Bullet();
         lastBullet = lastBullet.next;
         //销毁越出边界的子弹
-        if (firstBullet.y < 0) 
+        if (firstBullet.y < 0)
             firstBullet = firstBullet.next
     }, fighter.firingInterval)
     //刷新敌人
     setInterval(function () {
         //出现敌人
-        let oldLastEnemy = Enemy;
         lastEnemy.next = new Enemy;
         lastEnemy = lastEnemy.next;
         //销毁越出边界的敌人
-        if (firstEnemy.y > 640) 
+        if (firstEnemy.y > 640)
             firstEnemy = firstEnemy.next
     }, 4000)
     //子弹边界判断
-    /*setInterval(function () {
-        
-    }, 100)*/
+    setInterval(function () {
+        for (let bullet = firstBullet; bullet != null; bullet = bullet.next) {
+            for (let enemy = firstEnemy; enemy != null; enemy = enemy.next) {
+                let xIsOK = enemy.x < bullet.x && enemy.x + enemies.width > bullet.x
+                let yIsOK = enemy.y < bullet.y && enemy.y + enemies.height > bullet.y
+                if (xIsOK && yIsOK) {
+                    lastExplosion.next = new Explosion(enemy.x, enemy.y)
+                    lastExplosion = lastExplosion.next
+                    console.log(explosions.getLength())
+                    setTimeout(function () {
+
+                    }, Explosion.duration)
+                }
+
+            }
+        }
+
+    }, 100)
 }
 loadGame()
