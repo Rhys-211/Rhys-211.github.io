@@ -167,7 +167,7 @@ window.onload = function () {
                 }
                 if (ua.indexOf("x64") > -1 || ua.indexOf("WOW64") > -1)
                     system[1] += ' 64位'
-                else if (system[0] == 'Windows' || 'Win8-10')
+                else if (system[0] == 'Windows' || system[0] == 'Win8-10')
                     system[1] += ' 32位'
                 //获取浏览器
                 var browser = new Array(2)
