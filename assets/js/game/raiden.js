@@ -195,7 +195,7 @@ function loadGame() {
     checkLoaded()
 }
 function initGame() {
-    alert('游戏开发中，目前仅有移动与 fa♂射 子弹等功能。攻击到敌人时、敌机不死、子弹会耗尽、只有打击特效（其实是死亡特效）并且还会残留等均视为正常现象。')
+    alert('游戏开发中，目前仅有移动与 fa♂射 子弹等功能。攻击到敌人时，敌机不死，只有打击特效（其实是死亡特效）并且还会残留等均视为正常现象。')
     const canvas = document.querySelector('canvas')
     const context = canvas.getContext('2d')
     class Bullet {
@@ -390,7 +390,6 @@ function initGame() {
     setInterval(function () {
         //发射子弹
         lastBullet.next = new Bullet();
-        lastBullet.next.front = lastBullet;
         lastBullet = lastBullet.next;
         //销毁越出边界的子弹
         if (firstBullet.y < 0)
@@ -407,30 +406,22 @@ function initGame() {
     }, 4000)
     //子弹边界判断
     setInterval(function () {
-        var bulletCount = 0
-        var enemyCount = 0
-        for (let bullet = firstBullet; bulletCount < bullets.getLength(); bullet = bullet.next) {
-            for (let enemy = firstEnemy; enemyCount < enemies.getLength(); enemy = enemy.next) {
+        for (let bullet = firstBullet; bullet != null; bullet = bullet.next) {
+            for (let enemy = firstEnemy; enemy != null; enemy = enemy.next) {
                 let xIsOK = enemy.x < bullet.x && enemy.x + enemies.width > bullet.x
                 let yIsOK = enemy.y < bullet.y && enemy.y + enemies.height > bullet.y
                 if (xIsOK && yIsOK) {
                     lastExplosion.next = new Explosion(enemy.x, enemy.y)
-                    lastExplosion.next.front = lastExplosion
                     lastExplosion = lastExplosion.next
-                    console.log('before ' + bullets.getLength())
-                    bullet.front.next = bullet.next
-                    bullet.next.front = bullet.front
-                    console.log('after ' + bullets.getLength())
+                    console.log(explosions.getLength())
                     setTimeout(function () {
 
                     }, Explosion.duration)
-                    break
                 }
-                enemyCount++
+
             }
-            enemyCount = 1
-            bulletCount++
         }
+
     }, 100)
 }
 loadGame()
