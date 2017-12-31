@@ -195,7 +195,7 @@ function loadGame() {
     checkLoaded()
 }
 function initGame() {
-    alert('游戏开发中，目前仅有移动与 fa♂射 子弹等功能。攻击到敌人时，敌机不死，只有打击特效（其实是死亡特效）并且还会残留等均视为正常现象。')
+    alert('游戏正在开发中，目前仅有移动与 fa♂射 子弹等功能。己方攻击到敌人时,敌机不死、打击特效（其实本来是死亡特效）会永久残留等均暂时视为正常现象。')
     const canvas = document.querySelector('canvas')
     const context = canvas.getContext('2d')
     class Bullet {
@@ -298,8 +298,14 @@ function initGame() {
         }
     }
     let firstBullet = new Bullet()
-    let lastBullet = new Bullet()
-    firstBullet = lastBullet;
+    function lastBullet() {
+        let bullet = firstBullet
+        while (bullet.next !== null && bullet.next !== undefined) {
+            bullet = bullet.next
+        }
+        return bullet
+    }
+    firstBullet = lastBullet();
     let firstEnemy = new Enemy()
     let lastEnemy = new Enemy()
     firstEnemy = lastEnemy;
@@ -389,12 +395,19 @@ function initGame() {
     //刷新子弹
     setInterval(function () {
         //发射子弹
-        lastBullet.next = new Bullet();
-        lastBullet = lastBullet.next;
+        if (firstBullet == undefined || firstBullet == null) {
+            firstBullet = new Bullet();
+        } else {
+            var newBullet = new Bullet();
+            newBullet.next = null;
+            newBullet.front = lastBullet();
+            lastBullet().next = newBullet;
+        }
         //销毁越出边界的子弹
-        if (firstBullet.y < 0)
-            firstBullet = firstBullet.next
-    }, fighter.firingInterval)
+        if (firstBullet)
+            if (firstBullet.y < 0)
+                firstBullet = firstBullet.next
+    }, fighter.firingInterval) 
     //刷新敌人
     setInterval(function () {
         //出现敌人
@@ -406,22 +419,41 @@ function initGame() {
     }, 4000)
     //子弹边界判断
     setInterval(function () {
-        for (let bullet = firstBullet; bullet != null; bullet = bullet.next) {
-            for (let enemy = firstEnemy; enemy != null; enemy = enemy.next) {
+        var bulletCount = 0
+        var enemyCount = 0
+        for (let bullet = firstBullet; bulletCount < bullets.getLength(); bullet = bullet.next) {
+            for (let enemy = firstEnemy; enemyCount < enemies.getLength(); enemy = enemy.next) {
                 let xIsOK = enemy.x < bullet.x && enemy.x + enemies.width > bullet.x
                 let yIsOK = enemy.y < bullet.y && enemy.y + enemies.height > bullet.y
                 if (xIsOK && yIsOK) {
                     lastExplosion.next = new Explosion(enemy.x, enemy.y)
+                    lastExplosion.next.front = lastExplosion
                     lastExplosion = lastExplosion.next
-                    console.log(explosions.getLength())
+                    console.log('before ' + bullets.getLength())
+                    //判断链表是否有数据，长度是否大于几。
+                    if (bullet.front == null || bullet.front == undefined) { //移除第一项
+                        firstBullet = firstBullet.next;
+                        if(!(firstBullet == null || firstBullet == undefined)){
+                            firstBullet.front = null;
+                        }
+                    } else if (bullet.next == null || bullet.next == undefined) {//移除最后一项
+                        bullet = bullet.front;
+                        bullet.next = null;
+                    } else {
+                        bullet.front.next = bullet.next;
+                        bullet.next.front = bullet.front;
+                    }
+                    console.log('after ' + bullets.getLength())
                     setTimeout(function () {
 
                     }, Explosion.duration)
+                    break
                 }
-
+                enemyCount++
             }
+            enemyCount = 1
+            bulletCount++
         }
-
     }, 100)
 }
 loadGame()
