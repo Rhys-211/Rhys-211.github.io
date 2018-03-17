@@ -1,10 +1,14 @@
+const mask_game = document.querySelector('#mask_game')
+const loadArea = document.querySelector('#loadArea')
+const load_progress = document.querySelector('progress')
+const load_start = document.querySelector('#start')
 function canPlay() {
     load_start.innerText = 'PLAY'
     load_start.addEventListener('click', function () {
-        const canvas = document.querySelector('canvas')
         loadArea.style.display = 'none';
         gamebox.style.display = '';
         new Audio('/assets/audio/ttt/start.mp3').play();
+        initGame()
     })
 }
 function checkLoaded() {
@@ -28,6 +32,10 @@ function loadAudio(src) {
 }
 function loadGame() {
     new Audio('/assets/audio/ttt/loading.mp3').play();
+    loadData()
+    checkLoaded()
+}
+function loadData() {
     loadAudio('/assets/audio/ttt/1AI.mp3')
     loadAudio('/assets/audio/ttt/2AI.mp3')
     loadAudio('/assets/audio/ttt/3AI.mp3')
@@ -49,9 +57,8 @@ function loadGame() {
     loadAudio('/assets/audio/ttt/start.mp3')
     loadAudio('/assets/audio/ttt/victory.mp3')
     loadAudio('/assets/audio/ttt/defeat.mp3')
-    checkLoaded()
 }
-function judgeSame(x, y, z) {
+function judgeItem(x, y, z) {
     if (boxes[x].clicked == boxes[y].clicked && boxes[y].clicked == boxes[z].clicked) {
         if (boxes[x].clicked == 1)
             return 1
@@ -61,48 +68,50 @@ function judgeSame(x, y, z) {
     }
 }
 function judgeOutcome() {
-    if (judgeSame(0, 1, 2) == 1)
+    if (judgeItem(0, 1, 2) == 1)
         return 1
-    else if (judgeSame(0, 1, 2) == 2)
+    else if (judgeItem(0, 1, 2) == 2)
         return 2
-    else if (judgeSame(3, 4, 5) == 1)
+    else if (judgeItem(3, 4, 5) == 1)
         return 1
-    else if (judgeSame(3, 4, 5) == 2)
+    else if (judgeItem(3, 4, 5) == 2)
         return 2
-    else if (judgeSame(6, 7, 8) == 1)
+    else if (judgeItem(6, 7, 8) == 1)
         return 1
-    else if (judgeSame(6, 7, 8) == 2)
+    else if (judgeItem(6, 7, 8) == 2)
         return 2
-    else if (judgeSame(0, 3, 6) == 1)
+    else if (judgeItem(0, 3, 6) == 1)
         return 1
-    else if (judgeSame(0, 3, 6) == 2)
+    else if (judgeItem(0, 3, 6) == 2)
         return 2
-    else if (judgeSame(1, 4, 7) == 1)
+    else if (judgeItem(1, 4, 7) == 1)
         return 1
-    else if (judgeSame(1, 4, 7) == 2)
+    else if (judgeItem(1, 4, 7) == 2)
         return 2
-    else if (judgeSame(2, 5, 8) == 1)
+    else if (judgeItem(2, 5, 8) == 1)
         return 1
-    else if (judgeSame(2, 5, 8) == 2)
+    else if (judgeItem(2, 5, 8) == 2)
         return 2
-    else if (judgeSame(0, 4, 8) == 1)
+    else if (judgeItem(0, 4, 8) == 1)
         return 1
-    else if (judgeSame(0, 4, 8) == 2)
+    else if (judgeItem(0, 4, 8) == 2)
         return 2
-    else if (judgeSame(2, 4, 6) == 1)
+    else if (judgeItem(2, 4, 6) == 1)
         return 1
-    else if (judgeSame(2, 4, 6) == 2)
+    else if (judgeItem(2, 4, 6) == 2)
         return 2
     else
         return 0
 }
-function doPlayer(i) {
+function playerDo(i) {
     if (boxes[i].clicked == 2)
         occupiedAI = true;
     if (boxes[i].clicked == 1)
         occupiedPlayer = true;
     boxes[i].clicked = 1;
     boxes[i].box.innerText = '❌';
+    if (!occupiedPlayer && !occupiedAI)
+        turns[0]++;
 }
 function judgePlayer() {
     if (judgeOutcome() == 1)
@@ -128,7 +137,7 @@ function judgePlayer() {
     else if (turns[0] == 8)
         new Audio('/assets/audio/ttt/8Player.mp3').play();
 }
-function doAI() {
+function AIDo() {
     while (true) {
         let j;
         //判断j的值是否在正常范围(1~9)内并修改
@@ -155,6 +164,10 @@ function doAI() {
             }
         }
     }
+    turns[1]++;
+    occupiedAI = false;
+    occupiedPlayer = false;
+    mask_game.style.display = 'none'
 }
 function judgeAI() {
     if (isOver)
@@ -178,43 +191,47 @@ function judgeAI() {
     else if (turns[1] == 8)
         new Audio('/assets/audio/ttt/8AI.mp3').play();
 }
-class Box {
-    constructor(getBox) {
-        this.box = getBox;
-        this.clicked = 0;
+function initGame() {
+    class Box {
+        constructor(getBox) {
+            this.box = getBox;
+            this.clicked = 0;
+        }
+    }
+    const gamebox = document.querySelector('#gamebox')
+    const loadArea = document.querySelector('#loadArea')
+    const load_start = document.querySelector('#start')
+    const load_progress = document.querySelector('progress')
+    window.turns = [1, 1];
+    window.isOver = false;
+    window.boxes = new Array(9);
+    window.occupiedPlayer = false;
+    window.occupiedAI = false;
+    boxes[0] = new Box(document.getElementById('box1'));
+    boxes[1] = new Box(document.getElementById('box2'));
+    boxes[2] = new Box(document.getElementById('box3'));
+    boxes[3] = new Box(document.getElementById('box4'));
+    boxes[4] = new Box(document.getElementById('box5'));
+    boxes[5] = new Box(document.getElementById('box6'));
+    boxes[6] = new Box(document.getElementById('box7'));
+    boxes[7] = new Box(document.getElementById('box8'));
+    boxes[8] = new Box(document.getElementById('box9'));
+    for (let i = 0; i < 9; i++) {
+        boxes[i].box.addEventListener('click', function () {
+            turnOfPlayer(i)
+            turnOfAI()
+        })
     }
 }
-const gamebox = document.querySelector('#gamebox')
-const loadArea = document.querySelector('#loadArea')
-const load_start = document.querySelector('#start')
-const load_progress = document.querySelector('progress')
-const boxes = new Array(9);
-let turns = [1, 1];
-let occupiedPlayer = false;
-let occupiedAI = false;
-let isOver = false;
-boxes[0] = new Box(document.getElementById('box1'));
-boxes[1] = new Box(document.getElementById('box2'));
-boxes[2] = new Box(document.getElementById('box3'));
-boxes[3] = new Box(document.getElementById('box4'));
-boxes[4] = new Box(document.getElementById('box5'));
-boxes[5] = new Box(document.getElementById('box6'));
-boxes[6] = new Box(document.getElementById('box7'));
-boxes[7] = new Box(document.getElementById('box8'));
-boxes[8] = new Box(document.getElementById('box9'));
-loadGame()
-for (let i = 0; i < 9; i++) {
-    boxes[i].box.addEventListener('click', function () {
-        doPlayer(i);
-        judgePlayer()
-        if (!occupiedPlayer && !occupiedAI)
-            turns[0]++;
-        setTimeout(function () {
-            doAI()
-            judgeAI()
-            turns[1]++;
-            occupiedAI = false;
-            occupiedPlayer = false;
-        }, 2000);
-    })
+function turnOfAI() {
+    mask_game.style.display = 'block'
+    setTimeout(function () {
+        AIDo()
+        judgeAI()
+    }, 2000);
 }
+function turnOfPlayer(i) {
+    playerDo(i);
+    judgePlayer()
+}
+loadGame()

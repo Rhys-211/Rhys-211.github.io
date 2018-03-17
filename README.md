@@ -20,13 +20,12 @@
 * 增加 - User - 账号增加上传头像的功能
 * 增加 - User - 在用户信息页中增加“目标”
 * 完善 - User - 修改头像的加载机制
-* 完善 - Game - XXOO当AI方行动时施以玩家禁锢状态
 * 增加 - Footer - 为Rhys增加某未定BGM
 * 增加 - Main - 为首页的 Start 按钮添加点击事件
 * 修复 - User - 修复当检测邮箱的格式时，即使输入的邮箱格式没毛病，页面仍可能会显示不符合要求的Bug
 * ~~增加 - User - 用户可增加自定义主题~~（踌躇中，感觉似乎没啥用）
 * ~~修复 - Comment - 修复有时评论页会出现`undefined`的问题~~（目前很可能已经解决，但不确定，若有发现问题的请在官网评论区留言或将信息发送至 Rhys.211SFS@qq.com）
-## 在下坂本，有何贵见？
+## 有何贵见
 如有任何建议或发现任何Bug或漏洞，欢迎提交<br><br>
 方式如下：
 * 在官网的[评论区](http://localhost:211/other/comment.html)反馈
@@ -46,7 +45,7 @@
 * `normalize.css` - [Normalize.css](http://necolas.github.io/normalize.css/)
 * `https://fonts.googleapis.com/icon?family=Material+Icons` - [Material icons](https://material.io/icons/)
 ## 其他
-* 网易云外链播放器
+* 外链播放器插件 - 网易云音乐
 # 瞎扯区
 ## [关于团队](http://211sfs.tk/footer/about.html)
 一个由游戏宅，动漫宅，IT宅的所组成的集合体。其中有n个看B站，n个刷知乎，n个听网易云，n个玩联盟，n个关注数码产品（n∈Z∩[2,max]，max=studio.length）.<br>

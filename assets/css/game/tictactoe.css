@@ -48,3 +48,16 @@ div#loadArea progress{
     width:500px;
     height:50px;
 }
+div#mask_game{
+    height: 646px;
+    width: 640px;
+    margin: 0 auto;
+    top: 284px;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+    display: none;
+    background: rgba(7,17,27,.2);
+    border-radius: 100px
+}
