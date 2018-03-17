@@ -108,7 +108,7 @@
     changeUserEmail.addEventListener('click', function () {
         var newUserEmail = prompt('请输入新的邮箱：')
         if (typeof (newUserEmail) == 'string') {
-            if (/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.exec(newUserEmail)) {
+            if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.exec(newUserEmail)) {
                 changeUserEmail.innerText = '修改中';
                 changeUserEmail.disabled = 'disabled';
                 if (confirm('你确定要将邮箱改为" ' + newUserEmail + ' "吗？')) {

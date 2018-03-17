@@ -22,7 +22,6 @@
 * 完善 - User - 修改头像的加载机制
 * 增加 - Footer - 为Rhys增加某未定BGM
 * 增加 - Main - 为首页的 Start 按钮添加点击事件
-* 修复 - User - 修复当检测邮箱的格式时，即使输入的邮箱格式没毛病，页面仍可能会显示不符合要求的Bug
 * ~~增加 - User - 用户可增加自定义主题~~（踌躇中，感觉似乎没啥用）
 * ~~修复 - Comment - 修复有时评论页会出现`undefined`的问题~~（目前很可能已经解决，但不确定，若有发现问题的请在官网评论区留言或将信息发送至 Rhys.211SFS@qq.com）
 ## 有何贵见
@@ -30,7 +29,6 @@
 方式如下：
 * 在官网的[评论区](http://localhost:211/other/comment.html)反馈
 * 发送至[我的邮箱](Rhys.211SFS@qq.com)以进行反馈
-* ~~进入官方Q群(官网底部的加入我们)~~（Not everyone is eligible to join us.）
 # 部分引用
 ## 图片
 * 主页背景图 Macos Sierra - Apple
@@ -48,7 +46,7 @@
 * 外链播放器插件 - 网易云音乐
 # 瞎扯区
 ## [关于团队](http://211sfs.tk/footer/about.html)
-一个由游戏宅，动漫宅，IT宅的所组成的集合体。其中有n个看B站，n个刷知乎，n个听网易云，n个玩联盟，n个关注数码产品（n∈Z∩[2,max]，max=studio.length）.<br>
- ~~Copyright 211 Special Forces Studio~~
+一堆~~死宅~~极客、~~蒟蒻~~大佬、~~基佬~~(emmm想不出词了)所组成的神秘组织。<br>
+若想加入我们，请点击官网底部的[加入我们](https://jq.qq.com/?_wv=1027&k=4CKGdPQ)。
 ## 更新频率
-大致与学校放假次数和时间成正比。
+~~在排除懒得更新的情况下，~~大致与学校放假次数和时间成正比。
