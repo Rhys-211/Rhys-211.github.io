@@ -75,6 +75,27 @@ div#commentItems:hover {
     display:inline-block;
     color:#93999f;
 }
+#commentItems .commentItem_country{
+    position: relative;
+    top:-20px;
+    margin:10px;
+    display:inline-block;
+    color:#93999f;
+}
+#commentItems .commentItem_region{
+    position: relative;
+    top:-20px;
+    margin:10px;
+    display:inline-block;
+    color:#93999f;
+}
+#commentItems .commentItem_city{
+    position: relative;
+    top:-20px;
+    margin:10px;
+    display:inline-block;
+    color:#93999f;
+}
 #commentItems .commentItem_incidental{
     position: relative;
     top:-15px;

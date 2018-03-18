@@ -17,6 +17,9 @@ window.onload = function () {
             //获取commentItem所需的主要信息（内容，系统，用户ID，发送时间）
             for (let i = 0; i < results.length; i++) {
                 comments[i] = {};
+                comments[i].country = results[i].attributes.country;
+                comments[i].region = results[i].attributes.region;
+                comments[i].city = results[i].attributes.city;
                 comments[i].content = results[i].attributes.content;
                 comments[i].system = results[i].attributes.system;
                 comments[i].browser = results[i].attributes.browser;
@@ -31,6 +34,9 @@ window.onload = function () {
                 let commentItem_userAvatar = document.createElement('img')
                 let commentItem_username = document.createElement('p')
                 let commentItem_postingTime = document.createElement('p')
+                let commentItem_country = document.createElement('p')
+                let commentItem_region = document.createElement('p')
+                let commentItem_city = document.createElement('p')
                 let commentItem_content = document.createElement('p')
                 let commentItem_system = document.createElement('img')
                 let commentItem_browser = document.createElement('img')
@@ -39,12 +45,18 @@ window.onload = function () {
                 commentItem_userAvatar.setAttribute('class', 'avatar')
                 commentItem_username.setAttribute('class', 'commentItem_username')
                 commentItem_postingTime.setAttribute('class', 'commentItem_postingTime')
+                commentItem_country.setAttribute('class', 'commentItem_country')
+                commentItem_region.setAttribute('class', 'commentItem_region')
+                commentItem_city.setAttribute('class', 'commentItem_city')
                 commentItem_system.setAttribute('class', 'commentItem_incidental')
                 commentItem_browser.setAttribute('class', 'commentItem_incidental')
                 commentItem_content.setAttribute('class', 'commentItem_content')
                 //对commentItem中的元素的主要内容进行赋值操作（个人主页地址，发送时间，内容,系统，浏览器）
                 commentItem_link.setAttribute('href', '/user/profile.html?id=' + comments[i].userId)
                 commentItem_postingTime.innerText = comments[i].createdAt
+                commentItem_country.innerText = comments[i].country
+                commentItem_region.innerText = comments[i].region
+                commentItem_city.innerText = comments[i].city
                 commentItem_content.innerText = comments[i].content
                 //对commentItem中的附带信息（系统）进行赋值操作
                 if (comments[i].system[0] == 'Win8-10')
@@ -99,6 +111,9 @@ window.onload = function () {
                 commentItem.appendChild(commentItem_postingTime);
                 commentItem.appendChild(commentItem_system);
                 commentItem.appendChild(commentItem_browser);
+                commentItem.appendChild(commentItem_region);
+                commentItem.appendChild(commentItem_city);
+                commentItem.appendChild(commentItem_country);
                 commentItem.appendChild(commentItem_content);
                 commentItems.appendChild(commentItem);
             }
@@ -204,17 +219,24 @@ window.onload = function () {
                         comment.set('browser', browser);
                         comment.set('ua', ua);
                         comment.set('content', comment_input.value);
-                        comment.save(null, {
-                            success: function (comment) {
-                                alert('发布成功！');
-                                window.location.reload();
-                            },
-                            error: function (comment, error) {
-                                alert('发布失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
-                                comment_btn.disabled = false;
-                                comment_btn.innerText = '发布'
-                            }
+                        $.getJSON('http://api.ipinfodb.com/v3/ip-city/?key=583b4749a22e4313070046dda434a7319ece4412802319109777849cc4991b98&format=json', function(data) {
+                            comment.set('country', data.countryName);
+                            comment.set('region', data.regionName);
+                            comment.set('city', data.cityName);
+                            //放在getJSON是为了防止在获取到之前就进行commment.save操作
+                            comment.save(null, {
+                                success: function (comment) {
+                                    alert('发布成功！');
+                                    window.location.reload();
+                                },
+                                error: function (comment, error) {
+                                    alert('发布失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
+                                    comment_btn.disabled = false;
+                                    comment_btn.innerText = '发布'
+                                }
+                            });
                         });
+                        
                     },
                     error: function (error) {
                         alert('发布失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
