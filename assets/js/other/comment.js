@@ -14,7 +14,7 @@ window.onload = function () {
 
     commentQuery.find({
         success: function (results) {
-            //获取commentItem所需的主要信息（内容，系统，用户ID，发送时间）
+            //获取commentItem所需的主要信息（内容，系统，用户ID，发送时间、位置）
             for (let i = 0; i < results.length; i++) {
                 comments[i] = {};
                 comments[i].country = results[i].attributes.country;
@@ -51,7 +51,7 @@ window.onload = function () {
                 commentItem_system.setAttribute('class', 'commentItem_incidental')
                 commentItem_browser.setAttribute('class', 'commentItem_incidental')
                 commentItem_content.setAttribute('class', 'commentItem_content')
-                //对commentItem中的元素的主要内容进行赋值操作（个人主页地址，发送时间，内容,系统，浏览器）
+                //对commentItem中的元素的主要内容进行赋值操作（个人主页地址，发送时间、位置，内容,系统，浏览器）
                 commentItem_link.setAttribute('href', '/user/profile.html?id=' + comments[i].userId)
                 commentItem_postingTime.innerText = comments[i].createdAt
                 commentItem_country.innerText = comments[i].country

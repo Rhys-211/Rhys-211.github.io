@@ -17,8 +17,8 @@ window.onload = function () {
                         object = results[i];
                         //查询到用户名
                         if (object.get('accountNumber') == acntNmb.value) {
-                            writeCookies(object);
                             if (pwd.value == object.get('password')) {
+                                writeCookies(object);
                                 signIn_btn.innerText = '已登录';
                                 alert('登录成功！！！');
                                 window.open('/index.html', '_self')
