@@ -20,7 +20,7 @@ footer a:hover{
 	color:rgba(255,255,255,0.8)
 }
 body{
-	background:url("https://images.apple.com/cn/macos/sierra/overview/hero/fallback_bg_medium.jpg");
+	background:url("https://images.apple.com/cn/macos/high-sierra/overview/hero/image_large.jpg");
 	background-size:cover;
 }
 nav{
@@ -39,7 +39,7 @@ nav#topbar div:hover{
 	background-color: rgba(0,0,0,0.1) !important
 }
 nav ul li ul,nav div ul{
-	background: url("https://images.apple.com/cn/macos/sierra/overview/hero/fallback_bg_medium.jpg");
+	background:url("https://images.apple.com/cn/macos/high-sierra/overview/hero/image_large.jpg");
 }
 button#start_btn{
 	border:none;
