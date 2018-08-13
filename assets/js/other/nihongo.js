@@ -209,7 +209,7 @@ function refresh(estimatedVerb) {
             words[11].innerText = '行（い）かなくて'
             words[12].innerText = '行（い）きませんでして'
         } else if (word == 'ある' || word == '有る') {
-            words[0].innerText = '有（あ）'
+            words[0].innerText = '有（あ）り'
             words[1].innerText = '有（あ）る'
             words[2].innerText = '無（な）い'
             words[3].innerText = '有（あ）った'
@@ -219,8 +219,8 @@ function refresh(estimatedVerb) {
             words[7].innerText = '有（あ）りました'
             words[8].innerText = '無（な）かったです/有（あ）りませんでした'
             words[9].innerText = '有（あ）って'
-            words[10].innerText = '無（な）くて'
-            words[11].innerText = '有（あ）りまして'
+            words[10].innerText = '有（あ）りまして'
+            words[11].innerText = '無（な）くて'
             words[12].innerText = '無（な）かってです/有（あ）りませんでして'
         } else {
             let front = word.substring(0, word.length - 1)
