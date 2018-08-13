@@ -88,7 +88,7 @@ function getVowel(kana) {
     else
         console.error('It is not a right kana.')
 }
-function isSpeGodan(word) {
+function isGodan(word) {
     if (
         word == '要る' ||
         word == '焦る' ||
@@ -113,7 +113,9 @@ function isSpeGodan(word) {
         word == '罵る' || word == 'ののしる' ||
         word == '覆る' || word == 'くつがえる' ||
         word == '翻る' || word == 'ひるがえる' ||
-        word == '蘇る' || word == '甦る' || word == 'よみがえる'
+        word == '蘇る' || word == '甦る' || word == 'よみがえる'||
+
+        word == '行く' || word == '有る'
     )
         return true;
 }
@@ -156,7 +158,7 @@ function refresh(estimatedVerb) {
         else if (getVowel(word[word.length - 1]) == 'u' && word[word.length - 1] != 'る')
             estimatedVerb = 3
         else if (word[word.length - 1] == 'る') {
-            if (isSpeGodan(word) || getVowel(word[word.length - 2]) == 'a' || getVowel(word[word.length - 2]) == 'u' || getVowel(word[word.length - 2]) == 'o')
+            if (isGodan(word) || getVowel(word[word.length - 2]) == 'a' || getVowel(word[word.length - 2]) == 'u' || getVowel(word[word.length - 2]) == 'o')
                 estimatedVerb = 3
             else if (getVowel(word[word.length - 2]) == 'i' || getVowel(word[word.length - 2]) == 'e')
                 estimatedVerb = 4
@@ -183,7 +185,12 @@ function refresh(estimatedVerb) {
         words[14].innerText = '来（こ）られない'
         words[15].innerText = '来（こ）られた'
         words[16].innerText = '来（こ）られなかった'
-        words[17].innerText = '来（く）れば'
+        words[17].innerText = '来（こ）られます'
+        words[18].innerText = '来（こ）られません'
+        words[19].innerText = '来（こ）られました'
+        words[20].innerText = '来（こ）られませんでした'
+        words[21].innerText = '来（く）れば'
+        words[22].innerText = '来（こ）なければ'
     } else if (estimatedVerb == 2) {
         words[0].innerText = 'し'
         words[1].innerText = 'する'
@@ -202,7 +209,12 @@ function refresh(estimatedVerb) {
         words[14].innerText = '出来（でき）ない'
         words[15].innerText = '出来（でき）た'
         words[16].innerText = '出来（でき）なかった'
-        words[17].innerText = 'すれば'
+        words[17].innerText = '出来（でき）ます'
+        words[18].innerText = '出来（でき）ません'
+        words[19].innerText = '出来（でき）ました'
+        words[20].innerText = '出来（でき）ませんでした'
+        words[21].innerText = 'すれば'
+        words[22].innerText = 'しなければ'
     } else if (estimatedVerb == 3) {
         if (word == 'いく' || word == '行く') {
             words[0].innerText = '行（い）き'
@@ -222,7 +234,12 @@ function refresh(estimatedVerb) {
             words[14].innerText = '行（い）けない'
             words[15].innerText = '行（い）けた'
             words[16].innerText = '行（い）けなかった'
-            words[17].innerText = '行（い）けば'
+            words[17].innerText = '行（い）けます'
+            words[18].innerText = '行（い）けません'
+            words[19].innerText = '行（い）けました'
+            words[20].innerText = '行（い）けませんでした'
+            words[21].innerText = '行（い）けば'
+            words[22].innerText = '行（い）かなければ'
         } else if (word == 'ある' || word == '有る') {
             words[0].innerText = '有（あ）り'
             words[1].innerText = '有（あ）る'
@@ -230,18 +247,23 @@ function refresh(estimatedVerb) {
             words[3].innerText = '有（あ）った'
             words[4].innerText = '無（な）かった'
             words[5].innerText = '有（あ）ります'
-            words[6].innerText = '無（な）いです/有（あ）りません'
+            words[6].innerText = '有（あ）りません'
             words[7].innerText = '有（あ）りました'
-            words[8].innerText = '無（な）かったです/有（あ）りませんでした'
+            words[8].innerText = '有（あ）りませんでした'
             words[9].innerText = '有（あ）って'
             words[10].innerText = '有（あ）りまして'
             words[11].innerText = '無（な）くて'
-            words[12].innerText = '無（な）かってです/有（あ）りませんでして'
+            words[12].innerText = '有（あ）りませんでして'
             words[13].innerText = '有（あ）り得（え/う）る'
             words[14].innerText = '有（あ）り得（え）ない'
             words[15].innerText = '有（あ）り得（え）た'
             words[16].innerText = '有（あ）り得（え）なかった'
-            words[17].innerText = '有（あ）れば'
+            words[17].innerText = '有（あ）り得（え）ます'
+            words[18].innerText = '有（あ）り得（え）ません'
+            words[19].innerText = '有（あ）り得（え）ました'
+            words[20].innerText = '有（あ）り得（え）ませんでした'
+            words[21].innerText = '有（あ）れば'
+            words[22].innerText = '無（な）ければ'
         } else {
             let front = word.substring(0, word.length - 1)
             let after = word.substring(word.length - 1)
@@ -270,7 +292,12 @@ function refresh(estimatedVerb) {
             words[14].innerText = front + convertKana(after, 'e') + 'ない'
             words[15].innerText = front + convertKana(after, 'e') + 'た'
             words[16].innerText = front + convertKana(after, 'e') + 'なかった'
-            words[17].innerText = front + convertKana(after, 'e') + 'ば'
+            words[17].innerText = front + convertKana(after, 'e') + 'ます'
+            words[18].innerText = front + convertKana(after, 'e') + 'ません'
+            words[19].innerText = front + convertKana(after, 'e') + 'ました'
+            words[20].innerText = front + convertKana(after, 'e') + 'ませんでした'
+            words[21].innerText = front + convertKana(after, 'e') + 'ば'
+            words[22].innerText = front + convertKana(after, 'a') + 'なければ'
         }
     } else if (estimatedVerb == 4) {
         words[0].innerText = word.substring(0, word.length - 1)
@@ -290,7 +317,12 @@ function refresh(estimatedVerb) {
         words[14].innerText = words[0].innerText + 'られない'
         words[15].innerText = words[0].innerText + 'られた'
         words[16].innerText = words[0].innerText + 'られなかった'
-        words[17].innerText = words[0].innerText + convertKana(word[word.length - 1], 'e') + 'ば'
+        words[17].innerText = words[0].innerText + 'られます'
+        words[18].innerText = words[0].innerText + 'られません'
+        words[19].innerText = words[0].innerText + 'られました'
+        words[20].innerText = words[0].innerText + 'られませんでした'
+        words[21].innerText = words[0].innerText + convertKana(word[word.length - 1], 'e') + 'ば'
+        words[22].innerText = words[0].innerText + 'なければ'
     }
 }
 let type = 0, verb = 0, word;
