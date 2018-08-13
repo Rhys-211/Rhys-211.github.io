@@ -179,6 +179,8 @@ function refresh(estimatedVerb) {
         words[10].innerText = '来（き）まして'
         words[11].innerText = '来（こ）なくて'
         words[12].innerText = '来（き）ませんでして'
+        words[13].innerText = '来（こ）られる'
+        words[14].innerText = '来（く）れば'
     } else if (estimatedVerb == 2) {
         words[0].innerText = 'し'
         words[1].innerText = 'する'
@@ -193,6 +195,8 @@ function refresh(estimatedVerb) {
         words[10].innerText = 'しまして'
         words[11].innerText = 'しなくて'
         words[12].innerText = 'しませんでして'
+        words[13].innerText = '出来（でき）る'
+        words[14].innerText = 'すれば'
     } else if (estimatedVerb == 3) {
         if (word == 'いく' || word == '行く') {
             words[0].innerText = '行（い）き'
@@ -208,6 +212,8 @@ function refresh(estimatedVerb) {
             words[10].innerText = '行（い）きまして'
             words[11].innerText = '行（い）かなくて'
             words[12].innerText = '行（い）きませんでして'
+            words[13].innerText = '行（い）ける'
+            words[14].innerText = '行（い）けば'
         } else if (word == 'ある' || word == '有る') {
             words[0].innerText = '有（あ）り'
             words[1].innerText = '有（あ）る'
@@ -222,6 +228,8 @@ function refresh(estimatedVerb) {
             words[10].innerText = '有（あ）りまして'
             words[11].innerText = '無（な）くて'
             words[12].innerText = '無（な）かってです/有（あ）りませんでして'
+            words[13].innerText = '有（あ）り得（え/う）る'
+            words[14].innerText = '有（あ）れば'
         } else {
             let front = word.substring(0, word.length - 1)
             let after = word.substring(word.length - 1)
@@ -246,6 +254,8 @@ function refresh(estimatedVerb) {
             words[10].innerText = words[0].innerText + 'まして'
             words[11].innerText = front + convertKana(after, 'a') + 'なくて'
             words[12].innerText = words[0].innerText + 'ませんでして'
+            words[13].innerText = front + convertKana(after, 'e') + 'る'
+            words[13].innerText = front + convertKana(after, 'e') + 'ば'
         }
     } else if (estimatedVerb == 4) {
         words[0].innerText = word.substring(0, word.length - 1)
@@ -261,6 +271,8 @@ function refresh(estimatedVerb) {
         words[10].innerText = words[0].innerText + 'まして'
         words[11].innerText = words[0].innerText + 'なくて'
         words[12].innerText = words[0].innerText + 'ませんでして'
+        words[13].innerText = words[0].innerText + 'られる'
+        words[14].innerText = words[0].innerText + convertKana(word[word.length - 1], 'e') + 'ば'
     }
 }
 let type = 0, verb = 0, word;
