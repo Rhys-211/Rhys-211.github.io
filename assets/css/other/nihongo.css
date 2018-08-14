@@ -6,7 +6,7 @@
     border-radius: 10px;
     box-shadow: #000 0px 5px 20px;
     width: 800px;
-    height: 1000px;
+    height: 1200px;
     background-color: #222;
 }
 
@@ -36,7 +36,7 @@
     grid-template-columns: 200px 350px;
     margin-left: 240px;
     top: 320px;
-    height: 1000px;
+    height: 1200px;
 }
 
 button {
