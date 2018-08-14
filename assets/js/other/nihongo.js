@@ -121,7 +121,7 @@ function isGodan(word) {
 }
 function convertKana(kana, newVowel) {
     const kanas = [
-        ['あ', 'い', 'う', 'え', 'お'],
+        ['わ', 'い', 'う', 'え', 'お'],
         ['か', 'き', 'く', 'け', 'こ'],
         ['が', 'ぎ', 'ぐ', 'げ', 'ご'],
         ['さ', 'し', 'す', 'せ', 'そ'],
