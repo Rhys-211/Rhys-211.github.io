@@ -113,13 +113,13 @@ function isGodan(word) {
         word == '罵る' || word == 'ののしる' ||
         word == '覆る' || word == 'くつがえる' ||
         word == '翻る' || word == 'ひるがえる' ||
-        word == '蘇る' || word == '甦る' || word == 'よみがえる'||
+        word == '蘇る' || word == '甦る' || word == 'よみがえる' ||
 
         word == '行く' || word == '有る'
     )
         return true;
 }
-function convertKana(kana, newVowel) {
+function convertKana(kana, oldVowel, newVowel) {
     const kanas = [
         ['わ', 'い', 'う', 'え', 'お'],
         ['か', 'き', 'く', 'け', 'こ'],
@@ -142,11 +142,14 @@ function convertKana(kana, newVowel) {
     else if (newVowel == 'u') newVowel = '2'
     else if (newVowel == 'e') newVowel = '3'
     else if (newVowel == 'o') newVowel = '4'
+    if (oldVowel == 'a') oldVowel = '0'
+    else if (oldVowel == 'i') oldVowel = '1'
+    else if (oldVowel == 'u') oldVowel = '2'
+    else if (oldVowel == 'e') oldVowel = '3'
+    else if (oldVowel == 'o') oldVowel = '4'
     for (let i = 0; i < kanas.length; i++) {
-        for (let j = 0; j < kanas[i].length; j++) {
-            if (kana == kanas[i][j])
-                return kanas[i][newVowel]
-        }
+        if (kana == kanas[i][oldVowel])
+            return kanas[i][newVowel]
     }
 }
 function refresh(estimatedVerb) {
@@ -165,7 +168,7 @@ function refresh(estimatedVerb) {
             else
                 alert('请将倒数第二个字符改写为假名形式。')
         } else
-            alert('请将最后一个字符改写为假名形式。')
+            alert('请将最后一个字符改写为う段假名形式。')
     }
     if (estimatedVerb == 1) {
         words[0].innerText = '来（き）'
@@ -267,15 +270,15 @@ function refresh(estimatedVerb) {
         } else {
             let front = word.substring(0, word.length - 1)
             let after = word.substring(word.length - 1)
-            words[0].innerText = front + convertKana(after, 'i')
+            words[0].innerText = front + convertKana(after, 'u', 'i')
             words[1].innerText = word
-            words[2].innerText = front + convertKana(after, 'a') + 'ない'
+            words[2].innerText = front + convertKana(after, 'u', 'a') + 'ない'
             if (after == 'す') words[3].innerText = front + 'した'
             else if (after == 'く') words[3].innerText = front + 'いた'
             else if (after == 'ぐ') words[3].innerText = front + 'いだ'
             else if (after == 'む' || after == 'ぶ' || after == 'ぬ') words[3].innerText = front + 'んだ'
             else if (after == 'る' || after == 'う' || after == 'つ') words[3].innerText = front + 'っだ'
-            words[4].innerText = front + convertKana(after, 'a') + 'なかった'
+            words[4].innerText = front + convertKana(after, 'u', 'a') + 'なかった'
             words[5].innerText = words[0].innerText + 'ます'
             words[6].innerText = words[0].innerText + 'ません'
             words[7].innerText = words[0].innerText + 'ました'
@@ -286,18 +289,18 @@ function refresh(estimatedVerb) {
             else if (after == 'む' || after == 'ぶ' || after == 'ぬ') words[9].innerText = front + 'んで'
             else if (after == 'る' || after == 'う' || after == 'つ') words[9].innerText = front + 'っで'
             words[10].innerText = words[0].innerText + 'まして'
-            words[11].innerText = front + convertKana(after, 'a') + 'なくて'
+            words[11].innerText = front + convertKana(after, 'u', 'a') + 'なくて'
             words[12].innerText = words[0].innerText + 'ませんでして'
-            words[13].innerText = front + convertKana(after, 'e') + 'る'
-            words[14].innerText = front + convertKana(after, 'e') + 'ない'
-            words[15].innerText = front + convertKana(after, 'e') + 'た'
-            words[16].innerText = front + convertKana(after, 'e') + 'なかった'
-            words[17].innerText = front + convertKana(after, 'e') + 'ます'
-            words[18].innerText = front + convertKana(after, 'e') + 'ません'
-            words[19].innerText = front + convertKana(after, 'e') + 'ました'
-            words[20].innerText = front + convertKana(after, 'e') + 'ませんでした'
-            words[21].innerText = front + convertKana(after, 'e') + 'ば'
-            words[22].innerText = front + convertKana(after, 'a') + 'なければ'
+            words[13].innerText = front + convertKana(after, 'u', 'e') + 'る'
+            words[14].innerText = front + convertKana(after, 'u', 'e') + 'ない'
+            words[15].innerText = front + convertKana(after, 'u', 'e') + 'た'
+            words[16].innerText = front + convertKana(after, 'u', 'e') + 'なかった'
+            words[17].innerText = front + convertKana(after, 'u', 'e') + 'ます'
+            words[18].innerText = front + convertKana(after, 'u', 'e') + 'ません'
+            words[19].innerText = front + convertKana(after, 'u', 'e') + 'ました'
+            words[20].innerText = front + convertKana(after, 'u', 'e') + 'ませんでした'
+            words[21].innerText = front + convertKana(after, 'u', 'e') + 'ば'
+            words[22].innerText = front + convertKana(after, 'u', 'a') + 'なければ'
         }
     } else if (estimatedVerb == 4) {
         words[0].innerText = word.substring(0, word.length - 1)
@@ -321,7 +324,7 @@ function refresh(estimatedVerb) {
         words[18].innerText = words[0].innerText + 'られません'
         words[19].innerText = words[0].innerText + 'られました'
         words[20].innerText = words[0].innerText + 'られませんでした'
-        words[21].innerText = words[0].innerText + convertKana(word[word.length - 1], 'e') + 'ば'
+        words[21].innerText = words[0].innerText + convertKana(word[word.length - 1], 'u', 'e') + 'ば'
         words[22].innerText = words[0].innerText + 'なければ'
     }
 }
