@@ -194,6 +194,8 @@ function refresh(estimatedVerb) {
         words[20].innerText = '来（こ）られませんでした'
         words[21].innerText = '来（く）れば'
         words[22].innerText = '来（こ）なければ'
+        words[23].innerText = '来（こ）よう'
+        words[24].innerText = '来（き）ましょう'
     } else if (estimatedVerb == 2) {
         words[0].innerText = 'し'
         words[1].innerText = 'する'
@@ -218,6 +220,8 @@ function refresh(estimatedVerb) {
         words[20].innerText = '出来（でき）ませんでした'
         words[21].innerText = 'すれば'
         words[22].innerText = 'しなければ'
+        words[23].innerText = 'しよう'
+        words[24].innerText = 'しましょう'
     } else if (estimatedVerb == 3) {
         if (word == 'いく' || word == '行く') {
             words[0].innerText = '行（い）き'
@@ -243,6 +247,8 @@ function refresh(estimatedVerb) {
             words[20].innerText = '行（い）けませんでした'
             words[21].innerText = '行（い）けば'
             words[22].innerText = '行（い）かなければ'
+            words[23].innerText = '行（い）こう'
+            words[24].innerText = '行（い）きましょう'
         } else if (word == 'ある' || word == '有る') {
             words[0].innerText = '有（あ）り'
             words[1].innerText = '有（あ）る'
@@ -267,6 +273,8 @@ function refresh(estimatedVerb) {
             words[20].innerText = '有（あ）り得（え）ませんでした'
             words[21].innerText = '有（あ）れば'
             words[22].innerText = '無（な）ければ'
+            words[23].innerText = '有（あ）ろう'
+            words[24].innerText = '有（あ）りましょう'
         } else {
             let front = word.substring(0, word.length - 1)
             let after = word.substring(word.length - 1)
@@ -301,6 +309,8 @@ function refresh(estimatedVerb) {
             words[20].innerText = front + convertKana(after, 'u', 'e') + 'ませんでした'
             words[21].innerText = front + convertKana(after, 'u', 'e') + 'ば'
             words[22].innerText = front + convertKana(after, 'u', 'a') + 'なければ'
+            words[23].innerText = front + convertKana(after, 'u', 'o') + 'う'
+            words[24].innerText = words[0].innerText + 'ましょう'
         }
     } else if (estimatedVerb == 4) {
         words[0].innerText = word.substring(0, word.length - 1)
@@ -326,6 +336,8 @@ function refresh(estimatedVerb) {
         words[20].innerText = words[0].innerText + 'られませんでした'
         words[21].innerText = words[0].innerText + convertKana(word[word.length - 1], 'u', 'e') + 'ば'
         words[22].innerText = words[0].innerText + 'なければ'
+        words[23].innerText = words[0].innerText + 'ろう'
+        words[24].innerText = words[0].innerText + 'ましょう'
     }
 }
 let type = 0, verb = 0, word;
