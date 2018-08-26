@@ -111,8 +111,8 @@ window.onload = function () {
                 commentItem.appendChild(commentItem_postingTime);
                 commentItem.appendChild(commentItem_system);
                 commentItem.appendChild(commentItem_browser);
-                commentItem.appendChild(commentItem_region);
                 commentItem.appendChild(commentItem_city);
+                commentItem.appendChild(commentItem_region);
                 commentItem.appendChild(commentItem_country);
                 commentItem.appendChild(commentItem_content);
                 commentItems.appendChild(commentItem);
