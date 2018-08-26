@@ -13,15 +13,21 @@
 	<div id="mask"></div>
 	<header>
 		<nav id="topbar">
-			<div id="tp_left"><a href="/index.html"><span>首页</span></a></div>
-			<div id="tp_right"><a href="#">导航</a></div>
+			<nav id="topbar">
+				<div id="tp_left">
+					<a href="/index.html">首页</a>
+				</div>
+				<div id="tp_right">
+					<a href="#">导航</a>
+				</div>
+			</nav>
 		</nav>
 		<nav id="sidebar">
-			<div id="sd_userSignOut">
-				<button id="sd_signIn">登录</button>
-				<button id="sd_register">注册</button>
+			<div id="sd_userOperations">
+				<button id="sd_signIn" onclick="window.location.href='/user/register.html'">登录</button>
+				<button id="sd_register" onclick="window.location.href='/user/signIn.html'">注册</button>
 			</div>
-			<div id="sd_user">
+			<div id="sd_user" class="sdSelection">
 				<table>
 					<tr>
 						<td id="sd_userAvatar" rowspan="2">
@@ -38,7 +44,7 @@
 					</tr>
 					<ul id="sd_user_sub">
 						<li>
-							<a href="/user/profile.html" id="sd_user_operation">个人信息</a>
+							<a href="/user/profile.html">个人信息</a>
 						</li>
 						<li>
 							<a href="#" id="sd_user_signOut">注销</a>
@@ -47,46 +53,37 @@
 				</table>
 			</div>
 			<ul>
-				<li>
-					<a href="#">软件</a>
-				</li>
-				<li id="sd_game">
+				<li id="sd_game" class="sdSelection">
 					<ul id="sd_game_sub">
-						<li id="sd_game_normal">
-							<ul id="sd_game_normal_sub">
-								<li>
-									<a href="/game/tictactoe.html" id="sd_game_normal_ttt">XXOO</a>
-								</li>
-								<li>
-									<a href="/game/raiden.html" id="sd_game_normal_raiden">打飞机</a>
-								</li>
-							</ul>
-							<a href="#">正常的游戏</a>
+						<li>
+							<a href="/game/tictactoe.html" id="sd_game_ttt">XXOO</a>
 						</li>
-						<li id="sd_game_abnormal">
-							<ul id="sd_game_abnormal_sub">
-								<li>
-									<a href="/game/unera.html" id="sd_game_abnormal_unera">未名の戰</a>
-								</li>
-								<li>
-									<a href="#" id="sd_game_abnormal_winmine">扫雷</a>
-								</li>
-							</ul>
-							<a href="#">不正常的游戏</a>
+						<li>
+							<a href="/game/raiden.html" id="sd_game_raiden">打飞机</a>
 						</li>
 					</ul>
 					<a href="#">游戏</a>
 				</li>
-				<li id="sd_other">
-					<ul id="sd_other_sub">
+				<li id="sd_fuckingGame" class="sdSelection">
+					<ul id="sd_fuckingGame_sub">
 						<li>
-							<a href="/other/comment.html" id="sd_other_comment">评论区</a>
+							<a href="/game/unera.html" id="sd_fuckingGame_unera">未名の戰</a>
 						</li>
 						<li>
-							<a href="/other/nihongo.html" id="sd_other_nihongo">日语动词变形</a>
+							<a href="/game/winmine.html" id="sd_fuckingGame_winmine">扫雷</a>
 						</li>
 					</ul>
-					<a href="#">其他</a>
+					<a href="#">杂项</a>
+				</li>
+				<li class="sdSelection">
+					<ul>
+					</ul>
+					<a href="/other/comment.html" id="sd_comment">评论</a>
+				</li>
+				<li class="sdSelection">
+					<ul>
+					</ul>
+					<a href="/other/nihongo.html" id="sd_nihongo">日语</a>
 				</li>
 				<li>
 					<a href="#" id="sd_back">返回</a>

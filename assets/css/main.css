@@ -96,14 +96,14 @@ nav ul li ul li ul{
 	z-index:5;
 	box-shadow: 0 8px 16px 0 rgba(7,17,27,.2);
 }
-#sd_userSignOut{
+#sd_userOperations{
 	height:50px;
 	display: flex;
 	width:250px;
 	justify-content: space-between;
 	margin:10px auto
 }
-#sd_userSignOut button{
+#sd_userOperations button{
 	border-width:0; 
 	border-radius: 8px;
 	background-color:#0f88eb;
@@ -114,7 +114,7 @@ nav ul li ul li ul{
 	cursor:pointer;
 	transition: all 0.2s ease 0s;
 }
-#sd_userSignOut button:hover{
+#sd_userOperations button:hover{
 	background-color:#0d79d1
 }
 button{
