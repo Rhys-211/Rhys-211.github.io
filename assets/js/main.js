@@ -5,7 +5,7 @@ const top_right = document.getElementById('tp_right');
 const mask = document.getElementById('mask');
 const sidebar = document.getElementById('sidebar');
 const sd_user = document.getElementById('sd_user');
-const sd_userOperations = document.getElementById('sd_userSignOperations');
+const sd_userSign = document.getElementById('sd_userSign');
 const sd_user_signOut = document.getElementById('sd_user_signOut');
 const sd_userAvatar = document.getElementById('sd_userAvatar');
 const sd_username = document.getElementById('sd_username');
@@ -64,7 +64,7 @@ if (document.cookie != "") {
     json = JSON.parse(document.cookie.slice(5));
     console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNmb" is ' + json.acntNmb + '.\nYour "email" is ' + json.email + '.\nYour "avatarUrl" is ' + json.avatarUrl + '.')
     sd_user.style.display = 'block';
-    sd_userOperations.style.display = 'none';
+    sd_userSign.style.display = 'none';
     sd_username.querySelector('p').innerText = json.username;
     sd_userInfo.querySelector('p').innerText = json.info;
     sd_userAvatar.querySelector('img').setAttribute('src', json.avatarUrl);
