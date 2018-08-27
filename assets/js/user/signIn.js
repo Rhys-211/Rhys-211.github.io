@@ -8,43 +8,35 @@ window.onload = function () {
         signIn_btn.disabled = 'disabled';
         if (acntNmb.value != '' && pwd.value != '') {
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
-            var User = Bmob.Object.extend("sfUser");
-            var query = new Bmob.Query(User);
-            query.find({
-                success: function (results) {
-                    //开始查询用户名
-                    for (var i = 0; i < results.length; i++) {
-                        object = results[i];
-                        //查询到用户名
-                        if (object.get('accountNumber') == acntNmb.value) {
-                            if (pwd.value == object.get('password')) {
-                                writeCookies(object);
-                                signIn_btn.innerText = '已登录';
-                                alert('登录成功！！！');
-                                window.open('/index.html', '_self')
-                                break;
-                            } else {
-                                pwd_info.innerText = '密码错误';
-                                pwd_info.style.color = 'red';
-                                pwd_usable = false;
-                                signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
-                                signIn_btn.disabled = false;
-                                break;
-                            }
-                            //未查询到用户名
-                        } else if (i == results.length - 1) {
-                            acntNmb_info.innerText = '用户名不存在';
-                            acntNmb_info.style.color = 'red';
-                            acntNmb_usable = false;
+            var userQuery = Bmob.Query("sfUser");
+            userQuery.find().then(results => {
+                //开始查询用户名
+                for (var i = 0; i < results.length; i++) {
+                    object = results[i];
+                    //查询到用户名
+                    if (object.accountNumber == acntNmb.value) {
+                        if (pwd.value == object.password) {
+                            writeCookies(object);
+                            signIn_btn.innerText = '已登录';
+                            alert('登录成功！！！');
+                            window.open('/index.html', '_self')
+                            break;
+                        } else {
+                            pwd_info.innerText = '密码错误';
+                            pwd_info.style.color = 'red';
+                            pwd_usable = false;
                             signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
                             signIn_btn.disabled = false;
+                            break;
                         }
+                        //未查询到用户名
+                    } else if (i == results.length - 1) {
+                        acntNmb_info.innerText = '用户名不存在';
+                        acntNmb_info.style.color = 'red';
+                        acntNmb_usable = false;
+                        signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
+                        signIn_btn.disabled = false;
                     }
-                },
-                error: function (error) {
-                    alert('登陆失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
-                    signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
-                    signIn_btn.disabled = false;
                 }
             });
         } else {

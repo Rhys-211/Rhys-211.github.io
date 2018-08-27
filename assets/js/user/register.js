@@ -19,51 +19,43 @@ window.onload = function () {
         register_btn.disabled = 'disabled';
         if (acntNmb_usable == pwd_usable && pwd_usable == pwd2_usable && pwd2_usable == username_usable && username_usable == userEmail_usable && userEmail_usable == true) {
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
-            var User = Bmob.Object.extend("sfUser");
-            var query = new Bmob.Query(User);
-            query.find({
-                success: function (results) {
-                    //开始查询用户名
-                    for (var i = 0; i < results.length; i++) {
-                        object = results[i];
-                        //查询到用户名
-                        if (object.get('accountNumber') == acntNmb.value) {
-                            alert('注册失败\n返回错误信息：账号与其他用户重复！');
-                            acntNmb_info.innerText = '账号重复';
-                            acntNmb_info.style.color = '#FF0000';
-                            acntNmb_usable = false;
+            var query = Bmob.Query("sfUser");
+            query.find().then(results => {
+                //开始查询用户名
+                for (var i = 0; i < results.length; i++) {
+                    object = results[i];
+                    //查询到用户名
+                    if (object.accountNumber == acntNmb.value) {
+                        alert('注册失败\n返回错误信息：账号与其他用户重复！');
+                        acntNmb_info.innerText = '账号重复';
+                        acntNmb_info.style.color = '#FF0000';
+                        acntNmb_usable = false;
+                        register_btn.innerText = '注册';
+                        register_btn.disabled = false;
+                        break;
+                        //未查询到用户名
+                    } else if (i == results.length - 1) {
+                        query.set("accountNumber", acntNmb.value);
+                        query.set("password", pwd.value);
+                        query.set("username", username.value);
+                        query.set("email", userEmail.value);
+                        query.set("info", '');
+                        query.set("avatarUrl", '/assets/images/userAvatar.png');
+                        query.save().then(() => {
+                            alert('注册成功！');
+                            register_btn.innerText = '注册成功';
+                            window.open('/user/signIn.html', '_self')
+                        }).catch(err => {
+                            alert('注册失败\n返回错误码：' + err.code + '\n返回错误信息：' + err.message);
                             register_btn.innerText = '注册';
                             register_btn.disabled = false;
-                            break;
-                            //未查询到用户名
-                        } else if (i == results.length - 1) {
-                            var user = new User();
-                            user.set("accountNumber", acntNmb.value);
-                            user.set("password", pwd.value);
-                            user.set("username", username.value);
-                            user.set("email", userEmail.value);
-                            user.set("info", '');
-                            user.set("avatarUrl", '/assets/images/userAvatar.png');
-                            user.save(null, {
-                                success: function (user) {
-                                    alert('注册成功！');
-                                    register_btn.innerText = '注册成功';
-                                    window.open('/user/signIn.html', '_self')
-                                },
-                                error: function (user, error) {
-                                    alert('注册失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
-                                    register_btn.innerText = '注册';
-                                    register_btn.disabled = false;
-                                }
-                            });
-                        }
+                        });
                     }
-                },
-                error: function (error) {
-                    alert('注册失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
-                    register_btn.innerText = '注册';
-                    register_btn.disabled = false;
                 }
+            }).catch(err => {
+                alert('注册失败\n返回错误码：' + err.code + '\n返回错误信息：' + err.message);
+                register_btn.innerText = '注册';
+                register_btn.disabled = false;
             });
         }
         else {
