@@ -20,7 +20,7 @@ function writeCookies(object) {
     json.info = object.info;
     json.username = object.username;
     json.acntNmb = object.accountNumber;
-    json.avatarUrl = object.avatarUrl;
+    json.avatarUrl = object.avatar.url;
     json.email = object.email;
     document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
 }

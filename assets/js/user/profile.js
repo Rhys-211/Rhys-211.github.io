@@ -26,7 +26,7 @@
                 username.innerText = user.username;
                 userEmail.innerText = user.email;
                 userAcntNmb.innerText = user.accountNumber;
-                userAvatar.setAttribute('src', user.avatarUrl);
+                userAvatar.setAttribute('src', user.avatar.url);
                 otherProfile.removeChild(changeUsername);
                 otherProfile.removeChild(changeUserInfo);
                 otherProfile.removeChild(changeUserEmail);
