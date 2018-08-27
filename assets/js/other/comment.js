@@ -156,7 +156,7 @@ comment_btn.addEventListener('click', function () {
             }
             else if (ua.indexOf('Android') > -1) {
                 system[0] = 'Android'
-                system[1] = ua.split(';')[1]
+                system[1] = /Android.*?;/.exec(ua)[0].slice(0,-1)
             }
             else if (ua.indexOf('iPhone') > -1) {
                 system[0] = 'Apple'
