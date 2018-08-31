@@ -6,7 +6,7 @@
     border-radius: 10px;
     box-shadow: #000 0px 5px 20px;
     width: 800px;
-    height: 1600px;
+    height: 2000px;
     background-color: #222;
 }
 
@@ -33,10 +33,10 @@
 #result {
     position: absolute;
     display: grid;
-    grid-template-columns: 200px 350px;
+    grid-template-columns: 240px 320px;
     margin-left: 240px;
     top: 320px;
-    height: 1600px;
+    height: 2000px;
 }
 
 button {
