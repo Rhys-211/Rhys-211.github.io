@@ -40,7 +40,6 @@ window.onload = function () {
                         query.set("username", username.value);
                         query.set("email", userEmail.value);
                         query.set("info", '');
-                        query.set("avatar", 'https://ruizzu.github.io/assets/images/userAvatar.png');
                         query.save().then(() => {
                             alert('注册成功！');
                             register_btn.innerText = '注册成功';
