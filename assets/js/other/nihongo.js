@@ -153,6 +153,7 @@ function convertKana(kana, oldVowel, newVowel) {
     }
 }
 function refresh(estimatedVerb) {
+    //判断动词类型
     if (estimatedVerb == 0) {
         if (word == 'くる' || word == '来る')
             estimatedVerb = 1
@@ -196,6 +197,14 @@ function refresh(estimatedVerb) {
         words[22].innerText = '来（こ）なければ'
         words[23].innerText = '来（こ）よう'
         words[24].innerText = '来（き）ましょう'
+        words[25].innerText = '来（こ）させる'
+        words[26].innerText = '来（こ）させない'
+        words[27].innerText = '来（こ）させた'
+        words[28].innerText = '来（こ）させなかった'
+        words[29].innerText = '来（こ）させます'
+        words[30].innerText = '来（こ）させません'
+        words[30].innerText = '来（こ）させました'
+        words[32].innerText = '来（こ）させませんでした'
     } else if (estimatedVerb == 2) {
         words[0].innerText = 'し'
         words[1].innerText = 'する'
@@ -222,6 +231,14 @@ function refresh(estimatedVerb) {
         words[22].innerText = 'しなければ'
         words[23].innerText = 'しよう'
         words[24].innerText = 'しましょう'
+        words[25].innerText = 'させる'
+        words[26].innerText = 'させない'
+        words[27].innerText = 'させた'
+        words[28].innerText = 'させなかった'
+        words[29].innerText = 'させます'
+        words[30].innerText = 'させません'
+        words[30].innerText = 'させました'
+        words[32].innerText = 'させませんでした'
     } else if (estimatedVerb == 3) {
         if (word == 'いく' || word == '行く') {
             words[0].innerText = '行（い）き'
@@ -249,6 +266,14 @@ function refresh(estimatedVerb) {
             words[22].innerText = '行（い）かなければ'
             words[23].innerText = '行（い）こう'
             words[24].innerText = '行（い）きましょう'
+            words[25].innerText = '行（い）かせる'
+            words[26].innerText = '行（い）かせない'
+            words[27].innerText = '行（い）かせた'
+            words[28].innerText = '行（い）かせなかった'
+            words[29].innerText = '行（い）かせます'
+            words[30].innerText = '行（い）かせません'
+            words[30].innerText = '行（い）かせました'
+            words[32].innerText = '行（い）かせませんでした'
         } else if (word == 'ある' || word == '有る') {
             words[0].innerText = '有（あ）り'
             words[1].innerText = '有（あ）る'
@@ -275,6 +300,14 @@ function refresh(estimatedVerb) {
             words[22].innerText = '無（な）ければ'
             words[23].innerText = '有（あ）ろう'
             words[24].innerText = '有（あ）りましょう'
+            words[25].innerText = '有（あ）らせる'
+            words[26].innerText = '有（あ）らせない'
+            words[27].innerText = '有（あ）らせた'
+            words[28].innerText = '有（あ）らせなかった'
+            words[29].innerText = '有（あ）らせます'
+            words[30].innerText = '有（あ）らせません'
+            words[30].innerText = '有（あ）らせました'
+            words[32].innerText = '有（あ）らせませんでした'
         } else {
             let front = word.substring(0, word.length - 1)
             let after = word.substring(word.length - 1)
@@ -311,6 +344,14 @@ function refresh(estimatedVerb) {
             words[22].innerText = front + convertKana(after, 'u', 'a') + 'なければ'
             words[23].innerText = front + convertKana(after, 'u', 'o') + 'う'
             words[24].innerText = words[0].innerText + 'ましょう'
+            words[25].innerText = front + convertKana(after, 'u', 'a') + 'せる'
+            words[26].innerText = front + convertKana(after, 'u', 'a') + 'せない'
+            words[27].innerText = front + convertKana(after, 'u', 'a') + 'せた'
+            words[28].innerText = front + convertKana(after, 'u', 'a') + 'せなかった'
+            words[29].innerText = front + convertKana(after, 'u', 'a') + 'せます'
+            words[30].innerText = front + convertKana(after, 'u', 'a') + 'せません'
+            words[30].innerText = front + convertKana(after, 'u', 'a') + 'せました'
+            words[32].innerText = front + convertKana(after, 'u', 'a') + 'せませんでした'
         }
     } else if (estimatedVerb == 4) {
         words[0].innerText = word.substring(0, word.length - 1)
@@ -338,6 +379,14 @@ function refresh(estimatedVerb) {
         words[22].innerText = words[0].innerText + 'なければ'
         words[23].innerText = words[0].innerText + 'ろう'
         words[24].innerText = words[0].innerText + 'ましょう'
+        words[25].innerText = words[0].innerText + 'させる'
+        words[26].innerText = words[0].innerText + 'させない'
+        words[27].innerText = words[0].innerText + 'させた'
+        words[28].innerText = words[0].innerText + 'させなかった'
+        words[29].innerText = words[0].innerText + 'させます'
+        words[30].innerText = words[0].innerText + 'させません'
+        words[30].innerText = words[0].innerText + 'させました'
+        words[32].innerText = words[0].innerText + 'させませんでした'
     }
 }
 let type = 0, verb = 0, word;
