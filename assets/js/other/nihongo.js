@@ -213,6 +213,14 @@ function refresh(estimatedVerb) {
         words[38].innerText = '来（こ）られません'
         words[39].innerText = '来（こ）られました'
         words[40].innerText = '来（こ）られませんでした'
+        words[41].innerText = '来（こ）させられる'
+        words[42].innerText = '来（こ）させられない'
+        words[43].innerText = '来（こ）させられた'
+        words[44].innerText = '来（こ）させられなかった'
+        words[45].innerText = '来（こ）させられます'
+        words[46].innerText = '来（こ）させられません'
+        words[47].innerText = '来（こ）させられました'
+        words[48].innerText = '来（こ）させられませんでした'
     } else if (estimatedVerb == 2) {
         words[0].innerText = 'し'
         words[1].innerText = 'する'
@@ -255,6 +263,14 @@ function refresh(estimatedVerb) {
         words[38].innerText = 'されません'
         words[39].innerText = 'されました'
         words[40].innerText = 'されませんでした'
+        words[41].innerText = 'させられる'
+        words[42].innerText = 'させられない'
+        words[43].innerText = 'させられた'
+        words[44].innerText = 'させられなかった'
+        words[45].innerText = 'させられます'
+        words[46].innerText = 'させられません'
+        words[47].innerText = 'させられました'
+        words[48].innerText = 'させられませんでした'
     } else if (estimatedVerb == 3) {
         if (word == 'いく' || word == '行く') {
             words[0].innerText = '行（い）き'
@@ -298,6 +314,14 @@ function refresh(estimatedVerb) {
             words[38].innerText = '行（い）かれません'
             words[39].innerText = '行（い）かれました'
             words[40].innerText = '行（い）かれませんでした'
+            words[41].innerText = '行（い）かせられる'
+            words[42].innerText = '行（い）かせられない'
+            words[43].innerText = '行（い）かせられた'
+            words[44].innerText = '行（い）かせられなかった'
+            words[45].innerText = '行（い）かせられます'
+            words[46].innerText = '行（い）かせられません'
+            words[47].innerText = '行（い）かせられました'
+            words[48].innerText = '行（い）かせられませんでした'
         } else if (word == 'ある' || word == '有る') {
             words[0].innerText = '有（あ）り'
             words[1].innerText = '有（あ）る'
@@ -340,6 +364,14 @@ function refresh(estimatedVerb) {
             words[38].innerText = '有（あ）られません'
             words[39].innerText = '有（あ）られました'
             words[40].innerText = '有（あ）られませんでした'
+            words[41].innerText = '有（あ）らせられる'
+            words[42].innerText = '有（あ）らせられない'
+            words[43].innerText = '有（あ）らせられた'
+            words[44].innerText = '有（あ）らせられなかった'
+            words[45].innerText = '有（あ）らせられます'
+            words[46].innerText = '有（あ）らせられません'
+            words[47].innerText = '有（あ）らせられました'
+            words[48].innerText = '有（あ）らせられませんでした'
         } else {
             let front = word.substring(0, word.length - 1)
             let after = word.substring(word.length - 1)
@@ -392,6 +424,14 @@ function refresh(estimatedVerb) {
             words[38].innerText = front + convertKana(after, 'u', 'a') + 'れません'
             words[39].innerText = front + convertKana(after, 'u', 'a') + 'れました'
             words[40].innerText = front + convertKana(after, 'u', 'a') + 'れませんでした'
+            words[41].innerText = front + convertKana(after, 'u', 'a') + 'せられる'
+            words[42].innerText = front + convertKana(after, 'u', 'a') + 'せられない'
+            words[43].innerText = front + convertKana(after, 'u', 'a') + 'せられた'
+            words[44].innerText = front + convertKana(after, 'u', 'a') + 'せられなかった'
+            words[45].innerText = front + convertKana(after, 'u', 'a') + 'せられます'
+            words[46].innerText = front + convertKana(after, 'u', 'a') + 'せられません'
+            words[47].innerText = front + convertKana(after, 'u', 'a') + 'せられました'
+            words[48].innerText = front + convertKana(after, 'u', 'a') + 'せられませんでした'
         }
     } else if (estimatedVerb == 4) {
         words[0].innerText = word.substring(0, word.length - 1)
@@ -435,6 +475,14 @@ function refresh(estimatedVerb) {
         words[38].innerText = words[0].innerText + 'られません'
         words[39].innerText = words[0].innerText + 'られました'
         words[40].innerText = words[0].innerText + 'られませんでした'
+        words[41].innerText = words[0].innerText + 'させられる'
+        words[42].innerText = words[0].innerText + 'させられない'
+        words[43].innerText = words[0].innerText + 'させられた'
+        words[44].innerText = words[0].innerText + 'させられなかった'
+        words[45].innerText = words[0].innerText + 'させられます'
+        words[46].innerText = words[0].innerText + 'させられません'
+        words[47].innerText = words[0].innerText + 'させられました'
+        words[48].innerText = words[0].innerText + 'させられませんでした'
     }
 }
 let type = 0, verb = 0, word;
