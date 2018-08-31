@@ -21,7 +21,7 @@
             //查询单条数据，第一个参数是这条数据的objectId值
             userQuery.get(search[1]).then(user => {
                 title.innerText = user.username + "'s Profile";
-                userID.innerText = user.id;
+                userID.innerText = user.objectId;
                 userInfo.innerText = user.info;
                 username.innerText = user.username;
                 userEmail.innerText = user.email;
@@ -31,7 +31,7 @@
                 otherProfile.removeChild(changeUserInfo);
                 otherProfile.removeChild(changeUserEmail);
             }).catch(err => {
-                alert('查询失败\n返回错误码：' + err.code + '\n返回错误信息：' + err.message);
+                alert('查询失败\n返回错误信息：未寻找到该用户');
             })
         } else
             alert('查询失败\n返回错误信息：你网址打错了吧_(:з)∠)_');
