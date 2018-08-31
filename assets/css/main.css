@@ -139,6 +139,10 @@ button{
 #sd_user table{
 	padding:0;
 	height:120px;
+	width:300px;
+}
+#sd_userAvatar{
+	width:128px;
 }
 #sd_user table td{
 	padding:10px;
@@ -151,9 +155,6 @@ button{
 	color:#93999f;
 	display:table;
 	overflow: hidden;
-}
-td#sd_username{
-	padding:20px 0 0 0;
 }
 td#sd_username p{
 	font-size:24px;
