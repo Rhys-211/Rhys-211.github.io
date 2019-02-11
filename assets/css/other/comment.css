@@ -99,7 +99,9 @@ div#commentItems:hover {
 #commentItems .commentItem_incidental{
     position: relative;
     top:-15px;
-    margin:0 5px 0 5px
+    margin:0 5px 0 5px;
+    height: 24px;
+    width:24px;
 }
 #commentItems .commentItem_content{
     margin:0;

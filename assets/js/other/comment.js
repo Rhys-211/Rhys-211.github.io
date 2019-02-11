@@ -128,6 +128,10 @@ comment_btn.addEventListener('click', function () {
                 system[0] = 'Win8-10'
                 system[1] = 'Microsoft Windows 10'
             }
+            else if (ua.indexOf('vivo') > -1) {
+                system[0] = 'vivo'
+                system[1] = /vivo.*?B/.exec(ua)[0].slice(0,-1) + /Android.*?;/.exec(ua)[0].slice(0,-1)
+            }
             else if (ua.indexOf('Android') > -1) {
                 system[0] = 'Android'
                 system[1] = /Android.*?;/.exec(ua)[0].slice(0,-1)
