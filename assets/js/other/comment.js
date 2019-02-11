@@ -163,8 +163,8 @@ comment_btn.addEventListener('click', function () {
             } else if (ua.indexOf('Edge') > -1) {
                 browser[0] = 'Edge'
                 browser[1] = 'Microsoft Edge'
-            } else if (ua.indexOf('QQBrowser') > -1) {
-                browser[0] = 'QQBrowser'
+            } else if (ua.indexOf('QQbrowser') > -1) {
+                browser[0] = 'QQbrowser'
                 browser[1] = 'QQ浏览器'
             } else if (ua.indexOf('Chrome') > -1) {
                 browser[0] = 'Chrome'
