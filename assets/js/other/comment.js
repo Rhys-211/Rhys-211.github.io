@@ -207,7 +207,7 @@ comment_btn.addEventListener('click', function () {
                 commentQuery.set('browser', browser);
                 commentQuery.set('ua', ua);
                 commentQuery.set('content', comment_input.value);
-                $.getJSON('http://api.ipinfodb.com/v3/ip-city/?key=583b4749a22e4313070046dda434a7319ece4412802319109777849cc4991b98&format=json', function (data) {
+                $.getJSON('//api.ipinfodb.com/v3/ip-city/?key=583b4749a22e4313070046dda434a7319ece4412802319109777849cc4991b98&format=json', function (data) {
                     commentQuery.set('country', data.countryName);
                     commentQuery.set('region', data.regionName);
                     commentQuery.set('city', data.cityName);
