@@ -106,7 +106,7 @@ function judgeOutcome() {
 function playerDo(i) {
     if (boxes[i].clicked == 2)
         occupiedAI = true;
-    if (boxes[i].clicked == 1)
+    else if (boxes[i].clicked == 1)
         occupiedPlayer = true;
     boxes[i].clicked = 1;
     boxes[i].box.innerText = '❌';
@@ -202,7 +202,7 @@ function initGame() {
     const loadArea = document.querySelector('#loadArea')
     const load_start = document.querySelector('#start')
     const load_progress = document.querySelector('progress')
-    window.turns = [1, 1];
+    window.turns = [0, 0];
     window.isOver = false;
     window.boxes = new Array(9);
     window.occupiedPlayer = false;
