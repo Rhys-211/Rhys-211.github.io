@@ -55,36 +55,10 @@ commentQuery.find().then(res => {
         commentItem_city.innerText = comments[i].city
         commentItem_content.innerText = comments[i].content
         //对commentItem中的附带信息（系统）进行赋值操作
-        if (comments[i].system[0] == 'Win8-10')
-            commentItem_system.setAttribute('src', '/assets/images/comment/Win8-10.png')
-        if (comments[i].system[0] == 'Windows')
-            commentItem_system.setAttribute('src', '/assets/images/comment/Windows.png')
-        else if (comments[i].system[0] == 'Apple')
-            commentItem_system.setAttribute('src', '/assets/images/comment/Apple.jpg')
-        else if (comments[i].system[0] == 'Android')
-            commentItem_system.setAttribute('src', '/assets/images/comment/Android.jpg')
-        else if (comments[i].system[0] == 'Linux')
-            commentItem_system.setAttribute('src', '/assets/images/comment/Linux.png')
-        else if (comments[i].system[0] == 'unknown')
-            commentItem_system.setAttribute('src', '/assets/images/comment/unknown.png')
+        commentItem_system.setAttribute('src', '/assets/images/comment/' + comments[i].system[0] + '.png')
         commentItem_system.setAttribute('title', comments[i].system[1])
         //对commentItem中的附带信息（浏览器）进行赋值操作
-        if (comments[i].browser[0] == 'Chrome')
-            commentItem_browser.setAttribute('src', '/assets/images/comment/Chrome.png')
-        else if (comments[i].browser[0] == 'Firefox')
-            commentItem_browser.setAttribute('src', '/assets/images/comment/Firefox.jpg')
-        else if (comments[i].browser[0] == 'Safari')
-            commentItem_browser.setAttribute('src', '/assets/images/comment/Safari.png')
-        else if (comments[i].browser[0] == 'Opera')
-            commentItem_browser.setAttribute('src', '/assets/images/comment/Opera.png')
-        else if (comments[i].browser[0] == 'Edge')
-            commentItem_browser.setAttribute('src', '/assets/images/comment/Edge.png')
-        else if (comments[i].browser[0] == 'QQBrowser')
-            commentItem_browser.setAttribute('src', '/assets/images/comment/QQbrowser.png')
-        else if (comments[i].browser[0] == 'Silk')
-            commentItem_browser.setAttribute('src', '/assets/images/comment/Silk.png')
-        else
-            commentItem_browser.setAttribute('src', '/assets/images/comment/unknown.png')
+        commentItem_browser.setAttribute('src', '/assets/images/comment/' + comments[i].browser[0] + '.png')
         commentItem_browser.setAttribute('title', comments[i].browser[1])
         //对commentItem中的元素的剩余用户内容进行赋值操作（用户名，头像）
         userQuery.get(comments[i].userId).then(user => {
