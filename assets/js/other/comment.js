@@ -58,7 +58,7 @@ commentQuery.find().then(res => {
         if (comments[i].system[0] == 'Win8-10')
             commentItem_system.setAttribute('src', '/assets/images/comment/Win8-10.png')
         if (comments[i].system[0] == 'Windows')
-            commentItem_system.setAttribute('src', '/assets/images/comment/Windows.jpg')
+            commentItem_system.setAttribute('src', '/assets/images/comment/Windows.png')
         else if (comments[i].system[0] == 'Apple')
             commentItem_system.setAttribute('src', '/assets/images/comment/Apple.jpg')
         else if (comments[i].system[0] == 'Android')
