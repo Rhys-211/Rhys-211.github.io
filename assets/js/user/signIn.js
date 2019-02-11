@@ -18,7 +18,7 @@ window.onload = function () {
                         if (pwd.value == object.password) {
                             writeCookies(object);
                             signIn_btn.innerText = '已登录';
-                            alert('登录成功！！！');
+                            alert('登录成功！');
                             window.open('/index.html', '_self')
                             break;
                         } else {
