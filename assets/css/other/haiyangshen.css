@@ -1,65 +1,27 @@
-#content .inner{
-	color:#fff;
-	position:relative;
-	text-align:center;
-	font-size: 2em;
-	font-family: Microsoft Yahei Light;
-}
-#content .inner h1{
-	margin:0;
-}
-
-body{
+/*body{
 	background:url("/assets/images/haiyangshen/bg.png");
 	background-size:100%;
 	background-repeat: no-repeat;
+}*/
+#b0{
+	background-image:url("/assets/images/haiyangshen/bg.png");
 }
-nav{
-	background-color: rgba(0,0,0,0)
+#b1{
+	background-image:url("/assets/images/haiyangshen/1.jpg");
 }
-nav div{
-	background-color: rgba(0,0,0,0) !important
+#b2{
+	background-image:url("/assets/images/haiyangshen/2.jpg");
 }
-nav ul li:hover{
-	background-color: rgba(0,0,0,0.1) !important
+#b3{
+	background-image:url("/assets/images/haiyangshen/3.jpg");
 }
-nav#topbar div:hover{
-	background-color: rgba(0,0,0,0.1) !important
+#b4{
+	background-image:url("/assets/images/haiyangshen/4.jpg");
 }
-.foucs{
-	background-color: rgba(0,0,0,0.1) !important
+.block{
+	background-size:100%;
+	background-repeat: no-repeat;
 }
-nav ul li ul,nav div ul{
-	background:url("/assets/images/haiyangshen/bg.png");
+footer{
+	margin:0
 }
-button#start_btn{
-	border:none;
-	border-radius:20px;
-	height:40px;
-	padding:0 25px;
-	color:#fff;
-	background-color:#229ffd;
-	transition:all 0.5s ease 0s;
-	position: relative;
-  	left: -50%; 
-}
-button#start_btn:hover{
-	color:#fff;
-	background:#4cb0f9;
-	box-shadow:0px 0px 5px #000;
-}
-button#start_btn:focus{
-	border:none;
-}
-div#start{
-	float: left; /* 自适应内容宽度 */
-  	position: relative;
-  	left: 50%; 
-}
-#sd_user p{
-	color:#fff!important;
-}
-#sidebar ul li a{
-	color:#eee!important;
-}
-
