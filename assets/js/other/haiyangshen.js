@@ -13,10 +13,18 @@ function msgs() {
 }
 document.querySelector('#b0').style.height = (window.innerWidth - 20) / 16 * 9 + 'px'
 document.querySelector('#b0').addEventListener('click', msgs)
+let voice = new Array(5)
+for (let i = 1; i < 5; i++){
+    voice[i] = new Audio()
+    voice[i].src = '/assets/audio/haiyangshen/' + i + '.mp3'
+    voice[i].load()
+}
+    
+
 for (let i = 1; i < 5; i++) {
     document.querySelector('#b' + i).style.height = (window.innerWidth - 20) / 49 * 25 + 'px'
     document.querySelector('#b' + i).addEventListener('click', function () {
-        new Audio('/assets/audio/haiyangshen/' + i + '.mp3').play()
+        voice[i].play()
     })
 }
 alert('海洋大法好，入教保平安（迫真）\n（顺便说一下，点击页面各张图片都会有惊喜哟）')
