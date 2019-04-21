@@ -195,7 +195,7 @@ function loadGame() {
     checkLoaded()
 }
 function initGame() {
-    alert('游戏正在开发中，目前仅有移动与 fa♂射 子弹等功能。己方攻击到敌人时,敌机不死、打击特效（其实本来是死亡特效）会永久残留等均暂时视为正常现象。')
+    alert('游戏正在开发中，目前仅有移动与 fa♂射 子弹等功能。己方攻击到敌人时,敌机不死、打击特效（其实本来是死亡特效）会永久残留等均暂时视为正常现象。（按回车键可升级）')
     const canvas = document.querySelector('canvas')
     const context = canvas.getContext('2d')
     class Bullet {
