@@ -1,6 +1,6 @@
 section {
-    height:200px;
-    width:500px;
+    height:220px;
+    width:540px;
     background-color:#fff;
     margin:20px auto;
     border-radius:5px;
@@ -15,7 +15,7 @@ section img{
     border-radius:5px 0 5px 0;
 }
 section .leftbox{
-    width:120px;
+    width:150px;
     float:left;
 }
 section .leftbox h2{
@@ -28,4 +28,8 @@ section table{
 }
 table tr td{
     padding:5px;
+}
+
+img{
+    width:150px
 }
