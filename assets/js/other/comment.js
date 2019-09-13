@@ -64,7 +64,7 @@ commentQuery.find().then(res => {
         userQuery.get(comments[i].userId).then(user => {
             //获取commentItem所需的用户信息
             comments[i].username = user.username;
-            comments[i].avatarUrl = user.avatar == undefined ? 'https://ruizzu.github.io/assets/images/userAvatar.png' :user.avatar.url;
+            comments[i].avatarUrl = user.avatar == undefined ? '/assets/images/userAvatar.png' :user.avatar;
             //向commentItem中的元素写入用户信息
             commentItem_userAvatar.setAttribute('src', comments[i].avatarUrl)
             commentItem_username.innerText = comments[i].username

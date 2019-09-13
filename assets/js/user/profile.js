@@ -26,7 +26,7 @@
                 username.innerText = user.username;
                 userEmail.innerText = user.email;
                 userAcntNmb.innerText = user.accountNumber;
-                userAvatar.setAttribute('src', user.avatar == undefined ? 'https://ruizzu.github.io/assets/images/userAvatar.png' : user.avatar.url);
+                userAvatar.setAttribute('src', user.avatar == undefined ? '/assets/images/userAvatar.png' : user.avatar);
                 otherProfile.removeChild(changeUsername);
                 otherProfile.removeChild(changeUserInfo);
                 otherProfile.removeChild(changeUserEmail);
