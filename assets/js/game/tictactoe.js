@@ -13,7 +13,7 @@ function canPlay() {
 }
 function checkLoaded() {
     let checkHasLoaded = setInterval(function () {
-        if (load_progress.getAttribute('value') == 21) {
+        if (load_progress.getAttribute('value') == load_progress.getAttribute('max')) {
             clearInterval(checkHasLoaded);
             canPlay()
         }

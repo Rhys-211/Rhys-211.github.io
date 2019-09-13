@@ -147,7 +147,7 @@ function drawLevel(context, level) {
     else
         context.fillText(level, 894, 612);
 }
-function canPlay() {
+function finishLoadingGame() {
     load_start.innerText = 'PLAY'
     load_start.addEventListener('click', function () {
         const canvas = document.querySelector('canvas')
@@ -157,18 +157,16 @@ function canPlay() {
     })
 }
 function checkLoaded() {
-    let value = load_progress.getAttribute('value');
-    let max = load_progress.getAttribute('max');
     let checkHasLoaded = setInterval(function () {
         if (load_progress.getAttribute('value') == load_progress.getAttribute('max')) {
             clearInterval(checkHasLoaded);
-            canPlay()
+            finishLoadingGame()
         }
     }, 500)
     setTimeout(function () {
         if (load_progress.getAttribute('value') != load_progress.getAttribute('max')) {
             alert('加载超时，您可以选择开始游戏，但是当您进行游戏时可能会有较大延迟。\nP.S. 由于网站数据存放在国外，所以完全加载成功的概率并不是很高。如果您是强迫症患者，请刷新网页，若不是可以选择开始游戏。')
-            canPlay()
+            finishLoadingGame()
         }
     }, 60000)
 }
@@ -188,9 +186,6 @@ function loadImages() {
     loadImage('/assets/images/raiden/skillUpDisabled.png')
 }
 function loadGame() {
-    const loadArea = document.querySelector('#loadArea')
-    const load_progress = document.querySelector('progress')
-    const load_start = document.querySelector('#start')
     loadImages()
     checkLoaded()
 }
