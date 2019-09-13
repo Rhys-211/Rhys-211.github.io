@@ -152,26 +152,28 @@ function convertKana(kana, oldVowel, newVowel) {
             return kanas[i][newVowel]
     }
 }
-function refresh(estimatedVerb) {
+function refresh(estimatedVerbType) {
+    if(word.length < 2)
+        return;
     //判断动词类型
-    if (estimatedVerb == 0) {
+    if (estimatedVerbType == 0) {
         if (word == 'くる' || word == '来る')
-            estimatedVerb = 1
+            estimatedVerbType = 1
         else if (word == 'する')
-            estimatedVerb = 2
+            estimatedVerbType = 2
         else if (getVowel(word[word.length - 1]) == 'u' && word[word.length - 1] != 'る')
-            estimatedVerb = 3
+            estimatedVerbType = 3
         else if (word[word.length - 1] == 'る') {
             if (isGodan(word) || getVowel(word[word.length - 2]) == 'a' || getVowel(word[word.length - 2]) == 'u' || getVowel(word[word.length - 2]) == 'o')
-                estimatedVerb = 3
+                estimatedVerbType = 3
             else if (getVowel(word[word.length - 2]) == 'i' || getVowel(word[word.length - 2]) == 'e')
-                estimatedVerb = 4
+                estimatedVerbType = 4
             else
                 alert('请将倒数第二个字符改写为假名形式。')
         } else
             alert('请将最后一个字符改写为う段假名形式。')
     }
-    if (estimatedVerb == 1) {
+    if (estimatedVerbType == 1) {
         words[0].innerText = '来（き）'
         words[1].innerText = '来（く）る'
         words[2].innerText = '来（こ）ない'
@@ -222,7 +224,7 @@ function refresh(estimatedVerb) {
         words[47].innerText = '来（こ）させられました'
         words[48].innerText = '来（こ）させられませんでした'
         words[49].innerText = '来（こ）い'
-    } else if (estimatedVerb == 2) {
+    } else if (estimatedVerbType == 2) {
         words[0].innerText = 'し'
         words[1].innerText = 'する'
         words[2].innerText = 'しない'
@@ -273,7 +275,7 @@ function refresh(estimatedVerb) {
         words[47].innerText = 'させられました'
         words[48].innerText = 'させられませんでした'
         words[49].innerText = 'しろ'
-    } else if (estimatedVerb == 3) {
+    } else if (estimatedVerbType == 3) {
         if (word == 'いく' || word == '行く') {
             words[0].innerText = '行（い）き'
             words[1].innerText = '行（い）く'
@@ -438,7 +440,7 @@ function refresh(estimatedVerb) {
             words[48].innerText = front + convertKana(after, 'u', 'a') + 'せられませんでした'
             words[49].innerText = front + convertKana(after, 'u', 'e')
         }
-    } else if (estimatedVerb == 4) {
+    } else if (estimatedVerbType == 4) {
         if (word == 'くれる') {
             words[0].innerText = 'くれ'
             words[1].innerText = 'くれる'
@@ -544,15 +546,15 @@ function refresh(estimatedVerb) {
         }
     }
 }
-let type = 0, verb = 0, word;
+let type = 0, verbType = 0, word = '';
 let words = document.querySelectorAll('span#words');
 let typeBtns = document.querySelectorAll('#type button');
-let verbBtns = document.querySelectorAll('#verb button');
+let verbTypeBtns = document.querySelectorAll('#verbType button');
 typeBtns[type].style.background = "#111";
-verbBtns[verb].style.background = "#111";
+verbTypeBtns[verbType].style.background = "#111";
 document.querySelector('input').addEventListener('change', function () {
     word = document.querySelector('input').value;
-    refresh(verb)
+    refresh(verbType)
 })
 for (let i = 0; i < 3; i++) {
     typeBtns[i].addEventListener('click', function () {
@@ -561,11 +563,11 @@ for (let i = 0; i < 3; i++) {
     })
 }
 for (let i = 0; i < 5; i++) {
-    verbBtns[i].addEventListener('click', function () {
-        verbBtns[verb].style.background = "#333";
-        verb = i;
-        verbBtns[verb].style.background = "#111";
-        refresh(verb)
+    verbTypeBtns[i].addEventListener('click', function () {
+        verbTypeBtns[verbType].style.background = "#333";
+        verbType = i;
+        verbTypeBtns[verbType].style.background = "#111";
+        refresh(verbType)
     })
 }
 
