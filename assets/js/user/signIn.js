@@ -1,12 +1,12 @@
 window.onload = function () {
-    const acntNmb = document.getElementById('acntNmb_input');
+    const account = document.getElementById('account_input');
     const pwd = document.getElementById('pwd_input');
-    const acntNmb_info = document.getElementById('acntNmb_info');
+    const account_info = document.getElementById('account_info');
     const pwd_info = document.getElementById('pwd_info');
     function signIn() {
         signIn_btn.innerText = '登录中......';
         signIn_btn.disabled = 'disabled';
-        if (acntNmb.value != '' && pwd.value != '') {
+        if (account.value != '' && pwd.value != '') {
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
             var userQuery = Bmob.Query("sfUser");
             userQuery.find().then(results => {
@@ -14,9 +14,14 @@ window.onload = function () {
                 for (var i = 0; i < results.length; i++) {
                     object = results[i];
                     //查询到用户名
-                    if (object.accountNumber == acntNmb.value) {
+                    if (object.account == account.value) {
                         if (pwd.value == object.password) {
-                            writeCookies(object);
+                            localStorage.id = object.objectId;
+                            localStorage.info = object.info;
+                            localStorage.username = object.username;
+                            localStorage.account = object.account;
+                            localStorage.avatarUrl = object.avatar == undefined ? '/assets/images/userAvatar.png' : object.avatar;
+                            localStorage.email = object.email;
                             signIn_btn.innerText = '已登录';
                             alert('登录成功！');
                             window.open('/index.html', '_self')
@@ -31,9 +36,9 @@ window.onload = function () {
                         }
                         //未查询到用户名
                     } else if (i == results.length - 1) {
-                        acntNmb_info.innerText = '用户名不存在';
-                        acntNmb_info.style.color = 'red';
-                        acntNmb_usable = false;
+                        account_info.innerText = '用户名不存在';
+                        account_info.style.color = 'red';
+                        account_usable = false;
                         signIn_btn.innerHTML = '登&nbsp;&nbsp;&nbsp;&nbsp;录';
                         signIn_btn.disabled = false;
                     }
@@ -45,15 +50,15 @@ window.onload = function () {
             signIn_btn.disabled = false;
         }
     };
-    acntNmb.addEventListener('change', function () {
-        if (acntNmb.value == '') {
-            acntNmb_info.innerText = '请输入账号';
-            acntNmb_info.style.color = 'orange';
-            acntNmb_usable = false;
+    account.addEventListener('change', function () {
+        if (account.value == '') {
+            account_info.innerText = '请输入账号';
+            account_info.style.color = 'orange';
+            account_usable = false;
         } else {
-            acntNmb_info.innerText = '已输入账号';
-            acntNmb_info.style.color = '#32CD32';
-            acntNmb_usable = true;
+            account_info.innerText = '已输入账号';
+            account_info.style.color = '#32CD32';
+            account_usable = true;
         }
     });
     pwd.addEventListener('change', function () {

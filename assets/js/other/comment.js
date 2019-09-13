@@ -89,7 +89,7 @@ commentQuery.find().then(res => {
 });
 
 comment_btn.addEventListener('click', function () {
-    if (json.id != undefined) {
+    if (localStorage.id) {
         if (comment_input.value != '') {
             comment_btn.disabled = 'disabled';
             comment_btn.innerText = '发布中......'
@@ -188,7 +188,7 @@ comment_btn.addEventListener('click', function () {
                 browser[1] = "未知浏览器"
             }
             commentQuery.find().then(() => {
-                commentQuery.set('userId', json.id);
+                commentQuery.set('userId', localStorage.id);
                 commentQuery.set('system', system);
                 commentQuery.set('browser', browser);
                 commentQuery.set('ua', ua);

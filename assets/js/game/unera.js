@@ -49,19 +49,19 @@ function startGame() {
         context.beginPath();
         context.rect(900, 100, 360, 120)
         if (context.isPointInPath(event.offsetX, event.offsetY)) {
-            if (json.id == undefined)
-                alert('请先登录账号，再进行其他操作。')
-            else
+            if (localStorage.id)
                 alert('暂未开启')
+            else
+                alert('请先登录账号，再进行其他操作。')
         }
         //检测读取存档
         context.beginPath();
         context.rect(900, 300, 360, 120)
         if (context.isPointInPath(event.offsetX, event.offsetY))
-            if (json.id == undefined)
-                alert('请先登录账号，再进行其他操作。')
-            else
+            if (localStorage.id)
                 alert('暂未开启')
+            else
+                alert('请先登录账号，再进行其他操作。')
     })
     let startScene = new Scene('/assets/images/unera/background.png');
     startScene.drawBackground();

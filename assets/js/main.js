@@ -1,6 +1,5 @@
 ﻿'use strict'
 
-let json = {};
 const top_right = document.getElementById('tp_right');
 const mask = document.getElementById('mask');
 const sidebar = document.getElementById('sidebar');
@@ -12,18 +11,6 @@ const sd_username = document.getElementById('sd_username');
 const sd_userInfo = document.getElementById('sd_userInfo');
 const sd_back = document.getElementById('sd_back');
 const sdSelections = document.querySelectorAll('.sdSelection')
-//function(s) to User
-function writeCookies(object) {
-    var time = new Date();
-    time.setTime((new Date()).getTime() + 365 * 24 * 60 * 60 * 1000);
-    json.id = object.objectId;
-    json.info = object.info;
-    json.username = object.username;
-    json.acntNmb = object.accountNumber;
-    json.avatarUrl = object.avatar == undefined ? '/assets/images/userAvatar.png' : object.avatar;
-    json.email = object.email;
-    document.cookie = 'json=' + JSON.stringify(json) + ';path=/;expires=' + time.toGMTString();
-}
 //functions to all pages
 function hideSidebar() {
     sidebar.style.right = '-300px';
@@ -55,17 +42,16 @@ top_right.addEventListener('click', showSidebar)
 mask.addEventListener('click', hideSidebar)
 
 sd_user_signOut.addEventListener('click', function () {
-    document.cookie = 'json=1;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    localStorage.clear()
     alert('注销成功');
     window.location.reload();
 })
 //to get some information of user
-if (document.cookie != "") {
-    json = JSON.parse(document.cookie.slice(5));
-    console.log('Hello,' + json.username + '!\nYour "id" is ' + json.id + '.\nYour "Info" is ' + json.info + '.\nYour "acntNmb" is ' + json.acntNmb + '.\nYour "email" is ' + json.email + '.\nYour "avatarUrl" is ' + json.avatarUrl + '.')
+if (localStorage.id) {
+    console.log('Hello,' + localStorage.username + '!\nYour "id" is ' + localStorage.id + '.\nYour "Info" is ' + localStorage.info + '.\nYour "account" is ' + localStorage.account + '.\nYour "email" is ' + localStorage.email + '.\nYour "avatarUrl" is ' + localStorage.avatarUrl + '.')
     sd_user.style.display = 'block';
     sd_userSign.style.display = 'none';
-    sd_username.querySelector('p').innerText = json.username;
-    sd_userInfo.querySelector('p').innerText = json.info;
-    sd_userAvatar.querySelector('img').setAttribute('src', json.avatarUrl);
+    sd_username.querySelector('p').innerText = localStorage.username;
+    sd_userInfo.querySelector('p').innerText = localStorage.info;
+    sd_userAvatar.querySelector('img').setAttribute('src', localStorage.avatarUrl);
 }

@@ -1,15 +1,15 @@
-let acntNmb_usable = false;
+let account_usable = false;
 let pwd_usable = false;
 let pwd2_usable = false;
 let username_usable = false;
 let userEmail_usable = false;
 window.onload = function () {
-    const acntNmb = document.getElementById('acntNmb_input');
+    const account = document.getElementById('account_input');
     const pwd = document.getElementById('pwd_input');
     const pwd2 = document.getElementById('pwd2_input');
     const userEmail = document.getElementById('userEmail_input');
     const username = document.getElementById('username_input');
-    const acntNmb_info = document.getElementById('acntNmb_info');
+    const account_info = document.getElementById('account_info');
     const pwd_info = document.getElementById('pwd_info');
     const pwd2_info = document.getElementById('pwd2_info');
     const username_info = document.getElementById('username_info');
@@ -17,7 +17,7 @@ window.onload = function () {
     function register() {
         register_btn.innerText = '注册中......';
         register_btn.disabled = 'disabled';
-        if (acntNmb_usable == pwd_usable && pwd_usable == pwd2_usable && pwd2_usable == username_usable && username_usable == userEmail_usable && userEmail_usable == true) {
+        if (account_usable == pwd_usable && pwd_usable == pwd2_usable && pwd2_usable == username_usable && username_usable == userEmail_usable && userEmail_usable == true) {
             Bmob.initialize("c4c8b7af88a34d5d587b8d15506b1882", "4298aaed28dfc11c8a492d1828d93539");
             var query = Bmob.Query("sfUser");
             query.find().then(results => {
@@ -25,17 +25,17 @@ window.onload = function () {
                 for (var i = 0; i < results.length; i++) {
                     object = results[i];
                     //查询到用户名
-                    if (object.accountNumber == acntNmb.value) {
+                    if (object.accountNumber == account.value) {
                         alert('注册失败\n返回错误信息：账号与其他用户重复！');
-                        acntNmb_info.innerText = '账号重复';
-                        acntNmb_info.style.color = '#FF0000';
-                        acntNmb_usable = false;
+                        account_info.innerText = '账号重复';
+                        account_info.style.color = '#FF0000';
+                        account_usable = false;
                         register_btn.innerText = '注册';
                         register_btn.disabled = false;
                         break;
                         //未查询到用户名
                     } else if (i == results.length - 1) {
-                        query.set("accountNumber", acntNmb.value);
+                        query.set("account", account.value);
                         query.set("password", pwd.value);
                         query.set("username", username.value);
                         query.set("email", userEmail.value);
@@ -63,27 +63,27 @@ window.onload = function () {
             register_btn.disabled = false;
         }
     }
-    acntNmb.addEventListener('change', function () {
-        if (acntNmb.value == '') {
-            acntNmb_info.innerText = '请输入账号';
-            acntNmb_info.style.color = 'orange';
-            acntNmb_usable = false;
-        } else if (acntNmb.value.length < 6) {
-            acntNmb_info.innerText = '账号过短';
-            acntNmb_info.style.color = '#FF0000';
-            acntNmb_usable = false;
-        } else if (acntNmb.value.length > 18) {
-            acntNmb_info.innerText = '账号过长';
-            acntNmb_info.style.color = '#FF0000';
-            acntNmb_usable = false;
-        } else if (/^[a-zA-Z0-9_]{6,18}$/.exec(acntNmb.value) == null) {
-            acntNmb_info.innerText = '密码含特殊字符';
-            acntNmb_info.style.color = '#FF0000';
-            acntNmb_usable = false;
+    account.addEventListener('change', function () {
+        if (account.value == '') {
+            account_info.innerText = '请输入账号';
+            account_info.style.color = 'orange';
+            account_usable = false;
+        } else if (account.value.length < 6) {
+            account_info.innerText = '账号过短';
+            account_info.style.color = '#FF0000';
+            account_usable = false;
+        } else if (account.value.length > 18) {
+            account_info.innerText = '账号过长';
+            account_info.style.color = '#FF0000';
+            account_usable = false;
+        } else if (/^[a-zA-Z0-9_]{6,18}$/.exec(account.value) == null) {
+            account_info.innerText = '密码含特殊字符';
+            account_info.style.color = '#FF0000';
+            account_usable = false;
         } else {
-            acntNmb_info.innerText = '已输入账号';
-            acntNmb_info.style.color = '#32CD32';
-            acntNmb_usable = true;
+            account_info.innerText = '已输入账号';
+            account_info.style.color = '#32CD32';
+            account_usable = true;
         }
     });
     pwd.addEventListener('change', function () {
