@@ -25,7 +25,7 @@ window.onload = function () {
                 for (var i = 0; i < results.length; i++) {
                     object = results[i];
                     //查询到用户名
-                    if (object.accountNumber == account.value) {
+                    if (object.account == account.value) {
                         alert('注册失败\n返回错误信息：账号与其他用户重复！');
                         account_info.innerText = '账号重复';
                         account_info.style.color = '#FF0000';
