@@ -6,4 +6,8 @@ window.onload = function(){
     else
         srcOfHaiyang += '28828078&auto=0&height=66'
         musicOfHaiyang.setAttribute('src',srcOfHaiyang)
+    
+    document.querySelector("#developer3").addEventListener('click',function(){
+        window.open("../other/haiyangshen.html")
+    })
 }

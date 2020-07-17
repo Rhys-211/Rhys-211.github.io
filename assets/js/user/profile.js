@@ -60,7 +60,7 @@
                 const query = Bmob.Query('sfUser');
                 query.get(localStorage.id).then(object => {
                     object.set("username", newUsername);
-                    object.save().catch(err => {
+                    object.save().catch(error => {
                         alert('修改失败\n返回错误码：' + error.code + '\n返回错误信息：' + error.message);
                         changeUsername.disabled = false;
                         changeUsername.innerText = '修改';
